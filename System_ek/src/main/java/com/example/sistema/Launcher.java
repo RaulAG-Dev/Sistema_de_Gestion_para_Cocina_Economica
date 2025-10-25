@@ -1,4 +1,4 @@
-package com.example;
+package com.example.sistema;
 
 import javafx.application.Application;
 

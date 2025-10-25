@@ -139,7 +139,7 @@
                         <id>default-cli</id>
                         <configuration>
                             <mainClass>
-                                org.example.sistema_de_gestion_para_cocina_economica/com.example.MainApp
+                                org.example.sistema_de_gestion_para_cocina_economica/com.example.sistema.MainApp
                             </mainClass>
                             <launcher>app</launcher>
                             <jlinkZipName>app</jlinkZipName>

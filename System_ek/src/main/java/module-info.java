@@ -1,14 +1,13 @@
 module com.example.sistema {
-
     requires javafx.controls;
     requires javafx.fxml;
-
-
     requires javafx.web;
     requires org.controlsfx.controls;
     requires json.simple;
 
-    exports com.example;
-    opens com.example.controllers to javafx.fxml;
-    opens com.example to javafx.fxml;
+    opens com.example.sistema to javafx.fxml;
+    opens com.example.sistema.controllers to javafx.fxml;
+
+    exports com.example.sistema;
+    exports com.example.sistema.controllers;
 }
