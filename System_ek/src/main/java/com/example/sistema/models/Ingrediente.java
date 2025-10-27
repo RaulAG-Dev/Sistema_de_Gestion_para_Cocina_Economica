@@ -17,7 +17,14 @@ public class Ingrediente extends ModelManagement {
         this. unidades = unidades;
     }
 
-    public void actualizarStock(){
+    public void actualizarStock(float canditidad){
+        float nuevoStock = this.stockActual + canditidad;
+        if(nuevoStock > stockMinino){
+            this.stockActual = nuevoStock;
+        }else{
+            this.stockActual = nuevoStock;
+            throw new IllegalArgumentException("Stock al minimo: "+ nombre);
+        }
 
     }
 
@@ -27,8 +34,12 @@ public class Ingrediente extends ModelManagement {
         return stockActual;
     }
 
-    public void setStockActual(float stockActual) {
-        this.stockActual = stockActual;
+    public void setStockActual(float nuevoSock) {
+        if(nuevoSock >= 0 ){
+            this.stockActual = nuevoSock;
+        }else{
+            throw new IllegalArgumentException("stock debe ser mayor o igual a 0");
+        }
     }
 
     public float getStockMinino() {
