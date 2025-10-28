@@ -10,8 +10,6 @@
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TitledPane?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.text.TextFlow?>
-
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="CONTROLLER_NAME">
    <children>
@@ -37,8 +35,8 @@
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
                         <DatePicker layoutX="40.0" layoutY="61.0" />
-                        <Button layoutX="87.0" layoutY="87.0" mnemonicParsing="false" text="REPORTE" />
-                        <TextFlow layoutX="225.0" layoutY="32.0" prefHeight="248.0" prefWidth="289.0" />
+                        <Button layoutX="87.0" layoutY="136.0" mnemonicParsing="false" text="REPORTE" />
+                        <TextArea layoutX="251.0" layoutY="49.0" prefHeight="222.0" prefWidth="243.0" />
                      </children>
                   </AnchorPane>
             </content>
@@ -48,8 +46,7 @@
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
                         <DatePicker layoutX="14.0" layoutY="26.0" />
-                        <Button layoutX="14.0" layoutY="52.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="126.0" text="Generar Corte" />
-                        <TextArea layoutX="199.0" layoutY="26.0" prefHeight="258.0" prefWidth="306.0" />
+                        <Button layoutX="14.0" layoutY="90.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="126.0" text="Generar Corte" />
                         <TitledPane animated="false" layoutX="234.0" layoutY="40.0" prefHeight="218.0" prefWidth="236.0" text="Venta">
                           <content>
                             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
