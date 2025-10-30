@@ -18,7 +18,7 @@ public class ControladorCorte {
     private TableView ventasTable;
 
     @FXML
-    private TableColumn;
+    private TableColumn numeroventaColumn;
 
     @FXML
     private TableColumn ventasColumn;
