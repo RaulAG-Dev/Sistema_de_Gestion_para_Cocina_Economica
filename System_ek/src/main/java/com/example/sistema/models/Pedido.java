@@ -6,7 +6,7 @@ import java.util.List;
  * Clase que representa un pedido realizado por un cliente.
  * Incluye información como fecha, cliente, lista de ítems,
  * total a pagar y si ha sido pagado o no.
- * @autor Michelle Chuc
+ * @author Michelle Chuc
  * @version 2.0
  */
 
