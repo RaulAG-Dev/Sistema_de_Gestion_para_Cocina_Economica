@@ -12,7 +12,10 @@
 <?import javafx.scene.layout.Region?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Separator?>
 
+<?import javafx.scene.control.ChoiceBox?>
 <BorderPane xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="com.example.sistema.controllers.ControladorPrincipal"
             prefHeight="700.0" prefWidth="1000.0">
@@ -30,7 +33,13 @@
     <center>
         <HBox spacing="20" BorderPane.alignment="CENTER" style="-fx-padding: 20;">
             <VBox HBox.hgrow="ALWAYS" spacing="10">
-                <Label text="Menú del día" style="-fx-font-size: 18px; -fx-font-weight: bold;"/>
+
+                <HBox alignment="CENTER_LEFT" spacing="15">
+                    <Label text="Seleccionar Menú:" style="-fx-font-size: 16px; -fx-font-weight: bold;"/>
+                    <ChoiceBox fx:id="selectorMenu" prefWidth="150"/>
+
+                    <Button fx:id="añadirPlatilloButton" text="➕ Nuevo Platillo" onAction="#abrirVentanaPlatillo"/>
+                </HBox>
                 <ScrollPane fitToWidth="true" VBox.vgrow="ALWAYS">
                     <GridPane fx:id="menuGrid" hgap="20" vgap="20" alignment="TOP_LEFT"/>
                 </ScrollPane>

@@ -113,4 +113,19 @@ public class RepositorioJSON<T extends Identificable> {
         return new ArrayList<>(datos);
     }
 
+    public int generarNuevoId() {
+        int maxId = 0;
+
+        if (datos == null || datos.isEmpty()) {
+            return 1;
+        }
+        for (T objeto : datos) {
+            if (objeto.getId() > maxId) {
+                maxId = objeto.getId();
+            }
+        }
+        return maxId + 1;
+    }
+
+
 }

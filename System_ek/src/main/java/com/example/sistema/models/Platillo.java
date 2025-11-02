@@ -7,19 +7,29 @@ public class Platillo extends ModelManagement{
     private float precio;
     private boolean disponible;
     private List<Ingrediente> ingredientes;
+    private String tipoMenu;
 
     public Platillo(){}
 
-    public Platillo(int id, String nombre, String descripcion, float precio, boolean disponible, List<Ingrediente> ingredientes){
+    public Platillo(int id, String nombre, String descripcion, float precio, boolean disponible, List<Ingrediente> ingredientes, String tipoMenu){
         this.id = id;
         this. nombre = nombre;
         this.descripcion = descripcion;
         this.precio = precio;
         this.disponible = disponible;
         this.ingredientes = ingredientes;
+        this.tipoMenu = tipoMenu;
+
     }
 
     //getters y setters
+    public String getTipoMenu() {
+        return tipoMenu;
+    }
+
+    public void setTipoMenu(String tipoMenu) {
+        this.tipoMenu = tipoMenu;
+    }
 
     public String getDescripcion() {
         return descripcion;
