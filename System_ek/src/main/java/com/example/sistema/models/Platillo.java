@@ -29,6 +29,9 @@ public class Platillo extends ModelManagement {
      * Lista de objetos Ingrediente que componen este platillo.
      */
     private List<Ingrediente> ingredientes;
+    /**
+     * El tipo de menú al que pertenece el platillo.
+     */
     private String tipoMenu;
 
     /**
@@ -58,10 +61,19 @@ public class Platillo extends ModelManagement {
     }
 
     //getters y setters
+
+    /**
+     * Obtiene el tipo de menu al que pertenece platillo.
+     * @return el tipo de menú del platillo.
+     */
     public String getTipoMenu() {
         return tipoMenu;
     }
 
+    /**
+     * Establece el tipo de menú al que pertenecerá el platillo.
+     * @param tipoMenu el nueva tipo de menu.
+     */
     public void setTipoMenu(String tipoMenu) {
         this.tipoMenu = tipoMenu;
     }
