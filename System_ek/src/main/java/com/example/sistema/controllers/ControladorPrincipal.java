@@ -19,9 +19,6 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.event.ActionEvent;
 import javafx.geometry.Insets;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-import javafx.fxml.FXML;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.HBox;
@@ -46,10 +43,10 @@ public class ControladorPrincipal implements Initializable {
     @FXML private TableColumn<ItemPedido, Float> subtotalColumn;
     @FXML private TableColumn<ItemPedido, Void> accionesColumn; // Columna para los botones
 
-
     private ObservableList<ItemPedido> itemsPedido = FXCollections.observableArrayList();
     private final ServicioMenu servicioMenu = new ServicioMenu();
     private final String[] TIPOS_MENU = {"Desayunos", "Almuerzos", "Cenas"};
+
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -65,7 +62,6 @@ public class ControladorPrincipal implements Initializable {
         nombreColumn.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getPlatillo().getNombre())); // Usa el nombre del platillo
         cantidadColumn.setCellValueFactory(new PropertyValueFactory<>("cantidad"));
         precioColumn.setCellValueFactory(new PropertyValueFactory<>("precioUnitario"));
-
         subtotalColumn.setCellValueFactory(data -> new SimpleObjectProperty<>(data.getValue().calcularSubtotal()));
         pedidoTable.setItems(itemsPedido);
         configurarColumnaAcciones();
@@ -77,16 +73,12 @@ public class ControladorPrincipal implements Initializable {
 
 
     private void cargarMenu(String tipoMenu) {
-
         menuGrid.getChildren().clear();
-
         List<Platillo> platillos = servicioMenu.obtenerPlatillosPorTipo(tipoMenu);
-
         if (platillos.isEmpty()) {
             menuGrid.add(new Label("No hay platillos disponibles para: " + tipoMenu), 0, 0);
             return;
         }
-
 
         int col = 0;
         int row = 0;
@@ -104,7 +96,6 @@ public class ControladorPrincipal implements Initializable {
     }
 
     private VBox crearTarjetaPlatillo(Platillo platillo) {
-
         VBox card = new VBox(5);
         card.setPadding(new Insets(10));
         card.setPrefSize(180, 180);
