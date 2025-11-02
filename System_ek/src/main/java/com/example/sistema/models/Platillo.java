@@ -29,6 +29,7 @@ public class Platillo extends ModelManagement {
      * Lista de objetos Ingrediente que componen este platillo.
      */
     private List<Ingrediente> ingredientes;
+    private String tipoMenu;
 
     /**
      * Constructor por defecto (sin argumentos) de la clase Platillo.
@@ -45,16 +46,25 @@ public class Platillo extends ModelManagement {
      * @param disponible El estado de disponibilidad actual del platillo.
      * @param ingredientes La lista de ingredientes requeridos.
      */
-    public Platillo(int id, String nombre, String descripcion, float precio, boolean disponible, List<Ingrediente> ingredientes){
+    public Platillo(int id, String nombre, String descripcion, float precio, boolean disponible, List<Ingrediente> ingredientes, String tipoMenu){
         this.id = id;
-        this.nombre = nombre; // Asumiendo que 'nombre' es un campo heredado o existe en ModelManagement.
+        this. nombre = nombre;
         this.descripcion = descripcion;
         this.precio = precio;
         this.disponible = disponible;
         this.ingredientes = ingredientes;
+        this.tipoMenu = tipoMenu;
+
     }
 
     //getters y setters
+    public String getTipoMenu() {
+        return tipoMenu;
+    }
+
+    public void setTipoMenu(String tipoMenu) {
+        this.tipoMenu = tipoMenu;
+    }
 
     /**
      * Obtiene la descripción detallada del platillo.
@@ -135,4 +145,7 @@ public class Platillo extends ModelManagement {
     public String toString(){
         return id + nombre + descripcion + precio + ingredientes;
     }
+
+
+
 }

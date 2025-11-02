@@ -1,83 +1,80 @@
 package com.example.sistema.controllers;
 
-import com.example.sistema.models.ItemPedido;
 import com.example.sistema.models.Platillo;
-import javafx.beans.property.SimpleFloatProperty;
-import javafx.beans.property.SimpleIntegerProperty;
-import javafx.beans.property.SimpleObjectProperty;
-import javafx.beans.property.SimpleStringProperty;
+import com.example.sistema.models.Usuario;
+import com.example.sistema.services.ServicioMenu;
 import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.geometry.Pos;
+import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.*;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
+import javafx.event.ActionEvent;
+import javafx.geometry.Insets;
 
-import java.util.ArrayList;
+import java.io.IOException;
+import java.net.URL;
+import java.util.List;
+import java.util.ResourceBundle;
 
-public class ControladorPrincipal {
+public class ControladorPrincipal implements Initializable {
 
-    @FXML
-    private GridPane menuGrid;
-    @FXML
-    private TextField nombreClienteField;
+    @FXML private ChoiceBox<String> selectorMenu;
+    @FXML private GridPane menuGrid;
+    @FXML private Button añadirPlatilloButton;
+    @FXML private TextField nombreClienteField;
+    @FXML private TableView<?> pedidoTable;
+    @FXML private Label totalPagarLabel;
 
+    private final ServicioMenu servicioMenu = new ServicioMenu();
+    private final String[] TIPOS_MENU = {"Desayunos", "Almuerzos", "Cenas"};
 
-    @FXML
-    private TableView<ItemPedido> pedidoTable; // La tabla ahora usa ItemPedido
-    @FXML
-    private TableColumn<ItemPedido, String> nombreColumn; // Columna de Nombre
-    @FXML
-    private TableColumn<ItemPedido, Integer> cantidadColumn; // Columna de Cantidad
-    @FXML
-    private TableColumn<ItemPedido, Float> precioColumn; // Columna de Precio
-    @FXML
-    private TableColumn<ItemPedido, Float> subtotalColumn; // Columna de Subtotal
-    @FXML
-    private TableColumn<ItemPedido, Void> accionesColumn; // Columna de Acciones
-    // --- Fin de conexiones de tabla ---
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        selectorMenu.setItems(FXCollections.observableArrayList(TIPOS_MENU));
+        selectorMenu.getSelectionModel().selectFirst();
 
-    @FXML
-    private Label totalPagarLabel;
+        selectorMenu.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue != null) {
+                cargarMenu(newValue);
+            }
+        });
 
-    private ObservableList<Platillo> menuDelDia = FXCollections.observableArrayList();
-    private ObservableList<ItemPedido> pedidoActual = FXCollections.observableArrayList();
+        cargarMenu(selectorMenu.getSelectionModel().getSelectedItem());
+    }
 
-    @FXML
-    public void initialize() {
-        cargarMenuDelDia();
-        mostrarMenuEnGrid();
-        inicializarTablaPedido();
-        actualizarTotalPagar();
+    public void inicializarDatos(Usuario usuario) {
+
     }
 
 
-    private void cargarMenuDelDia() {
-        menuDelDia.addAll(
-                new Platillo(1, "Chile Poblano", "4pz de chiles poblanos", 135.00f, true, new ArrayList<>()),
-                new Platillo(2, "Caldo de Verduras", "2 litros de caldo de verduras", 135.00f, true, new ArrayList<>()),
-                new Platillo(3, "Tamales Horneados", "3 pz de tamales horneados", 60.00f, true, new ArrayList<>()),
-                new Platillo(4, "Caldo de Camarón", "2 litros de caldo de camarón", 230.00f, true, new ArrayList<>()),
-                new Platillo(5, "Mole Poblano", "2 litros de mole poblano", 150.00f, false, new ArrayList<>())
-        );
-    }
+    private void cargarMenu(String tipoMenu) {
 
-
-    private void mostrarMenuEnGrid() {
         menuGrid.getChildren().clear();
+
+        List<Platillo> platillos = servicioMenu.obtenerPlatillosPorTipo(tipoMenu);
+
+        if (platillos.isEmpty()) {
+            menuGrid.add(new Label("No hay platillos disponibles para: " + tipoMenu), 0, 0);
+            return;
+        }
+
+
         int col = 0;
         int row = 0;
+        final int MAX_COLUMNS = 3;
 
-        for (Platillo platillo : menuDelDia) {
-            if (platillo.isDisponible()) {
-                VBox platilloCard = crearTarjetaPlatillo(platillo);
-                menuGrid.add(platilloCard, col, row);
-
-                col++;
-                if (col == 2) { col = 0; row++; }
+        for (Platillo platillo : platillos) {
+            VBox tarjeta = crearTarjetaPlatillo(platillo);
+            menuGrid.add(tarjeta, col, row);
+            col++;
+            if (col >= MAX_COLUMNS) {
+                col = 0;
+                row++;
             }
         }
     }
@@ -85,136 +82,120 @@ public class ControladorPrincipal {
 
     private VBox crearTarjetaPlatillo(Platillo platillo) {
         VBox card = new VBox(5);
-        card.setAlignment(Pos.CENTER);
-        card.setStyle("-fx-border-color: #DDDDDD; -fx-border-radius: 5; -fx-padding: 10; -fx-background-color: white;");
-        card.setPrefSize(200, 200);
+        card.setPadding(new Insets(10));
+        card.setStyle("-fx-border-color: #AAAAAA; -fx-border-radius: 5; -fx-background-color: white;");
 
-        Label nombreLabel = new Label(platillo.getNombre());
-        nombreLabel.setStyle("-fx-font-weight: bold; -fx-font-size: 14px;");
-        Label descripcionLabel = new Label(platillo.getDescripcion());
-        descripcionLabel.setWrapText(true);
-        Label precioLabel = new Label("$" + String.format("%.2f", platillo.getPrecio()));
-        precioLabel.setStyle("-fx-font-weight: bold; -fx-text-fill: #007bff;");
-        Button addButton = new Button("Añadir al pedido");
-        addButton.setOnAction(e -> añadirAlPedido(platillo));
 
-        card.getChildren().addAll(nombreLabel, descripcionLabel, precioLabel, addButton);
+        HBox header = new HBox();
+        Label nombre = new Label(platillo.getNombre());
+        nombre.setStyle("-fx-font-weight: bold;");
+
+
+        Region spacer = new Region();
+        HBox.setHgrow(spacer, Priority.ALWAYS);
+
+        MenuButton opciones = new MenuButton("⋮");
+        opciones.setStyle("-fx-padding: 0; -fx-background-color: transparent;");
+
+        MenuItem editarItem = new MenuItem("Editar");
+        editarItem.setOnAction(e -> abrirVentanaPlatillo(platillo));
+
+        MenuItem eliminarItem = new MenuItem("Eliminar");
+        eliminarItem.setOnAction(e -> eliminarPlatillo(platillo));
+
+        opciones.getItems().addAll(editarItem, eliminarItem);
+        header.getChildren().addAll(nombre, spacer, opciones);
+
+        Label precio = new Label("$" + platillo.getPrecio());
+
+        card.getChildren().addAll(header, new Label(platillo.getDescripcion()), precio);
+
         return card;
     }
 
 
-    private void añadirAlPedido(Platillo platilloSeleccionado) {
+    @FXML
+    void abrirVentanaPlatillo() {
+        abrirVentanaPlatillo(null);
+    }
 
-        for (ItemPedido item : pedidoActual) {
-            if (item.getPlatillo().getId() == platilloSeleccionado.getId()) {
-                item.setCantidad(item.getCantidad() + 1);
-                pedidoTable.refresh();
-                actualizarTotalPagar();
-                return;
+
+    private void abrirVentanaPlatillo(Platillo platilloAEditar) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/sistema/platillo-modificacion-view.fxml"));
+            Parent root = loader.load();
+
+            Stage stage = new Stage();
+            stage.initModality(Modality.APPLICATION_MODAL);
+
+            ControladorPlatilloModal modalController = loader.getController();
+
+            modalController.inicializar(platilloAEditar, servicioMenu, this);
+
+            stage.setScene(new Scene(root));
+            stage.setTitle(platilloAEditar == null ? "Crear nuevo platillo" : "editar Platillo");
+            stage.showAndWait();
+
+        } catch (IOException e) {
+            System.err.println("FATAL: No se pudo cargar la vista modal. Revise la ruta del FXML.");
+            e.printStackTrace();
+        }
+    }
+
+    private void eliminarPlatillo(Platillo platillo) {
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "¿Seguro que quieres eliminar el platillo " + platillo.getNombre() + "?", ButtonType.YES, ButtonType.NO);
+        alert.showAndWait();
+
+        if (alert.getResult() == ButtonType.YES) {
+            if (servicioMenu.eliminarPlatillo(platillo.getId())) {
+                System.out.println("Platillo eliminado: " + platillo.getNombre());
+                cargarMenu(selectorMenu.getSelectionModel().getSelectedItem()); // Refrescar la vista
+            } else {
+                System.err.println("Error al eliminar platillo.");
             }
         }
-
-
-        ItemPedido nuevoItem = new ItemPedido(platilloSeleccionado, 1, platilloSeleccionado.getPrecio());
-        pedidoActual.add(nuevoItem);
-
-        actualizarTotalPagar();
     }
 
 
-    private void inicializarTablaPedido() {
-
-
-        nombreColumn.setCellValueFactory(cellData ->
-                new SimpleStringProperty(cellData.getValue().getPlatillo().getNombre())
-        );
-
-
-        cantidadColumn.setCellValueFactory(cellData ->
-                new SimpleObjectProperty<>(cellData.getValue().getCantidad())
-        );
-
-
-        precioColumn.setCellValueFactory(cellData ->
-                new SimpleObjectProperty<>(cellData.getValue().getPrecioUnitario())
-        );
-
-
-        subtotalColumn.setCellValueFactory(cellData ->
-                new SimpleObjectProperty<>(cellData.getValue().calcularSubtotal())
-        );
-
-
-        accionesColumn.setCellFactory(param -> new TableCell<ItemPedido, Void>() {
-            final Button btnMas = new Button("+");
-            final Button btnMenos = new Button("-");
-            final HBox pane = new HBox(5, btnMenos, btnMas);
-
-            @Override
-            public void updateItem(Void item, boolean empty) {
-                super.updateItem(item, empty);
-                if (empty) {
-                    setGraphic(null);
-                } else {
-                    ItemPedido pedidoItem = getTableView().getItems().get(getIndex());
-
-                    btnMas.setOnAction(event -> {
-                        pedidoItem.setCantidad(pedidoItem.getCantidad() + 1);
-                        getTableView().refresh();
-                        actualizarTotalPagar();
-                    });
-
-                    btnMenos.setOnAction(event -> {
-                        if (pedidoItem.getCantidad() > 1) {
-                            pedidoItem.setCantidad(pedidoItem.getCantidad() - 1);
-                        } else {
-                            pedidoActual.remove(pedidoItem);
-                        }
-                        getTableView().refresh();
-                        actualizarTotalPagar();
-                    });
-                    setGraphic(pane);
-                }
-            }
-        });
-
-        pedidoTable.setItems(pedidoActual);
+    public void refrescarVista() {
+        cargarMenu(selectorMenu.getSelectionModel().getSelectedItem());
     }
 
-    private void actualizarTotalPagar() {
-        float total = 0.0f;
-        for (ItemPedido item : pedidoActual) {
-            total += item.calcularSubtotal();
-        }
-        totalPagarLabel.setText(String.format("$%.2f", total));
-    }
 
-    @FXML
-    private void confirmarPedido(ActionEvent event) {
-        if (nombreClienteField.getText().isEmpty() || pedidoActual.isEmpty()) {
-            System.out.println("No se puede confirmar el pedido: Cliente o pedido vacío.");
-            return;
+
+
+
+
+    @FXML void gestionarVentas() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/sistema/Gestion-corte.fxml"));
+            Parent root = loader.load();
+            Stage stage = (Stage) selectorMenu.getScene().getWindow();
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.setTitle("Gestión Cocina Económica - Inventario");
+            stage.show();
+
+        } catch (IOException e) {
+            System.err.println("Error");
+            e.printStackTrace();
         }
 
-        System.out.println("Pedido confirmado para el cliente: " + nombreClienteField.getText());
-        for (ItemPedido item : pedidoActual) {
-            System.out.println("- " + item.toString());
+    }
+    @FXML void gestionarInventario() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/sistema/Gestion-inventario.fxml"));
+            Parent root = loader.load();
+            Stage stage = (Stage) selectorMenu.getScene().getWindow();
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.setTitle("Gestión Cocina Económica - Inventario");
+            stage.show();
+
+        } catch (IOException e) {
+            System.err.println("Error");
+            e.printStackTrace();
         }
-        System.out.println("Total: " + totalPagarLabel.getText());
-
-
-        pedidoActual.clear();
-        nombreClienteField.clear();
-        actualizarTotalPagar();
     }
-
-    @FXML
-    private void gestionarVentas(ActionEvent event) {
-        System.out.println("Botón 'Gestión de ventas' presionado.");
-    }
-
-    @FXML
-    private void gestionarInventario(ActionEvent event) {
-        System.out.println("Botón 'Gestión Inventario' presionado.");
-    }
+    @FXML void confirmarPedido(ActionEvent event) {  }
 }
