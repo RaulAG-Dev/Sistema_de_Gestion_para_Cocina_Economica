@@ -4,7 +4,7 @@ package com.example.sistema.models;
  * Clase que representa un ítem dentro de un pedido,
  * incluyendo el platillo, la cantidad solicitada
  * y el precio unitario.
- * @autor Michelle Chuc
+ * @author Michelle Chuc
  * @version 2.0
  */
 public class ItemPedido {

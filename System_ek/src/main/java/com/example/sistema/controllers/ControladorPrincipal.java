@@ -28,28 +28,65 @@ import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
 
+/**
+ * Controlador de la vista principal del sistema (PDV y Gestión).
+ *
+ * <p>Esta clase gestiona la interfaz principal de toma de pedidos, incluyendo la
+ * visualización dinámica del menú, la gestión de la tabla de pedidos, el cálculo del
+ * total a pagar y la navegación a otras vistas de gestión (Inventario, Corte de Caja).</p>
+ *
+ * @author Raul Aguayo
+ * @version 1.0
+ * @since 2025-11-02
+ */
 public class ControladorPrincipal implements Initializable {
 
+    // --- Componentes FXML ---
+
+    /** Selector para filtrar los platillos por tipo de menú (Desayunos, Almuerzos, Cenas). */
     @FXML private ChoiceBox<String> selectorMenu;
+    /** Grid donde se insertarán dinámicamente las tarjetas de los platillos. */
     @FXML private GridPane menuGrid;
+    /** Botón para abrir el modal de adición/modificación de platillos. */
     @FXML private Button añadirPlatilloButton;
+    /** Campo de texto para ingresar el nombre del cliente asociado al pedido. */
     @FXML private TextField nombreClienteField;
+    /** Etiqueta (Label) que muestra el monto total a pagar del pedido actual. */
     @FXML private Label totalPagarLabel;
 
+    /** Tabla que lista todos los {@code ItemPedido} agregados al pedido actual. */
     @FXML private TableView<ItemPedido> pedidoTable;
+    /** Columna de la tabla para el nombre del platillo. */
     @FXML private TableColumn<ItemPedido, String> nombreColumn;
+    /** Columna de la tabla para la cantidad de unidades del platillo. */
     @FXML private TableColumn<ItemPedido, Integer> cantidadColumn;
-    @FXML private TableColumn<ItemPedido, Float> precioColumn; // Precio Unitario
+    /** Columna de la tabla para el precio unitario del platillo. */
+    @FXML private TableColumn<ItemPedido, Float> precioColumn;
+    /** Columna de la tabla para el subtotal por item (cantidad * precio unitario). */
     @FXML private TableColumn<ItemPedido, Float> subtotalColumn;
-    @FXML private TableColumn<ItemPedido, Void> accionesColumn; // Columna para los botones
+    /** Columna de la tabla que contiene botones para modificar la cantidad del item. */
+    @FXML private TableColumn<ItemPedido, Void> accionesColumn;
 
+    // --- Variables de Estado y Servicios ---
+
+    /** Lista observable de los items que componen el pedido actual. */
     private ObservableList<ItemPedido> itemsPedido = FXCollections.observableArrayList();
+    /** Instancia del servicio para interactuar con la lógica de negocio de platillos. */
     private final ServicioMenu servicioMenu = new ServicioMenu();
+    /** Arreglo estático que contiene los tipos de menú disponibles. */
     private final String[] TIPOS_MENU = {"Desayunos", "Almuerzos", "Cenas"};
 
 
+    /**
+     * Método de inicialización estándar de JavaFX.
+     * <p>Configura el selector de menú, inicializa la tabla de pedidos y carga el menú inicial.</p>
+     *
+     * @param url La ubicación utilizada para resolver las rutas relativas.
+     * @param resourceBundle Los recursos localizados.
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        // 1. Configuración del selector de menú y su listener
         selectorMenu.setItems(FXCollections.observableArrayList(TIPOS_MENU));
         selectorMenu.getSelectionModel().selectFirst();
         selectorMenu.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
@@ -57,9 +94,12 @@ public class ControladorPrincipal implements Initializable {
                 cargarMenu(newValue);
             }
         });
+
+        // 2. Carga inicial del menú
         cargarMenu(selectorMenu.getSelectionModel().getSelectedItem());
 
-        nombreColumn.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getPlatillo().getNombre())); // Usa el nombre del platillo
+        // 3. Configuración de la tabla de pedidos
+        nombreColumn.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getPlatillo().getNombre()));
         cantidadColumn.setCellValueFactory(new PropertyValueFactory<>("cantidad"));
         precioColumn.setCellValueFactory(new PropertyValueFactory<>("precioUnitario"));
         subtotalColumn.setCellValueFactory(data -> new SimpleObjectProperty<>(data.getValue().calcularSubtotal()));
@@ -67,11 +107,20 @@ public class ControladorPrincipal implements Initializable {
         configurarColumnaAcciones();
     }
 
+    /**
+     * Inicializa datos específicos pasados desde la escena de Login (ej. el usuario autenticado).
+     * @param usuario El objeto {@code Usuario} que ha iniciado sesión.
+     */
     public void inicializarDatos(Usuario usuario) {
-
+        // Lógica para establecer el usuario actual, si es necesario.
     }
 
 
+    /**
+     * Carga y muestra las tarjetas de platillos en el {@code menuGrid} filtradas por el tipo de menú.
+     *
+     * @param tipoMenu La categoría de menú a cargar (ej. "Desayunos").
+     */
     private void cargarMenu(String tipoMenu) {
         menuGrid.getChildren().clear();
         List<Platillo> platillos = servicioMenu.obtenerPlatillosPorTipo(tipoMenu);
@@ -95,6 +144,13 @@ public class ControladorPrincipal implements Initializable {
         }
     }
 
+    /**
+     * Crea un componente visual (tarjeta VBox) para mostrar la información de un {@code Platillo}.
+     * <p>Incluye botones para añadir al pedido y un menú de opciones para editar/eliminar.</p>
+     *
+     * @param platillo El objeto Platillo con los datos a mostrar.
+     * @return El componente VBox que representa la tarjeta del platillo.
+     */
     private VBox crearTarjetaPlatillo(Platillo platillo) {
         VBox card = new VBox(5);
         card.setPadding(new Insets(10));
@@ -140,12 +196,20 @@ public class ControladorPrincipal implements Initializable {
     }
 
 
+    /**
+     * Maneja el evento de clic del botón "Añadir Platillo" para abrir el modal de creación.
+     */
     @FXML
     void abrirVentanaPlatillo() {
         abrirVentanaPlatillo(null);
     }
 
 
+    /**
+     * Abre la ventana modal para crear o editar un platillo.
+     *
+     * @param platilloAEditar El platillo a editar, o {@code null} si es un nuevo platillo.
+     */
     private void abrirVentanaPlatillo(Platillo platilloAEditar) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/sistema/platillo-modificacion-view.fxml"));
@@ -156,6 +220,7 @@ public class ControladorPrincipal implements Initializable {
 
             ControladorPlatilloModal modalController = loader.getController();
 
+            // Pasa las referencias necesarias al controlador del modal
             modalController.inicializar(platilloAEditar, servicioMenu, this);
 
             stage.setScene(new Scene(root));
@@ -168,6 +233,11 @@ public class ControladorPrincipal implements Initializable {
         }
     }
 
+    /**
+     * Muestra una confirmación y elimina el platillo seleccionado si el usuario acepta.
+     *
+     * @param platillo El platillo a ser eliminado.
+     */
     private void eliminarPlatillo(Platillo platillo) {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "¿Seguro que quieres eliminar el platillo " + platillo.getNombre() + "?", ButtonType.YES, ButtonType.NO);
         alert.showAndWait();
@@ -183,13 +253,19 @@ public class ControladorPrincipal implements Initializable {
     }
 
 
+    /**
+     * Refresca la vista del menú recargando los platillos de la categoría actualmente seleccionada.
+     * <p>Es llamado desde el modal de edición/creación.</p>
+     */
     public void refrescarVista() {
         cargarMenu(selectorMenu.getSelectionModel().getSelectedItem());
     }
 
     /**
-     * Conecta el botón "Añadir al pedido" de la tarjeta con el pedido actual.
-     * Este método será llamado por el botón dentro de la tarjeta del platillo.
+     * Añade un {@code Platillo} al pedido actual como un {@code ItemPedido}.
+     * <p>Si el platillo ya existe en la lista, incrementa la cantidad; de lo contrario, añade un nuevo item.</p>
+     *
+     * @param platillo El platillo que se va a añadir al pedido.
      */
     public void añadirItemAlPedido(Platillo platillo) {
         for (ItemPedido item : itemsPedido) {
@@ -207,7 +283,7 @@ public class ControladorPrincipal implements Initializable {
     }
 
     /**
-     * Calcula y actualiza el label del total.
+     * Calcula la suma de todos los subtotales en el pedido y actualiza la etiqueta {@code totalPagarLabel}.
      */
     private void actualizarTotal() {
         float total = 0;
@@ -219,7 +295,8 @@ public class ControladorPrincipal implements Initializable {
     }
 
     /**
-     * Configura la columna de botones (+ y -) de la tabla de pedidos.
+     * Configura el renderizado de la columna de acciones en la tabla de pedidos,
+     * añadiendo botones de (+) y (-) para modificar la cantidad de cada item.
      */
     private void configurarColumnaAcciones() {
         accionesColumn.setCellFactory(tc -> new TableCell<ItemPedido, Void>() {
@@ -228,17 +305,19 @@ public class ControladorPrincipal implements Initializable {
             final HBox pane = new HBox(5, btnRestar, btnSumar);
 
             {
+                // Listener para el botón Restar
                 btnRestar.setOnAction(event -> {
                     ItemPedido item = getTableView().getItems().get(getIndex());
                     if (item.getCantidad() > 1) {
                         item.setCantidad(item.getCantidad() - 1);
                     } else {
-                        itemsPedido.remove(item);
+                        itemsPedido.remove(item); // Elimina el item si la cantidad es 1
                     }
                     getTableView().refresh();
                     actualizarTotal();
                 });
 
+                // Listener para el botón Sumar
                 btnSumar.setOnAction(event -> {
                     ItemPedido item = getTableView().getItems().get(getIndex());
                     item.setCantidad(item.getCantidad() + 1);
@@ -255,11 +334,9 @@ public class ControladorPrincipal implements Initializable {
         });
     }
 
-
-
-
-
-
+    /**
+     * Maneja el evento para navegar a la vista de Gestión de Ventas/Corte de Caja.
+     */
     @FXML void gestionarVentas() {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/sistema/Gestion-corte.fxml"));
@@ -267,15 +344,18 @@ public class ControladorPrincipal implements Initializable {
             Stage stage = (Stage) selectorMenu.getScene().getWindow();
             Scene scene = new Scene(root);
             stage.setScene(scene);
-            stage.setTitle("Gestión Cocina Económica - Inventario");
+            stage.setTitle("Gestión Cocina Económica - Corte de Caja");
             stage.show();
 
         } catch (IOException e) {
-            System.err.println("Error");
+            System.err.println("Error al cargar la vista de Corte de Caja.");
             e.printStackTrace();
         }
-
     }
+
+    /**
+     * Maneja el evento para navegar a la vista de Gestión de Inventario.
+     */
     @FXML void gestionarInventario() {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/sistema/Gestion-inventario.fxml"));
@@ -287,9 +367,20 @@ public class ControladorPrincipal implements Initializable {
             stage.show();
 
         } catch (IOException e) {
-            System.err.println("Error");
+            System.err.println("Error al cargar la vista de Inventario.");
             e.printStackTrace();
         }
     }
-    @FXML void confirmarPedido(ActionEvent event) {  }
+
+    /**
+     * Maneja el evento de clic para confirmar el pedido actual.
+     * <p>Este método contendría la lógica para guardar el pedido completo en la base de datos
+     * (Pedido, ItemsPedido, Cliente, etc.) y limpiar la vista para un nuevo pedido.</p>
+     *
+     * @param event El evento de acción.
+     */
+    @FXML void confirmarPedido(ActionEvent event) {
+        // Lógica para guardar el pedido (Pedido, ItemsPedido, Cliente, etc.)
+        System.out.println("Pedido confirmado para el cliente: " + nombreClienteField.getText());
+    }
 }
