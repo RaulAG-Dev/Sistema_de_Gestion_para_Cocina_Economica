@@ -6,6 +6,8 @@ module com.example.sistema {
     requires json.simple;
     requires javafx.graphics;
 
+    exports com.example.sistema.models;
+
     opens com.example.sistema to javafx.fxml;
     opens com.example.sistema.controllers to javafx.fxml;
 

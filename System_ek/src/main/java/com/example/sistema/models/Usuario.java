@@ -1,5 +1,7 @@
 package com.example.sistema.models;
 
+import java.util.Objects;
+
 /**
  * Representa a un usuario dentro del sistema, extendiendo la funcionalidad base
  * de {@code ModelManagement} para incluir detalles específicos de autenticación y permisos.
@@ -50,11 +52,8 @@ public class Usuario extends ModelManagement {
      * @return {@code true} si las contraseñas coinciden; {@code false} en caso contrario.
      */
     public boolean validarContrasena(String contrasena){
-        if(contrasena.equals(this.contrasena)){
-            return true;
-        }else{
-            return false;
-        }
+
+        return java.util.Objects.equals(this.contrasena, contrasena);
     }
 
 
