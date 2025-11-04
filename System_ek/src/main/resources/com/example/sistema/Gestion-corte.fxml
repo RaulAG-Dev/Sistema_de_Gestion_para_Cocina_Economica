@@ -8,14 +8,10 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.geometry.Insets?>
 
-
-<AnchorPane prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="com.example.sistema.controllers.ControladorCorte">
+<AnchorPane prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.sistema.controllers.ControladorCorte">
     <children>
-        <Button fx:id="regresarButton" layoutX="14.0" layoutY="14.0" mnemonicParsing="false"
-                onAction="#manejarRegreso" text="Regresar"/>
+        <Button fx:id="regresarButton" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#manejarRegreso" text="Regresar" />
 
         <Label layoutX="31.0" layoutY="57.0" style="-fx-font-size: 16; -fx-font-weight: bold;" text="Corte de caja:" />
 
@@ -27,19 +23,17 @@
             </columns>
         </TableView>
 
-        <Label layoutX="435.0" layoutY="558.0" prefHeight="26.0" prefWidth="130.0" style="-fx-font-size: 16; -fx-font-weight: bold;" text="Total:"/>
+        <Label layoutX="435.0" layoutY="558.0" prefHeight="26.0" prefWidth="130.0" style="-fx-font-size: 16; -fx-font-weight: bold;" text="Total:" />
         <Label fx:id="totalCorteLabel" layoutX="500.0" layoutY="558.0" prefHeight="26.0" prefWidth="100.0" style="-fx-font-size: 16; -fx-font-weight: bold;" text="\$0.00" />
 
-        <DatePicker fx:id="fechaCortePicker" layoutX="684.0" layoutY="222.0" />
+        <DatePicker fx:id="fechaCortePicker" layoutX="689.0" layoutY="225.0" />
 
-        <Button fx:id="guardarButton" layoutX="746.0" layoutY="277.0" mnemonicParsing="false"
-                onAction="#guardarCorte" text="Guardar" />
-        <Button fx:id="imprimirButton" layoutX="746.0" layoutY="324.0" mnemonicParsing="false"
-                onAction="#imprimirCorte" text="Imprimir" />
+        <Button fx:id="guardarButton" layoutX="746.0" layoutY="277.0" mnemonicParsing="false" onAction="#guardarCorte" text="Guardar" />
+        <Button fx:id="imprimirButton" layoutX="746.0" layoutY="324.0" mnemonicParsing="false" onAction="#imprimirCorte" text="Imprimir" />
 
         <Separator layoutX="631.0" layoutY="99.0" orientation="VERTICAL" prefHeight="519.0" prefWidth="46.0" />
 
         <Label layoutX="754.0" layoutY="369.0" style="-fx-font-size: 15; -fx-font-weight: bold;" text="Notas:" />
-        <TextArea fx:id="notasArea" layoutX="684.0" layoutY="398.0" prefHeight="200.0" prefWidth="200.0"/>
+        <TextArea fx:id="notasArea" layoutX="684.0" layoutY="398.0" prefHeight="200.0" prefWidth="200.0" />
     </children>
 </AnchorPane>
