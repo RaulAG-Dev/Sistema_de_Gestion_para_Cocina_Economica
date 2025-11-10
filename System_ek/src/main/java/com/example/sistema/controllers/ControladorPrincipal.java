@@ -372,6 +372,31 @@ public class ControladorPrincipal implements Initializable {
         }
     }
 
+    // --- MÉTODO AÑADIDO ---
+    /**
+     * Maneja el evento para navegar a la vista de Historial de Ventas.
+     * @param event El evento de acción.
+     */
+    @FXML
+    void verHistorialVentas(ActionEvent event) {
+        try {
+            // Asegúrate de que el FXML se llame "Historial-ventas.fxml" o como lo hayas guardado
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/sistema/Historial-ventas.fxml"));
+            Parent root = loader.load();
+
+            // Obtener el Stage actual
+            Stage stage = (Stage) selectorMenu.getScene().getWindow();
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.setTitle("Gestión Cocina Económica - Historial de Ventas");
+            stage.show();
+
+        } catch (IOException e) {
+            System.err.println("Error al cargar la vista de Historial de Ventas.");
+            e.printStackTrace();
+        }
+    }
+
     /**
      * Maneja el evento de clic para confirmar el pedido actual.
      * <p>Este método contendría la lógica para guardar el pedido completo en la base de datos
@@ -382,5 +407,10 @@ public class ControladorPrincipal implements Initializable {
     @FXML void confirmarPedido(ActionEvent event) {
         // Lógica para guardar el pedido (Pedido, ItemsPedido, Cliente, etc.)
         System.out.println("Pedido confirmado para el cliente: " + nombreClienteField.getText());
+
+        // (Opcional) Limpiar la vista después de confirmar
+        // itemsPedido.clear();
+        // nombreClienteField.clear();
+        // actualizarTotal();
     }
 }

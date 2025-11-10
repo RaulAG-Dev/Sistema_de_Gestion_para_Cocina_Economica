@@ -25,6 +25,8 @@
             <Region HBox.hgrow="ALWAYS"/>
             <Button text="Gestión de ventas" onAction="#gestionarVentas"/>
             <Button text="Gestión Inventario" onAction="#gestionarInventario"/>
+            <Button text="Historial de ventas" onAction="#verHistorialVentas"/>
+            <Button text="Gestión de clientes" onAction="#gestionarClientes"/>
             <padding>
                 <Insets left="20" right="20"/>
             </padding>
