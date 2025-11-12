@@ -372,7 +372,37 @@ public class ControladorPrincipal implements Initializable {
         }
     }
 
-    // --- MÉTODO AÑADIDO ---
+
+    // --- MÉTODO FALTANTE AÑADIDO ---
+    // Este método era el que buscaba tu FXML (principal-view.fxml:29) y causaba el error.
+
+    /**
+     * Maneja el evento para navegar a la vista de Gestión de Clientes.
+     * @param event El evento de acción.
+     */
+    @FXML
+    void gestionarClientes(ActionEvent event) {
+        System.out.println("Navegando a la vista de gestión de clientes...");
+
+        // (Opcional) Aquí puedes poner la lógica para cargar la nueva vista
+        try {
+            // Asegúrate de que el FXML se llame "Gestion-clientes.fxml" o como sea
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/sistema/Gestion-clientes.fxml"));
+            Parent root = loader.load();
+            Stage stage = (Stage) selectorMenu.getScene().getWindow();
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.setTitle("Gestión Cocina Económica - Clientes");
+            stage.show();
+
+        } catch (IOException e) {
+            System.err.println("Error al cargar la vista de Clientes.");
+            e.printStackTrace();
+        }
+    }
+
+
+    // --- MÉTODO AÑADIDO --- (Este ya lo tenías)
     /**
      * Maneja el evento para navegar a la vista de Historial de Ventas.
      * @param event El evento de acción.
