@@ -78,7 +78,7 @@ public class ControladorPrincipal implements Initializable {
 
 
     /**
-     * Método de inicialización estándar de JavaFX.
+     * Metodo de inicialización estándar de JavaFX.
      * <p>Configura el selector de menú, inicializa la tabla de pedidos y carga el menú inicial.</p>
      *
      * @param url La ubicación utilizada para resolver las rutas relativas.
@@ -373,8 +373,6 @@ public class ControladorPrincipal implements Initializable {
     }
 
 
-    // --- MÉTODO FALTANTE AÑADIDO ---
-    // Este método era el que buscaba tu FXML (principal-view.fxml:29) y causaba el error.
 
     /**
      * Maneja el evento para navegar a la vista de Gestión de Clientes.
@@ -387,7 +385,7 @@ public class ControladorPrincipal implements Initializable {
         // (Opcional) Aquí puedes poner la lógica para cargar la nueva vista
         try {
             // Asegúrate de que el FXML se llame "Gestion-clientes.fxml" o como sea
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/sistema/Gestion-clientes.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/sistema/GestionClientes.fxml"));
             Parent root = loader.load();
             Stage stage = (Stage) selectorMenu.getScene().getWindow();
             Scene scene = new Scene(root);
@@ -402,7 +400,6 @@ public class ControladorPrincipal implements Initializable {
     }
 
 
-    // --- MÉTODO AÑADIDO --- (Este ya lo tenías)
     /**
      * Maneja el evento para navegar a la vista de Historial de Ventas.
      * @param event El evento de acción.
@@ -411,7 +408,7 @@ public class ControladorPrincipal implements Initializable {
     void verHistorialVentas(ActionEvent event) {
         try {
             // Asegúrate de que el FXML se llame "Historial-ventas.fxml" o como lo hayas guardado
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/sistema/Historial-ventas.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/sistema/HistorialVentas.fxml"));
             Parent root = loader.load();
 
             // Obtener el Stage actual

@@ -10,5 +10,11 @@
     "nombre": "empleado",
     "contrasena": "abcd",
     "rol": "empleado"
+  },
+  {
+    "id": 3,
+    "nombre": "emi",
+    "contrasena": "salbut123",
+    "rol" : "empleado"
   }
 ]

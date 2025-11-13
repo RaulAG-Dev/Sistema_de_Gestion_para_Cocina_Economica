@@ -2,6 +2,9 @@ package com.example.sistema.controllers;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -9,6 +12,9 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TableCell;
 import javafx.scene.layout.HBox;
+import javafx.stage.Stage;
+
+import java.io.IOException;
 
 
 public class ControladorGestionClientes {
@@ -46,7 +52,18 @@ public class ControladorGestionClientes {
 
     @FXML
     void manejarRegreso(ActionEvent event) {
-        System.out.println("Regresar a Vista Principal");
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/sistema/principal-view.fxml"));
+            Parent root = loader.load();
+            Stage stage = (Stage) regresarButton.getScene().getWindow();
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.setTitle("Gestión Cocina Económica - Principal");
+            stage.show();
+        } catch (IOException e) {
+            System.err.println("Error al cargar la vista principal.");
+            e.printStackTrace();
+        }
     }
 
     @FXML

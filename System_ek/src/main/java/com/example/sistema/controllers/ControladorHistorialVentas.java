@@ -2,10 +2,16 @@ package com.example.sistema.controllers;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
+import javafx.stage.Stage;
+
+import java.io.IOException;
 
 //hola juan calos
 
@@ -48,9 +54,18 @@ public class ControladorHistorialVentas {
 
     @FXML
     void manejarRegreso(ActionEvent event) {
-        //para regresar a la vista principal
-
-        System.out.println("Botón 'Regresar' presionado.");
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/sistema/principal-view.fxml"));
+            Parent root = loader.load();
+            Stage stage = (Stage) regresarButton.getScene().getWindow();
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.setTitle("Gestión Cocina Económica - Principal");
+            stage.show();
+        } catch (IOException e) {
+            System.err.println("Error al cargar la vista principal.");
+            e.printStackTrace();
+        }
     }
 
 
