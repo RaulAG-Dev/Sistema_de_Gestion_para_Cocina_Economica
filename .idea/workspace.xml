@@ -4,17 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="49c8785d-bcea-49e4-b987-9c89bc7874a7" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/material_theme_project_new.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/System_ek/src/main/java/com/example/sistema/controllers/ControladorCorte.java" beforeDir="false" afterPath="$PROJECT_DIR$/System_ek/src/main/java/com/example/sistema/controllers/ControladorCorte.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/System_ek/src/main/java/com/example/sistema/controllers/ControladorHistorialVentas.java" beforeDir="false" afterPath="$PROJECT_DIR$/System_ek/src/main/java/com/example/sistema/controllers/ControladorHistorialVentas.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/System_ek/src/main/java/com/example/sistema/controllers/ControladorPrincipal.java" beforeDir="false" afterPath="$PROJECT_DIR$/System_ek/src/main/java/com/example/sistema/controllers/ControladorPrincipal.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/System_ek/src/main/java/com/example/sistema/models/Pedido.java" beforeDir="false" afterPath="$PROJECT_DIR$/System_ek/src/main/java/com/example/sistema/models/Pedido.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/System_ek/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/System_ek/src/main/java/module-info.java" afterDir="false" />
-    </list>
+    <list default="true" id="49c8785d-bcea-49e4-b987-9c89bc7874a7" name="Changes" comment="Nueva rama, nuevo: ServicioVentas con su convertidor y metodos creados para Gestión de ventas e Historial de ventas" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -105,11 +95,24 @@
       <workItem from="1763080028044" duration="23000" />
       <workItem from="1763080104957" duration="2429000" />
       <workItem from="1763141317209" duration="234000" />
-      <workItem from="1763173367804" duration="9109000" />
+      <workItem from="1763173367804" duration="9515000" />
     </task>
+    <task id="LOCAL-00001" summary="Nueva rama, nuevo: ServicioVentas con su convertidor y metodos creados para Gestión de ventas e Historial de ventas">
+      <option name="closed" value="true" />
+      <created>1763182681070</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1763182681070</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Nueva rama, nuevo: ServicioVentas con su convertidor y metodos creados para Gestión de ventas e Historial de ventas" />
+    <option name="LAST_COMMIT_MESSAGE" value="Nueva rama, nuevo: ServicioVentas con su convertidor y metodos creados para Gestión de ventas e Historial de ventas" />
   </component>
 </project>
