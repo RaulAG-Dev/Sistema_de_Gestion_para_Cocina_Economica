@@ -1,9 +1,10 @@
 package com.example.sistema.controllers;
 
-import com.example.sistema.models.ItemPedido;
-import com.example.sistema.models.Platillo;
-import com.example.sistema.models.Usuario;
+import com.example.sistema.models.*;
+import com.example.sistema.persistencia.ConvertidorPedido;
+import com.example.sistema.persistencia.RepositorioJSON;
 import com.example.sistema.services.ServicioMenu;
+import com.example.sistema.services.ServicioVentas;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
@@ -25,6 +26,7 @@ import javafx.scene.layout.HBox;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -73,6 +75,10 @@ public class ControladorPrincipal implements Initializable {
     private ObservableList<ItemPedido> itemsPedido = FXCollections.observableArrayList();
     /** Instancia del servicio para interactuar con la lógica de negocio de platillos. */
     private final ServicioMenu servicioMenu = new ServicioMenu();
+    private final ServicioVentas servicioVentas = new ServicioVentas(
+            new com.example.sistema.persistencia.RepositorioJSON<>("pedidos.json",
+                    new com.example.sistema.persistencia.ConvertidorPedido())
+    );
     /** Arreglo estático que contiene los tipos de menú disponibles. */
     private final String[] TIPOS_MENU = {"Desayunos", "Almuerzos", "Cenas"};
 
@@ -431,13 +437,37 @@ public class ControladorPrincipal implements Initializable {
      *
      * @param event El evento de acción.
      */
-    @FXML void confirmarPedido(ActionEvent event) {
-        // Lógica para guardar el pedido (Pedido, ItemsPedido, Cliente, etc.)
-        System.out.println("Pedido confirmado para el cliente: " + nombreClienteField.getText());
+    // Dentro de ControladorPrincipal
+    @FXML
+    void confirmarPedido(ActionEvent event) {
+        // 1. Crear un nuevo pedido desde el servicio
+        Pedido pedido = servicioVentas.crearPedido();
 
-        // (Opcional) Limpiar la vista después de confirmar
-        // itemsPedido.clear();
-        // nombreClienteField.clear();
-        // actualizarTotal();
+        // 2. Asignar datos del cliente (por ahora solo nombre simulado)
+        Cliente cliente = new Cliente(); // si aún no tienes modelo, puedes dejarlo vacío
+        cliente.setNombre(nombreClienteField.getText());
+        pedido.setCliente(cliente);
+
+        // 3. Pasar los items de la tabla al pedido
+        pedido.setItems(new ArrayList<>(itemsPedido));
+
+        // 4. Calcular total y marcar como pagado
+        pedido.calcularTotal();
+        pedido.setPagado(true);
+
+        // 5. Guardar el pedido en memoria y JSON
+        servicioVentas.guardarPedido(pedido);
+
+        // 6. Feedback en consola
+        System.out.println("✅ Pedido confirmado para el cliente: " + nombreClienteField.getText());
+        System.out.println("Total: $" + pedido.getTotal());
+
+        // 7. Limpiar la vista para un nuevo pedido
+        itemsPedido.clear();
+        nombreClienteField.clear();
+        totalPagarLabel.setText("$0.00");
     }
+
+
+
 }

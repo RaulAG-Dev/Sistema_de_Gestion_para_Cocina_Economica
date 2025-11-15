@@ -1,6 +1,9 @@
 package com.example.sistema.controllers;
 
 import com.example.sistema.models.Pedido;
+import com.example.sistema.persistencia.ConvertidorPedido;
+import com.example.sistema.persistencia.RepositorioJSON;
+import com.example.sistema.services.ServicioVentas;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -12,6 +15,8 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.Date;
+import java.util.List;
 import java.util.ResourceBundle;
 
 /**
@@ -69,7 +74,9 @@ public class ControladorCorte implements Initializable {
      */
     @FXML private TextArea notasArea;
 
-
+    private final ServicioVentas servicioVentas = new ServicioVentas(
+            new RepositorioJSON<>("pedidos.json", new ConvertidorPedido())
+    );
     /**
      * Método de inicialización llamado automáticamente después de que se carga el archivo FXML.
      * <p>Se utiliza para configurar la tabla, cargar datos iniciales o listeners.</p>
@@ -79,8 +86,43 @@ public class ControladorCorte implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        // Lógica de inicialización: configuración de columnas, carga de datos.
+        // Configurar columnas
+        numVentaColumn.setCellValueFactory(data -> new javafx.beans.property.SimpleObjectProperty<>(data.getValue().getId()));
+
+        detalleVentaColumn.setCellValueFactory(data -> {
+            String resumen = "";
+            for (var item : data.getValue().getItems()) {
+                resumen += item.getPlatillo().getNombre() + " x" + item.getCantidad() + ", ";
+            }
+            return new javafx.beans.property.SimpleStringProperty(resumen.trim());
+        });
+
+        totalVentaColumn.setCellValueFactory(data -> new javafx.beans.property.SimpleObjectProperty<>(data.getValue().getTotal()));
+
+        // Listener para cargar ventas al cambiar la fecha
+        fechaCortePicker.valueProperty().addListener((obs, oldDate, newDate) -> {
+            if (newDate != null) {
+                java.util.Date fecha = java.sql.Date.valueOf(newDate);
+                cargarVentasDelDia(fecha);
+            }
+        });
+
+        // Cargar ventas del día actual por defecto
+        java.util.Date hoy = new java.util.Date();
+        fechaCortePicker.setValue(java.time.LocalDate.now());
+        cargarVentasDelDia(hoy);
     }
+
+    private void cargarVentasDelDia(Date fecha) {
+        List<Pedido> ventas = servicioVentas.obtenerVentasPorFecha(fecha);
+        ventasTable.getItems().setAll(ventas);
+
+        float total = servicioVentas.obtenerTotalDelDia(fecha);
+        totalCorteLabel.setText(String.format("Total: $%.2f", total));
+
+        System.out.println("Ventas cargadas para el corte: " + ventas.size());
+    }
+
 
     /**
      * Maneja el evento de clic del botón "Regresar", navegando de vuelta a la vista principal.
@@ -120,7 +162,24 @@ public class ControladorCorte implements Initializable {
      */
     @FXML
     private void imprimirCorte() {
-        System.out.println("Imprimiendo resumen del corte.");
-        // Aquí iría la lógica de impresión
+        Date fecha = java.sql.Date.valueOf(fechaCortePicker.getValue());
+        List<Pedido> ventas = servicioVentas.obtenerVentasPorFecha(fecha);
+        float total = servicioVentas.obtenerTotalDelDia(fecha);
+
+        StringBuilder resumen = new StringBuilder();
+        resumen.append("=== Corte de Caja ===\n");
+        resumen.append("Fecha: ").append(fecha).append("\n");
+        resumen.append("Ventas registradas: ").append(ventas.size()).append("\n\n");
+
+        for (Pedido p : ventas) {
+            resumen.append("Venta #").append(p.getId())
+                    .append(" - Total: $").append(p.getTotal()).append("\n");
+        }
+
+        resumen.append("\nTOTAL DEL DÍA: $").append(total).append("\n");
+        resumen.append("======================\n");
+
+        notasArea.setText(resumen.toString());
+        System.out.println("Resumen del corte generado.");
     }
 }

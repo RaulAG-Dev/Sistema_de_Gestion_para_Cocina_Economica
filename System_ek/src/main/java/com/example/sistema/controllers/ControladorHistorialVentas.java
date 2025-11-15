@@ -1,5 +1,8 @@
 package com.example.sistema.controllers;
 
+import com.example.sistema.models.ItemPedido;
+import com.example.sistema.models.Pedido;
+import com.example.sistema.services.ServicioVentas;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -21,33 +24,61 @@ public class ControladorHistorialVentas {
     private Button regresarButton;
 
     @FXML
-    private TableView<?> ventasTable;
+    private TableView<Pedido> ventasTable;
 
     @FXML
-    private TableColumn<?, ?> idVentaColumn;
+    private TableColumn<Pedido, Integer> idVentaColumn;
 
     @FXML
-    private TableColumn<?, ?> fechaColumn;
+    private TableColumn<Pedido, String> fechaColumn;
 
     @FXML
-    private TableColumn<?, ?> clienteColumn;
+    private TableColumn<Pedido, String> clienteColumn;
 
     @FXML
-    private TableColumn<?, ?> totalColumn;
+    private TableColumn<Pedido, Float> totalColumn;
 
     @FXML
     private TextArea detallesVentaArea;
 
     @FXML
     private Button reimprimirButton;
+    private final ServicioVentas servicioVentas = new ServicioVentas(
+            new com.example.sistema.persistencia.RepositorioJSON<>("pedidos.json",
+                    new com.example.sistema.persistencia.ConvertidorPedido())
+    );
 
 
     @FXML
     public void initialize() {
-        // Lógica de tu compañero:
-        // 1. Configurar las columnas (setCellValueFactory).
-        // 2. Cargar los datos de las ventas en 'ventasTable'.
-        // 3. Añadir listener a 'ventasTable' para mostrar detalles en 'detallesVentaArea'.
+        // Configurar columnas y cargar ventas
+        idVentaColumn.setCellValueFactory(data -> new javafx.beans.property.SimpleObjectProperty<>(data.getValue().getId()));
+        fechaColumn.setCellValueFactory(data -> {
+            java.text.SimpleDateFormat sdf = new java.text.SimpleDateFormat("dd/MM/yyyy HH:mm");
+            return new javafx.beans.property.SimpleStringProperty(sdf.format(data.getValue().getFechaHora()));
+        });
+        clienteColumn.setCellValueFactory(data -> new javafx.beans.property.SimpleStringProperty(
+                data.getValue().getCliente() != null ? data.getValue().getCliente().getNombre() : "N/A"
+        ));
+        totalColumn.setCellValueFactory(data -> new javafx.beans.property.SimpleObjectProperty<>(data.getValue().getTotal()));
+
+        ventasTable.getItems().setAll(servicioVentas.obtenerTodasLasVentas());
+
+        // Listener para mostrar detalles en el TextArea
+        ventasTable.getSelectionModel().selectedItemProperty().addListener((obs, oldSel, newSel) -> {
+            if (newSel != null) {
+                StringBuilder detalles = new StringBuilder();
+                detalles.append("Venta ID: ").append(newSel.getId()).append("\n");
+                detalles.append("Fecha: ").append(newSel.getFechaHora()).append("\n");
+                detalles.append("Cliente: ").append(newSel.getCliente() != null ? newSel.getCliente().getNombre() : "N/A").append("\n");
+                detalles.append("Total: $").append(newSel.getTotal()).append("\n\n");
+                detalles.append("Items:\n");
+                for (var item : newSel.getItems()) {
+                    detalles.append(item.toString()).append("\n");
+                }
+                detallesVentaArea.setText(detalles.toString());
+            }
+        });
 
         System.out.println("ControladorHistorialVentas inicializado.");
     }
@@ -71,10 +102,40 @@ public class ControladorHistorialVentas {
 
     @FXML
     void reimprimirTicket(ActionEvent event) {
-        // con este deberias reinprimir el ticket
-        //  debes de obtener la venta seleccionada de 'ventasTable'.
+        // Obtener el pedido seleccionado en la tabla
+        Pedido seleccionado = ventasTable.getSelectionModel().getSelectedItem();
 
+        if (seleccionado == null) {
+            detallesVentaArea.setText("⚠️ No se ha seleccionado ninguna venta para reimprimir.");
+            return;
+        }
 
-        System.out.println("Botón 'Reimprimir Ticket' presionado.");
+        // Construir el ticket en formato texto
+        StringBuilder ticket = new StringBuilder();
+        ticket.append("=== Ticket de Venta ===\n");
+        ticket.append("ID Venta: ").append(seleccionado.getId()).append("\n");
+        ticket.append("Fecha: ").append(seleccionado.getFechaHora()).append("\n");
+        ticket.append("Cliente: ").append(
+                seleccionado.getCliente() != null ? seleccionado.getCliente().getNombre() : "N/A"
+        ).append("\n");
+        ticket.append("----------------------------\n");
+
+        for (ItemPedido item : seleccionado.getItems()) {
+            ticket.append(item.getPlatillo().getNombre())
+                    .append(" x").append(item.getCantidad())
+                    .append("  $").append(item.calcularSubtotal())
+                    .append("\n");
+        }
+
+        ticket.append("----------------------------\n");
+        ticket.append("TOTAL: $").append(seleccionado.getTotal()).append("\n");
+        ticket.append(seleccionado.isPagado() ? "Estado: PAGADO\n" : "Estado: PENDIENTE\n");
+        ticket.append("============================\n");
+
+        // Mostrar el ticket en el TextArea
+        detallesVentaArea.setText(ticket.toString());
+
+        System.out.println("Ticket reimpreso para venta ID: " + seleccionado.getId());
     }
+
 }
