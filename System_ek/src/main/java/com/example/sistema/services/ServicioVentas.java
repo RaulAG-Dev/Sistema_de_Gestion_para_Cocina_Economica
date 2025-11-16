@@ -39,19 +39,24 @@ public class ServicioVentas {
         for (ItemPedido it : items) {
             if (it.getPlatillo().getId() == item.getPlatillo().getId()) {
                 it.setCantidad(it.getCantidad() + item.getCantidad());
+                pedidoActual.generarNombreDesdeItems();
                 pedidoActual.calcularTotal();
                 return;
             }
         }
         items.add(item);
         pedidoActual.calcularTotal();
+        pedidoActual.generarNombreDesdeItems();
     }
 
     public void guardarPedido(Pedido pedido) {
         pedido.calcularTotal();
+        pedido.generarNombreDesdeItems(); // ← asegura que el nombre esté listo
         reemplazarOMeterMemoria(pedido);
         if (repositorio != null) {
             repositorio.guardar(pedido);
+            pedidosMemoria.clear();
+            pedidosMemoria.addAll(repositorio.obtenerTodos());
         }
         if (pedidoActual == pedido) pedidoActual = null;
     }

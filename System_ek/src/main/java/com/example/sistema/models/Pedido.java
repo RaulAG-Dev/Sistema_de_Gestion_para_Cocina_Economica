@@ -1,6 +1,8 @@
 package com.example.sistema.models;
 
 import com.example.sistema.persistencia.Identificable;
+
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -8,6 +10,7 @@ public class Pedido implements Identificable {
 
     private int id;              // NUEVO
     private Date fechaHora;
+    private String nombre;
     private Cliente cliente;
     private List<ItemPedido> items;
     private float total;
@@ -19,8 +22,12 @@ public class Pedido implements Identificable {
     public int getId() { return id; }
     public void setId(int id) { this.id = id; }
 
+
     public Date getFechaHora() { return fechaHora; }
     public void setFechaHora(Date fechaHora) { this.fechaHora = fechaHora; }
+
+    public String getNombre() { return nombre; }
+    public void setNombre(String nombre) { this.nombre = nombre; }
 
     public Cliente getCliente() { return cliente; }
     public void setCliente(Cliente cliente) { this.cliente = cliente; }
@@ -33,6 +40,20 @@ public class Pedido implements Identificable {
 
     public boolean isPagado() { return pagado; }
     public void setPagado(boolean pagado) { this.pagado = pagado; }
+
+    public void generarNombreDesdeItems() {
+        if (items == null || items.isEmpty()) {
+            this.nombre = "Pedido vacío";
+            return;
+        }
+        StringBuilder sb = new StringBuilder();
+        for (ItemPedido item : items) {
+            sb.append(item.getPlatillo().getNombre())
+                    .append(" x").append(item.getCantidad())
+                    .append(", ");
+        }
+        this.nombre = sb.toString().replaceAll(", $", "");
+    }
 
     public float calcularTotal() {
         float suma = 0;

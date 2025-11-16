@@ -459,7 +459,7 @@ public class ControladorPrincipal implements Initializable {
         servicioVentas.guardarPedido(pedido);
 
         // 6. Feedback en consola
-        System.out.println("✅ Pedido confirmado para el cliente: " + nombreClienteField.getText());
+        System.out.println("Pedido confirmado para el cliente: " + nombreClienteField.getText());
         System.out.println("Total: $" + pedido.getTotal());
 
         // 7. Limpiar la vista para un nuevo pedido

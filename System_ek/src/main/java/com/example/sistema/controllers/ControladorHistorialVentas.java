@@ -106,7 +106,7 @@ public class ControladorHistorialVentas {
         Pedido seleccionado = ventasTable.getSelectionModel().getSelectedItem();
 
         if (seleccionado == null) {
-            detallesVentaArea.setText("⚠️ No se ha seleccionado ninguna venta para reimprimir.");
+            detallesVentaArea.setText("No se ha seleccionado ninguna venta para reimprimir.");
             return;
         }
 

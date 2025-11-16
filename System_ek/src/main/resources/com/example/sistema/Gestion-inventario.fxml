@@ -7,6 +7,8 @@
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.layout.AnchorPane?>
 
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.sistema.controllers.ControladorInventario"> <children>
 
     <Button fx:id="regresarButton" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#manejarRegreso" text="Regresar" />
@@ -16,16 +18,27 @@
     <TableView fx:id="inventarioTable" layoutX="45.0" layoutY="100.0" prefHeight="562.0" prefWidth="552.0" style="-fx-font-weight: bold;">
         <columnResizePolicy><TableView fx:constant="CONSTRAINED_RESIZE_POLICY" /></columnResizePolicy>
         <columns>
-            <TableColumn prefWidth="250" text="Nombre" />
-            <TableColumn prefWidth="100" text="Stock Actual" />
-            <TableColumn prefWidth="100" text="Stock Mínimo" />
-            <TableColumn prefWidth="100" text="Unidad" />
+            <TableColumn fx:id="nombreColumn" prefWidth="250" text="Nombre" />
+            <TableColumn fx:id="stockActualColumn" prefWidth="100" text="Stock Actual" />
+            <TableColumn fx:id="stockMinimoColumn" prefWidth="100" text="Stock Mínimo" />
+            <TableColumn fx:id="unidadColumn" prefWidth="100" text="Unidad" />
         </columns>
     </TableView>
 
     <TextArea fx:id="notificacionesArea" layoutX="609.0" layoutY="117.0" prefHeight="254.0" prefWidth="346.0" promptText="Aquí se mostrarán notificaciones de stock mínimo o detalles del ingrediente." />
-      <Button layoutX="756.0" layoutY="419.0" mnemonicParsing="false" text="Agregar" />
-      <Button layoutX="759.0" layoutY="508.0" mnemonicParsing="false" text="Guardar" />
-      <Button layoutX="760.0" layoutY="463.0" mnemonicParsing="false" text="Eliminar" />
+
+    <TextField fx:id="nombreField" layoutX="609.0" layoutY="390.0" prefWidth="346.0" promptText="Nombre del ingrediente" />
+    <TextField fx:id="stockField" layoutX="609.0" layoutY="430.0" prefWidth="346.0" promptText="Stock actual" />
+    <TextField fx:id="minimoField" layoutX="609.0" layoutY="470.0" prefWidth="346.0" promptText="Stock mínimo" />
+    <TextField fx:id="unidadField" layoutX="609.0" layoutY="510.0" prefWidth="346.0" promptText="Unidad (kg, piezas...)" />
+
+    <HBox layoutX="609.0" layoutY="560.0" spacing="20">
+        <children>
+            <Button fx:id="agregarButton" onAction="#agregarIngrediente" text="Agregar" prefWidth="100"/>
+            <Button fx:id="guardarButton" onAction="#guardarIngrediente" text="Guardar" prefWidth="100"/>
+            <Button fx:id="eliminarButton" onAction="#eliminarIngrediente" text="Eliminar" prefWidth="100"/>
+        </children>
+    </HBox>
+
 </children>
 </AnchorPane>

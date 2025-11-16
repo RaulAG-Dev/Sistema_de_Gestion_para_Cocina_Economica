@@ -16,6 +16,7 @@ public class ConvertidorPedido implements ConvertidorJSON<Pedido> {
     public JSONObject aJSON(Pedido pedido) {
         JSONObject json = new JSONObject();
         json.put("id", pedido.getId());
+        json.put("nombre", pedido.getNombre());
         json.put("fechaHora", pedido.getFechaHora() != null ? pedido.getFechaHora().getTime() : null);
         json.put("total", pedido.getTotal());
         json.put("pagado", pedido.isPagado());
@@ -39,6 +40,7 @@ public class ConvertidorPedido implements ConvertidorJSON<Pedido> {
     public Pedido deJSON(JSONObject jsonObject) {
         Pedido p = new Pedido();
         p.setId(Math.toIntExact((Long) jsonObject.get("id")));
+        p.setNombre((String) jsonObject.get("nombre"));  // ← Asegura que el nombre se cargue
         Object ts = jsonObject.get("fechaHora");
         p.setFechaHora(ts != null ? new Date((Long) ts) : null);
         p.setTotal(((Number) jsonObject.get("total")).floatValue());

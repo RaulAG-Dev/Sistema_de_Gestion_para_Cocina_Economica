@@ -92,7 +92,7 @@ public class ControladorCorte implements Initializable {
         detalleVentaColumn.setCellValueFactory(data -> {
             String resumen = "";
             for (var item : data.getValue().getItems()) {
-                resumen += item.getPlatillo().getNombre() + " x" + item.getCantidad() + ", ";
+                resumen += item.getPlatillo().getNombre() + " x" + item.getCantidad() + " , ";
             }
             return new javafx.beans.property.SimpleStringProperty(resumen.trim());
         });
@@ -160,6 +160,18 @@ public class ControladorCorte implements Initializable {
      * Maneja el evento de clic del botón "Imprimir".
      * <p>Lógica para generar el formato de impresión del resumen del corte.</p>
      */
+    private String nombreSeguro(Pedido p) {
+        if (p.getNombre() != null && !p.getNombre().isBlank()) return p.getNombre();
+        if (p.getItems() == null || p.getItems().isEmpty()) return "Pedido vacío";
+        StringBuilder sb = new StringBuilder();
+        for (var item : p.getItems()) {
+            if (item.getPlatillo() != null && item.getPlatillo().getNombre() != null) {
+                sb.append(item.getPlatillo().getNombre()).append(" x").append(item.getCantidad()).append(", ");
+            }
+        }
+        return sb.length() == 0 ? "Pedido sin detalle" : sb.toString().replaceAll(", $", "");
+    }
+
     @FXML
     private void imprimirCorte() {
         Date fecha = java.sql.Date.valueOf(fechaCortePicker.getValue());
@@ -172,14 +184,15 @@ public class ControladorCorte implements Initializable {
         resumen.append("Ventas registradas: ").append(ventas.size()).append("\n\n");
 
         for (Pedido p : ventas) {
+            String nombre = nombreSeguro(p); // ← nunca null
+            System.out.println("Pedido #" + p.getId() + " nombre: " + nombre + " - Total: $" + p.getTotal());
             resumen.append("Venta #").append(p.getId())
                     .append(" - Total: $").append(p.getTotal()).append("\n");
         }
 
         resumen.append("\nTOTAL DEL DÍA: $").append(total).append("\n");
         resumen.append("======================\n");
-
         notasArea.setText(resumen.toString());
-        System.out.println("Resumen del corte generado.");
     }
+
 }
