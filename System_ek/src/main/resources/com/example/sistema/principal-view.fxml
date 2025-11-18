@@ -23,7 +23,7 @@
         <HBox alignment="CENTER_LEFT" spacing="20" style="-fx-background-color: #E0E0E0; -fx-padding: 10;">
             <Label text="Empleado: " style="-fx-font-size: 16px; -fx-font-weight: bold;"/>
             <Region HBox.hgrow="ALWAYS"/>
-            <Button text="Gestión de ventas" onAction="#gestionarVentas"/>
+            <Button text="Corte de caja" onAction="#gestionarVentas"/>
             <Button text="Gestión Inventario" onAction="#gestionarInventario"/>
             <Button text="Historial de ventas" onAction="#verHistorialVentas"/>
             <Button text="Gestión de clientes" onAction="#gestionarClientes"/>
