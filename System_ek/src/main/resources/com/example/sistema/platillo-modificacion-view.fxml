@@ -31,7 +31,7 @@
         <TextField fx:id="descripcionField" GridPane.columnIndex="1" GridPane.rowIndex="1" />
 
         <Label text="Precio ($):" GridPane.columnIndex="0" GridPane.rowIndex="2" />
-        <TextField fx:id="precioField" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+        <TextField fx:id="precioField" promptText="0.00" GridPane.columnIndex="1" GridPane.rowIndex="2" />
 
         <Label text="Tipo de Menú:" GridPane.columnIndex="0" GridPane.rowIndex="3" />
         <ComboBox fx:id="tipoMenuComboBox" prefWidth="200" promptText="Seleccione tipo" GridPane.columnIndex="1" GridPane.rowIndex="3" />
