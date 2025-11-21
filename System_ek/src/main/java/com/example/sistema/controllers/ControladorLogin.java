@@ -76,10 +76,8 @@ public class ControladorLogin {
 
         try{
             Usuario usuario1 = servicioUsuarios.autenticar(usuario, password);
-            // Si la autenticación es exitosa, procede al cambio de escena
             cambiarEscena();
         }catch (Exception e){
-            // Captura la excepción (ej. credenciales inválidas) y muestra el mensaje
             mensajeError.setText(e.getMessage());
         }
     }
@@ -93,7 +91,7 @@ public class ControladorLogin {
      */
     private void cambiarEscena() {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/sistema/principal-view.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/sistema/PrincipalVew.fxml"));
             Parent root = loader.load();
             Stage stage = (Stage) loginButton.getScene().getWindow();
             Scene scene = new Scene(root);

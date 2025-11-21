@@ -24,14 +24,14 @@ public class ControladorGestionClientes {
     @FXML private Button regresarButton;
     @FXML private Button clientesFrecuentesButton;
 
-    // tabla de la columna izquierda
+
     @FXML private TableView<?> clientesTable; // Reemplazar '?' por Cliente
     @FXML private TableColumn<?, ?> idClienteColumn; // Reemplazar '?'
     @FXML private TableColumn<?, ?> nombreClienteColumn; // Reemplazar '?'
     @FXML private TableColumn<?, ?> telefonoClienteColumn; // Reemplazar '?'
     @FXML private TableColumn<?, ?> accionClienteColumn; // <- NUEVA COLUMNA
 
-    // Formulario columna drecha
+
     @FXML private Button addClienteButton;
     @FXML private TextField idClienteField;
     @FXML private TextField nombreClienteField;

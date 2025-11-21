@@ -24,20 +24,14 @@ public class ServicioReportes {
      * Recibe LocalDateTime (moderno) para un cálculo preciso.
      */
     public List<Pedido> obtenerVentas(LocalDateTime inicio, LocalDateTime fin) {
-        // Convertir LocalDateTime a Date (antiguo) para usar en el filtro
         Date fechaInicio = Date.from(inicio.atZone(ZoneId.systemDefault()).toInstant());
         Date fechaFin = Date.from(fin.atZone(ZoneId.systemDefault()).toInstant());
-
-        // Obtener la lista completa para filtrar
         List<Pedido> todosLosPedidos = servicioVentas.getPedidosMaestros();
 
         return todosLosPedidos.stream()
                 .filter(p -> {
                     Date fechaPedido = p.getFechaHora();
                     if (fechaPedido == null) return false;
-
-                    // Comprobación usando el método antiguo isAfter/isBefore de Date
-                    // La conversión garantiza que los rangos sean correctos.
                     return fechaPedido.after(fechaInicio) && fechaPedido.before(fechaFin);
                 })
                 .collect(Collectors.toList());

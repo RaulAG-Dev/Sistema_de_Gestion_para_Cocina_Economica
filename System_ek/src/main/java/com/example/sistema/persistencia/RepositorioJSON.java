@@ -72,6 +72,18 @@ public class RepositorioJSON<T extends Identificable> {
         }
     }
 
+    /**
+     * Sobrescribe la lista completa de objetos en memoria y persiste todos los datos al archivo JSON.
+     * * @param objetos La lista completa de objetos T (ej: Ingredientes) a serializar y guardar.
+     */
+    public void guardarTodos(List<T> objetos) {
+        this.datos = new ArrayList<>(objetos);
+
+        this.guardarDatos();
+
+        System.out.println("DEBUG: Guardando " + objetos.size() + " objetos en: " + this.archivo);
+    }
+
     public T buscarPorId(int id) {
         for (T objeto : datos) {
             if (objeto.getId() == id) {
