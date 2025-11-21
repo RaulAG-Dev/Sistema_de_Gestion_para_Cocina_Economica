@@ -1,1 +1,1 @@
-[{"total":0.0,"pagado":true,"fechaHora":1763703472418,"id":1,"nombre":"Pedido vacío","items":[]}]
+[{"total":150.0,"pagado":true,"fechaHora":1763704519884,"id":1,"nombre":"Caldo de pollo x1, Chilaquiles x1","items":[{"precioUnitario":55.0,"platilloId":1,"platilloNombre":"Caldo de pollo","cantidad":1},{"precioUnitario":95.0,"platilloId":5,"platilloNombre":"Chilaquiles","cantidad":1}]}]
