@@ -1,8 +1,6 @@
 package com.example.sistema.controllers;
 
 import com.example.sistema.models.*;
-import com.example.sistema.persistencia.ConvertidorPedido;
-import com.example.sistema.persistencia.RepositorioJSON;
 import com.example.sistema.services.ServicioMenu;
 import com.example.sistema.services.ServicioVentas;
 import javafx.beans.property.SimpleObjectProperty;
@@ -99,10 +97,8 @@ public class ControladorPrincipal implements Initializable {
             }
         });
 
-        // 2. Carga inicial del menú
         cargarMenu(selectorMenu.getSelectionModel().getSelectedItem());
 
-        // 3. Configuración de la tabla de pedidos
         nombreColumn.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getPlatillo().getNombre()));
         cantidadColumn.setCellValueFactory(new PropertyValueFactory<>("cantidad"));
         precioColumn.setCellValueFactory(new PropertyValueFactory<>("precioUnitario"));
@@ -157,14 +153,14 @@ public class ControladorPrincipal implements Initializable {
      */
     private VBox crearTarjetaPlatillo(Platillo platillo) {
         VBox card = new VBox(5);
-        card.setPadding(new Insets(10));
-        card.setPrefSize(180, 180);
+        card.setPadding(new Insets(8));
+        card.setPrefSize(220, 220);
         card.setStyle("-fx-border-color: #DDDDDD; -fx-border-radius: 5; -fx-background-color: white;");
 
         HBox header = new HBox(5);
 
         Label nombre = new Label(platillo.getNombre());
-        nombre.setStyle("-fx-font-weight: bold; -fx-font-size: 14px;");
+        nombre.setStyle("-fx-font-weight: bold; -fx-text-fill: #000000; -fx-font-size: 16px;");
 
         Region spacer = new Region();
         HBox.setHgrow(spacer, Priority.ALWAYS);
@@ -183,6 +179,7 @@ public class ControladorPrincipal implements Initializable {
 
         Label descripcion = new Label(platillo.getDescripcion());
         descripcion.setWrapText(true);
+        descripcion.setStyle("-fx-text-fill: #000000; -fx-font-size: 14px;");
 
         Label precio = new Label(String.format("$%.2f", platillo.getPrecio()));
         precio.setStyle("-fx-font-weight: bold; -fx-text-fill: #007bff;");
@@ -216,19 +213,18 @@ public class ControladorPrincipal implements Initializable {
      */
     private void abrirVentanaPlatillo(Platillo platilloAEditar) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/sistema/platillo-modificacion-view.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/sistema/PlatilloModal.fxml"));
             Parent root = loader.load();
+
+            ControladorPlatilloModal modalController = loader.getController();
+
+            modalController.inicializar(platilloAEditar, servicioMenu, this);
 
             Stage stage = new Stage();
             stage.initModality(Modality.APPLICATION_MODAL);
 
-            ControladorPlatilloModal modalController = loader.getController();
-
-            // Pasa las referencias necesarias al controlador del modal
-            modalController.inicializar(platilloAEditar, servicioMenu, this);
-
             stage.setScene(new Scene(root));
-            stage.setTitle(platilloAEditar == null ? "Crear nuevo platillo" : "editar Platillo");
+            stage.setTitle(platilloAEditar == null ? "Crear nuevo platillo" : "Editar Platillo");
             stage.showAndWait();
 
         } catch (IOException e) {
@@ -294,7 +290,6 @@ public class ControladorPrincipal implements Initializable {
         for (ItemPedido item : itemsPedido) {
             total += item.calcularSubtotal();
         }
-        // Formatear y mostrar el total
         totalPagarLabel.setText(String.format("$%.2f", total));
     }
 
@@ -309,7 +304,6 @@ public class ControladorPrincipal implements Initializable {
             final HBox pane = new HBox(5, btnRestar, btnSumar);
 
             {
-                // Listener para el botón Restar
                 btnRestar.setOnAction(event -> {
                     ItemPedido item = getTableView().getItems().get(getIndex());
                     if (item.getCantidad() > 1) {
@@ -321,7 +315,6 @@ public class ControladorPrincipal implements Initializable {
                     actualizarTotal();
                 });
 
-                // Listener para el botón Sumar
                 btnSumar.setOnAction(event -> {
                     ItemPedido item = getTableView().getItems().get(getIndex());
                     item.setCantidad(item.getCantidad() + 1);
@@ -343,7 +336,7 @@ public class ControladorPrincipal implements Initializable {
      */
     @FXML void gestionarVentas() {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/sistema/Gestion-corte.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/sistema/GestionCorte.fxml"));
             Parent root = loader.load();
             Stage nuevaStage = new Stage();
             Scene scene = new Scene(root);
@@ -362,7 +355,7 @@ public class ControladorPrincipal implements Initializable {
      */
     @FXML void gestionarInventario() {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/sistema/Gestion-inventario.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/sistema/GestionInventario.fxml"));
             Parent root = loader.load();
             Stage nuevaStage = new Stage();
             Scene scene = new Scene(root);
@@ -386,9 +379,7 @@ public class ControladorPrincipal implements Initializable {
     void gestionarClientes(ActionEvent event) {
         System.out.println("Navegando a la vista de gestión de clientes...");
 
-        // (Opcional) Aquí puedes poner la lógica para cargar la nueva vista
         try {
-            // Asegúrate de que el FXML se llame "Gestion-clientes.fxml" o como sea
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/sistema/GestionClientes.fxml"));
             Parent root = loader.load();
             Stage nuevaStage = new Stage();
@@ -411,11 +402,9 @@ public class ControladorPrincipal implements Initializable {
     @FXML
     void verHistorialVentas(ActionEvent event) {
         try {
-            // Asegúrate de que el FXML se llame "Historial-ventas.fxml" o como lo hayas guardado
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/sistema/HistorialVentas.fxml"));
             Parent root = loader.load();
 
-            // Obtener el Stage actual
             Stage nuevaStage = new Stage();
             Scene scene = new Scene(root);
             nuevaStage.setScene(scene);
@@ -438,29 +427,22 @@ public class ControladorPrincipal implements Initializable {
     // Dentro de ControladorPrincipal
     @FXML
     void confirmarPedido(ActionEvent event) {
-        // 1. Crear un nuevo pedido desde el servicio
         Pedido pedido = servicioVentas.crearPedido();
 
-        // 2. Asignar datos del cliente (por ahora solo nombre simulado)
-        Cliente cliente = new Cliente(); // si aún no tienes modelo, puedes dejarlo vacío
+        Cliente cliente = new Cliente();
         cliente.setNombre(nombreClienteField.getText());
         pedido.setCliente(cliente);
 
-        // 3. Pasar los items de la tabla al pedido
         pedido.setItems(new ArrayList<>(itemsPedido));
 
-        // 4. Calcular total y marcar como pagado
         pedido.calcularTotal();
         pedido.setPagado(true);
 
-        // 5. Guardar el pedido en memoria y JSON
         servicioVentas.guardarPedido(pedido);
 
-        // 6. Feedback en consola
         System.out.println("Pedido confirmado para el cliente: " + nombreClienteField.getText());
         System.out.println("Total: $" + pedido.getTotal());
 
-        // 7. Limpiar la vista para un nuevo pedido
         itemsPedido.clear();
         nombreClienteField.clear();
         totalPagarLabel.setText("$0.00");

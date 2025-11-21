@@ -31,7 +31,6 @@ import java.util.ResourceBundle;
  */
 public class ControladorCorte implements Initializable {
 
-    // --- Componentes FXML ---
 
     @FXML private Button regresarButton;
     @FXML private TableView<Pedido> ventasTable;
@@ -44,7 +43,6 @@ public class ControladorCorte implements Initializable {
     @FXML private Button imprimirButton;
     @FXML private TextArea notasArea;
 
-    // 🔑 CORRECCIÓN: Usar el Singleton para obtener la única instancia del servicio.
     private final ServicioVentas servicioVentas = ServicioVentas.getInstance();
 
     /**
@@ -52,26 +50,21 @@ public class ControladorCorte implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        // Configurar columnas
         numVentaColumn.setCellValueFactory(data -> new javafx.beans.property.SimpleObjectProperty<>(data.getValue().getId()));
 
-        // Configuración de detalleVentaColumn: Se usa el método seguro nombreSeguro para el resumen.
         detalleVentaColumn.setCellValueFactory(data ->
                 new javafx.beans.property.SimpleStringProperty(nombreSeguro(data.getValue()))
         );
 
         totalVentaColumn.setCellValueFactory(data -> new javafx.beans.property.SimpleObjectProperty<>(data.getValue().getTotal()));
 
-        // Listener para cargar ventas al cambiar la fecha
         fechaCortePicker.valueProperty().addListener((obs, oldDate, newDate) -> {
             if (newDate != null) {
-                // Conversión de LocalDate a java.util.Date para el ServicioVentas
                 java.util.Date fecha = java.sql.Date.valueOf(newDate);
                 cargarVentasDelDia(fecha);
             }
         });
 
-        // Cargar ventas del día actual por defecto
         java.util.Date hoy = new java.util.Date();
         fechaCortePicker.setValue(java.time.LocalDate.now());
         cargarVentasDelDia(hoy);

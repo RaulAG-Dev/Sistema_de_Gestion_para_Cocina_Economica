@@ -1,7 +1,9 @@
 package com.example.sistema.services;
 
 import com.example.sistema.models.ItemPedido;
+import com.example.sistema.models.ItemReceta;
 import com.example.sistema.models.Pedido;
+import com.example.sistema.models.Platillo;
 import com.example.sistema.persistencia.RepositorioJSON;
 import com.example.sistema.persistencia.ConvertidorPedido;
 
@@ -17,6 +19,7 @@ public class ServicioVentas {
     private final RepositorioJSON<Pedido> repositorio;
     private final List<Pedido> pedidosMemoria;
     private Pedido pedidoActual;
+    private final ServicioInventario servicioInventario = ServicioInventario.getInstance();
 
     /**
      * Constructor privado para forzar el patrón Singleton.
@@ -78,13 +81,44 @@ public class ServicioVentas {
         pedidoActual.generarNombreDesdeItems();
     }
 
+    private void deducirStock(Pedido pedido) {
+        boolean stockCambiado = false;
+
+        for (ItemPedido item : pedido.getItems()) {
+            int cantidadVendida = item.getCantidad();
+            Platillo platillo = item.getPlatillo();
+
+            if (platillo != null && platillo.getReceta() != null) {
+
+                for (ItemReceta itemReceta : platillo.getReceta()) {
+
+                    float cantidadRequeridaPorUnidad = itemReceta.getCantidadRequerida();
+                    float totalARestar = cantidadRequeridaPorUnidad * cantidadVendida;
+                    boolean restado = servicioInventario.restarCantidad(
+                            itemReceta.getIngrediente().getId(),
+                            totalARestar
+                    );
+
+                    if (restado) {
+                        stockCambiado = true;
+                    } else {
+                        System.err.println("ADVERTENCIA: Stock insuficiente para " + itemReceta.getIngrediente().getNombre() + " en pedido " + pedido.getId());
+                    }
+                }
+            }
+        }
+        if (stockCambiado) {
+            servicioInventario.guardarStock();
+        }
+    }
+
     public void guardarPedido(Pedido pedido) {
         pedido.calcularTotal();
         pedido.generarNombreDesdeItems();
         reemplazarOMeterMemoria(pedido);
+        deducirStock(pedido);
         if (repositorio != null) {
             repositorio.guardar(pedido);
-            // Actualizar la lista en memoria si la persistencia fue exitosa
             pedidosMemoria.clear();
             pedidosMemoria.addAll(repositorio.obtenerTodos());
         }
@@ -111,7 +145,6 @@ public class ServicioVentas {
         return pedidoActual;
     }
 
-    // ----------------- utilidades internas -----------------
     private void reemplazarOMeterMemoria(Pedido pedido) {
         for (int i = 0; i < pedidosMemoria.size(); i++) {
             if (pedidosMemoria.get(i).getId() == pedido.getId()) {

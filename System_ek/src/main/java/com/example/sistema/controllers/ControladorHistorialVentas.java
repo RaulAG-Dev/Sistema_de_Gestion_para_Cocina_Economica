@@ -49,20 +49,18 @@ public class ControladorHistorialVentas {
 
     @FXML
     public void initialize() {
-        // Configurar columnas y cargar ventas
         idVentaColumn.setCellValueFactory(data -> new javafx.beans.property.SimpleObjectProperty<>(data.getValue().getId()));
         fechaColumn.setCellValueFactory(data -> {
             java.text.SimpleDateFormat sdf = new java.text.SimpleDateFormat("dd/MM/yyyy HH:mm");
             return new javafx.beans.property.SimpleStringProperty(sdf.format(data.getValue().getFechaHora()));
         });
+
         clienteColumn.setCellValueFactory(data -> new javafx.beans.property.SimpleStringProperty(
                 data.getValue().getCliente() != null ? data.getValue().getCliente().getNombre() : "N/A"
         ));
+
         totalColumn.setCellValueFactory(data -> new javafx.beans.property.SimpleObjectProperty<>(data.getValue().getTotal()));
-
         ventasTable.getItems().setAll(servicioVentas.obtenerTodasLasVentas());
-
-        // Listener para mostrar detalles en el TextArea
         ventasTable.getSelectionModel().selectedItemProperty().addListener((obs, oldSel, newSel) -> {
             if (newSel != null) {
                 StringBuilder detalles = new StringBuilder();
@@ -77,7 +75,6 @@ public class ControladorHistorialVentas {
                 detallesVentaArea.setText(detalles.toString());
             }
         });
-
         System.out.println("ControladorHistorialVentas inicializado.");
     }
 
@@ -92,7 +89,6 @@ public class ControladorHistorialVentas {
 
     @FXML
     void reimprimirTicket(ActionEvent event) {
-        // Obtener el pedido seleccionado en la tabla
         Pedido seleccionado = ventasTable.getSelectionModel().getSelectedItem();
 
         if (seleccionado == null) {
@@ -100,7 +96,6 @@ public class ControladorHistorialVentas {
             return;
         }
 
-        // Construir el ticket en formato texto
         StringBuilder ticket = new StringBuilder();
         ticket.append("=== Ticket de Venta ===\n");
         ticket.append("ID Venta: ").append(seleccionado.getId()).append("\n");
@@ -122,7 +117,6 @@ public class ControladorHistorialVentas {
         ticket.append(seleccionado.isPagado() ? "Estado: PAGADO\n" : "Estado: PENDIENTE\n");
         ticket.append("============================\n");
 
-        // Mostrar el ticket en el TextArea
         detallesVentaArea.setText(ticket.toString());
 
         System.out.println("Ticket reimpreso para venta ID: " + seleccionado.getId());

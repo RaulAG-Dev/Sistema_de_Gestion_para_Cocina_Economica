@@ -1,5 +1,6 @@
 package com.example.sistema.models;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -33,11 +34,17 @@ public class Platillo extends ModelManagement {
      * El tipo de menú al que pertenece el platillo.
      */
     private String tipoMenu;
+    /**
+     * Lista de ingredientes que componen la receta.
+     */
+    private List<ItemReceta> receta;
 
     /**
      * Constructor por defecto (sin argumentos) de la clase Platillo.
      */
-    public Platillo(){}
+    public Platillo(){
+        this.receta = new ArrayList<>();
+    }
 
     /**
      * Constructor utilizado para inicializar un objeto Platillo con todos sus atributos.
@@ -46,22 +53,29 @@ public class Platillo extends ModelManagement {
      * @param nombre El nombre del platillo (asumiendo que es una propiedad heredada o implícita).
      * @param descripcion Descripción detallada del platillo.
      * @param precio El precio de venta del platillo.
-     * @param disponible El estado de disponibilidad actual del platillo.
-     * @param ingredientes La lista de ingredientes requeridos.
+     * @param activo El estado de disponibilidad actual del platillo.
+     * @param receta La lista de ingredientes requeridos.
      */
-    public Platillo(int id, String nombre, String descripcion, float precio, boolean disponible, List<Ingrediente> ingredientes, String tipoMenu){
+    public Platillo(int id, String nombre, String descripcion, float precio, boolean activo, List<ItemReceta> receta, String tipoMenu) {
+
         this.id = id;
-        this. nombre = nombre;
+        this.nombre = nombre;
         this.descripcion = descripcion;
         this.precio = precio;
-        this.disponible = disponible;
-        this.ingredientes = ingredientes;
+        this.disponible = activo; // Usamos 'disponible' en lugar de 'activo'
+        this.receta = (receta != null) ? receta : new ArrayList<>(); // Inicializa la receta
         this.tipoMenu = tipoMenu;
-
     }
 
     //getters y setters
 
+
+    public List<ItemReceta> getReceta() {
+        return receta;
+    }
+    public void setReceta(List<ItemReceta> receta) {
+        this.receta = receta;
+    }
     /**
      * Obtiene el tipo de menu al que pertenece platillo.
      * @return el tipo de menú del platillo.

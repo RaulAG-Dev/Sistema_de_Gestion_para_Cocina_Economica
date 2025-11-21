@@ -1,129 +1,155 @@
 package com.example.sistema.controllers;
 
+import com.example.sistema.models.Ingrediente;
+import com.example.sistema.models.ItemReceta;
 import com.example.sistema.models.Platillo;
+import com.example.sistema.services.ServicioInventario;
 import com.example.sistema.services.ServicioMenu;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
+import javafx.util.StringConverter;
 
-/**
- * Controlador para el modal de creación y edición de platillos.
- *
- * <p>Esta clase gestiona la interfaz del formulario modal, permitiendo a los usuarios
- * ingresar o modificar los detalles de un platillo (nombre, descripción, precio, tipo)
- * y persistir esos cambios a través del {@code ServicioMenu}.</p>
- *
- * @author Raul Aguayo
- * @version 1.0
- * @since 2025-11-02
- */
-public class ControladorPlatilloModal {
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.ResourceBundle;
 
-    // --- Componentes FXML ---
+public class ControladorPlatilloModal implements Initializable {
 
-    /**
-     * Etiqueta (Label) que muestra el título del modal ("Añadir" o "Editar Platillo").
-     */
     @FXML private Label tituloLabel;
-    /**
-     * Campo de texto para ingresar o modificar el nombre del platillo.
-     */
     @FXML private TextField nombreField;
-    /**
-     * Campo de texto para ingresar o modificar la descripción del platillo.
-     */
     @FXML private TextField descripcionField;
-    /**
-     * Campo de texto para ingresar o modificar el precio del platillo.
-     */
     @FXML private TextField precioField;
-    /**
-     * ComboBox para seleccionar el tipo de menú al que pertenece el platillo.
-     */
     @FXML private ComboBox<String> tipoMenuComboBox;
 
-    // --- Dependencias y Estado ---
+    @FXML private ComboBox<Ingrediente> ingredienteComboBox;
+    @FXML private TextField cantidadField;
+    @FXML private Label unidadLabel;
+    @FXML private TableView<ItemReceta> tablaIngredientes;
+    @FXML private TableColumn<ItemReceta, String> colIngredienteNombre;
+    @FXML private TableColumn<ItemReceta, Float> colIngredienteCantidad;
+    @FXML private TableColumn<ItemReceta, String> colIngredienteUnidad;
 
-    /**
-     * La instancia del platillo que se está editando o creando. Es {@code null} si es nuevo.
-     */
     private Platillo platilloActual;
-    /**
-     * Instancia del servicio que maneja la lógica de negocio para la gestión del menú.
-     */
     private ServicioMenu servicioMenu;
-    /**
-     * Referencia al controlador principal para poder actualizar la vista tras guardar un cambio.
-     */
     private ControladorPrincipal controladorPrincipal;
 
-    /**
-     * Método de inicialización llamado manualmente por el controlador padre.
-     * <p>Configura las dependencias, inicializa el ComboBox y carga los datos si se está editando un platillo existente.</p>
-     *
-     * @param platillo El objeto Platillo a editar, o {@code null} si es una creación nueva.
-     * @param servicio La instancia de {@code ServicioMenu} para la persistencia.
-     * @param principal La instancia del controlador principal para refrescar datos.
-     */
+    private final ObservableList<ItemReceta> recetaObservableList = FXCollections.observableArrayList();
+    private final ServicioInventario servicioInventario = ServicioInventario.getInstance();
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        tipoMenuComboBox.setItems(FXCollections.observableArrayList("Desayunos", "Almuerzos", "Cenas"));
+        List<Ingrediente> ingredientesDisponibles = servicioInventario.obtenerInventario();
+        ingredienteComboBox.setItems(FXCollections.observableArrayList(ingredientesDisponibles));
+
+        colIngredienteNombre.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getIngrediente().getNombre()));
+        colIngredienteCantidad.setCellValueFactory(new PropertyValueFactory<>("cantidadRequerida"));
+        colIngredienteUnidad.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getIngrediente().getUnidades()));
+        tablaIngredientes.setItems(recetaObservableList);
+
+        ingredienteComboBox.setConverter(new StringConverter<Ingrediente>() {
+            @Override public String toString(Ingrediente object) { return object != null ? object.getNombre() : ""; }
+            @Override public Ingrediente fromString(String string) { return null; }
+        });
+
+        ingredienteComboBox.getSelectionModel().selectedItemProperty().addListener((obs, oldIng, newIng) -> {
+            unidadLabel.setText(newIng != null ? newIng.getUnidades() : "Unid.");
+        });
+    }
+
     public void inicializar(Platillo platillo, ServicioMenu servicio, ControladorPrincipal principal) {
         this.platilloActual = platillo;
         this.servicioMenu = servicio;
         this.controladorPrincipal = principal;
 
-        // Carga las opciones del ComboBox
-        tipoMenuComboBox.setItems(FXCollections.observableArrayList("Desayunos", "Almuerzos", "Cenas"));
-
         if (platillo != null) {
-            // Modo Edición
             tituloLabel.setText("Editar Platillo: " + platillo.getNombre());
             nombreField.setText(platillo.getNombre());
             descripcionField.setText(platillo.getDescripcion());
             precioField.setText(String.valueOf(platillo.getPrecio()));
-            tipoMenuComboBox.setValue(platillo.getTipoMenu()); // Asumiendo que Platillo tiene getTipoMenu()
+            tipoMenuComboBox.setValue(platillo.getTipoMenu());
+
+            if (platillo.getReceta() != null) {
+                recetaObservableList.setAll(platillo.getReceta());
+            }
+
         } else {
-            // Modo Creación
             tituloLabel.setText("Añadir Nuevo Platillo");
             tipoMenuComboBox.getSelectionModel().selectFirst();
         }
     }
 
-    /**
-     * Maneja el evento de clic del botón "Guardar".
-     * <p>Valida los campos, crea o actualiza el objeto {@code Platillo}, lo persiste
-     * a través del servicio, refresca la vista principal y cierra el modal.</p>
-     */
+    @FXML
+    public void agregarIngrediente(ActionEvent actionEvent) {
+        Ingrediente ingredienteSeleccionado = ingredienteComboBox.getSelectionModel().getSelectedItem();
+        String cantidadTexto = cantidadField.getText();
+
+        if (ingredienteSeleccionado == null || cantidadTexto.isEmpty()) {
+            new Alert(Alert.AlertType.WARNING, "Debes seleccionar un ingrediente y especificar la cantidad.").showAndWait();
+            return;
+        }
+
+        try {
+            float cantidad = Float.parseFloat(cantidadTexto);
+            if (cantidad <= 0) {
+                new Alert(Alert.AlertType.ERROR, "La cantidad debe ser un número positivo.").showAndWait();
+                return;
+            }
+
+            ItemReceta newItem = new ItemReceta(ingredienteSeleccionado, cantidad);
+            recetaObservableList.removeIf(item -> item.getIngrediente().getId() == ingredienteSeleccionado.getId());
+            recetaObservableList.add(newItem);
+
+            cantidadField.clear();
+            ingredienteComboBox.getSelectionModel().clearSelection();
+
+        } catch (NumberFormatException e) {
+            new Alert(Alert.AlertType.ERROR, "La cantidad debe ser un número válido.").showAndWait();
+        }
+    }
+
     @FXML
     private void guardar() {
         try {
             String nombre = nombreField.getText();
             String descripcion = descripcionField.getText();
-            // Intenta parsear el precio, capturando NumberFormatException si falla
             float precio = Float.parseFloat(precioField.getText());
             String tipoMenu = tipoMenuComboBox.getValue();
 
-            if (nombre.isEmpty() || tipoMenu == null) {
-                new Alert(Alert.AlertType.ERROR, "El nombre y el tipo de menú son obligatorios.").showAndWait();
+            if (nombre.isEmpty() || tipoMenu == null || recetaObservableList.isEmpty()) {
+                String mensaje = "Faltan campos obligatorios: ";
+                if (nombre.isEmpty()) mensaje += "Nombre, ";
+                if (tipoMenu == null) mensaje += "Tipo de Menú, ";
+                if (recetaObservableList.isEmpty()) mensaje += "Receta. ";
+                new Alert(Alert.AlertType.ERROR, mensaje.replaceAll(", $", "")).showAndWait();
                 return;
             }
 
-            if (platilloActual == null) {
-                // Creación de nuevo platillo
-                // Nota: Asumiendo que el constructor de Platillo acepta un parámetro para el tipo de menú.
-                platilloActual = new Platillo(0, nombre, descripcion, precio, true, null, tipoMenu);
+            List<ItemReceta> recetaFinal = new ArrayList<>(recetaObservableList);
+            boolean esNuevo = (platilloActual == null);
+
+            if (esNuevo) {
+                platilloActual = new Platillo(0, nombre, descripcion, precio, true, recetaFinal, tipoMenu);
             } else {
-                // Actualización del platillo existente
                 platilloActual.setNombre(nombre);
                 platilloActual.setDescripcion(descripcion);
                 platilloActual.setPrecio(precio);
-                platilloActual.setTipoMenu(tipoMenu); // Asumiendo que Platillo tiene setTipoMenu()
+                platilloActual.setTipoMenu(tipoMenu);
+                platilloActual.setReceta(recetaFinal);
             }
 
-            // Llama al servicio para guardar o actualizar
             servicioMenu.guardarPlatillo(platilloActual);
 
-            controladorPrincipal.refrescarVista(); // Actualiza la tabla en el controlador principal
-            cancelar(); // Cierra el modal
+            controladorPrincipal.refrescarVista();
+            cancelar();
 
         } catch (NumberFormatException e) {
             new Alert(Alert.AlertType.ERROR, "El precio debe ser un número válido.").showAndWait();
@@ -132,10 +158,6 @@ public class ControladorPlatilloModal {
         }
     }
 
-    /**
-     * Maneja el evento de clic del botón "Cancelar".
-     * <p>Obtiene la etapa (Stage) actual del modal y la cierra sin guardar cambios.</p>
-     */
     @FXML
     private void cancelar() {
         Stage stage = (Stage) nombreField.getScene().getWindow();
