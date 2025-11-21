@@ -98,6 +98,7 @@ public class ControladorLogin {
             Stage stage = (Stage) loginButton.getScene().getWindow();
             Scene scene = new Scene(root);
             stage.setScene(scene);
+            stage.setMaximized(true);
             stage.setTitle("Gestión Cocina Económica - Principal");
             stage.show();
         } catch (IOException e) {

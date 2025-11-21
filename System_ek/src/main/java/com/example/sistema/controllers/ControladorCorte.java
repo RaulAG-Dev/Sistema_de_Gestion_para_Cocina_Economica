@@ -1,12 +1,12 @@
 package com.example.sistema.controllers;
 
 import com.example.sistema.models.Pedido;
-import com.example.sistema.persistencia.ConvertidorPedido;
-import com.example.sistema.persistencia.RepositorioJSON;
+// Se eliminan RepositorioJSON y ConvertidorPedido
 import com.example.sistema.services.ServicioVentas;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -33,75 +33,39 @@ public class ControladorCorte implements Initializable {
 
     // --- Componentes FXML ---
 
-    /**
-     * Botón para regresar a la vista principal del sistema.
-     */
     @FXML private Button regresarButton;
-    /**
-     * Tabla donde se visualizarán los pedidos (ventas) realizadas durante el periodo del corte.
-     */
     @FXML private TableView<Pedido> ventasTable;
-    /**
-     * Columna de la tabla para mostrar el número o ID de la venta/pedido.
-     */
     @FXML private TableColumn<Pedido, Integer> numVentaColumn;
-    /**
-     * Columna de la tabla para mostrar un detalle breve del contenido de la venta/pedido.
-     */
     @FXML private TableColumn<Pedido, String> detalleVentaColumn;
-    /**
-     * Columna de la tabla para mostrar el monto total de la venta/pedido.
-     */
     @FXML private TableColumn<Pedido, Float> totalVentaColumn;
-    /**
-     * Etiqueta (Label) que muestra la suma total de las ventas esperadas para el corte.
-     */
     @FXML private Label totalCorteLabel;
-    /**
-     * Selector de fecha para indicar la fecha en que se realiza el corte.
-     */
     @FXML private DatePicker fechaCortePicker;
-    /**
-     * Botón para guardar el registro final del corte de caja en la persistencia.
-     */
     @FXML private Button guardarButton;
-    /**
-     * Botón para imprimir el resumen o ticket del corte de caja.
-     */
     @FXML private Button imprimirButton;
-    /**
-     * Área de texto para añadir notas u observaciones relevantes sobre el corte.
-     */
     @FXML private TextArea notasArea;
 
-    private final ServicioVentas servicioVentas = new ServicioVentas(
-            new RepositorioJSON<>("pedidos.json", new ConvertidorPedido())
-    );
+    // 🔑 CORRECCIÓN: Usar el Singleton para obtener la única instancia del servicio.
+    private final ServicioVentas servicioVentas = ServicioVentas.getInstance();
+
     /**
      * Método de inicialización llamado automáticamente después de que se carga el archivo FXML.
-     * <p>Se utiliza para configurar la tabla, cargar datos iniciales o listeners.</p>
-     *
-     * @param url La ubicación relativa del objeto raíz.
-     * @param resourceBundle Los recursos utilizados para localizar el objeto raíz.
      */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         // Configurar columnas
         numVentaColumn.setCellValueFactory(data -> new javafx.beans.property.SimpleObjectProperty<>(data.getValue().getId()));
 
-        detalleVentaColumn.setCellValueFactory(data -> {
-            String resumen = "";
-            for (var item : data.getValue().getItems()) {
-                resumen += item.getPlatillo().getNombre() + " x" + item.getCantidad() + " , ";
-            }
-            return new javafx.beans.property.SimpleStringProperty(resumen.trim());
-        });
+        // Configuración de detalleVentaColumn: Se usa el método seguro nombreSeguro para el resumen.
+        detalleVentaColumn.setCellValueFactory(data ->
+                new javafx.beans.property.SimpleStringProperty(nombreSeguro(data.getValue()))
+        );
 
         totalVentaColumn.setCellValueFactory(data -> new javafx.beans.property.SimpleObjectProperty<>(data.getValue().getTotal()));
 
         // Listener para cargar ventas al cambiar la fecha
         fechaCortePicker.valueProperty().addListener((obs, oldDate, newDate) -> {
             if (newDate != null) {
+                // Conversión de LocalDate a java.util.Date para el ServicioVentas
                 java.util.Date fecha = java.sql.Date.valueOf(newDate);
                 cargarVentasDelDia(fecha);
             }
@@ -126,29 +90,17 @@ public class ControladorCorte implements Initializable {
 
     /**
      * Maneja el evento de clic del botón "Regresar", navegando de vuelta a la vista principal.
-     *
-     * @param event El evento de acción (clic) que dispara la navegación.
      */
     @FXML
     void manejarRegreso(ActionEvent event) {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/sistema/principal-view.fxml"));
-            Parent root = loader.load();
-            Stage stage = (Stage) regresarButton.getScene().getWindow();
-            Scene scene = new Scene(root);
-            stage.setScene(scene);
-            stage.setTitle("Gestión Cocina Económica - Principal");
-            stage.show();
-        } catch (IOException e) {
-            System.err.println("Error al cargar la vista principal.");
-            e.printStackTrace();
-        }
+        Node source = (Node) event.getSource();
+        Scene scene = source.getScene();
+        Stage stageActual = (Stage) scene.getWindow();
+        stageActual.close();
     }
 
     /**
      * Maneja el evento de clic del botón "Guardar".
-     * <p>Lógica principal para validar los montos y registrar el corte final de caja
-     * en el sistema de persistencia (base de datos).</p>
      */
     @FXML
     private void guardarCorte() {
@@ -158,11 +110,40 @@ public class ControladorCorte implements Initializable {
 
     /**
      * Maneja el evento de clic del botón "Imprimir".
-     * <p>Lógica para generar el formato de impresión del resumen del corte.</p>
+     */
+    @FXML
+    private void imprimirCorte() {
+        // CORRECCIÓN: Asegurar que la conversión de LocalDate a Date sea correcta y consistente
+        java.util.Date fecha = java.sql.Date.valueOf(fechaCortePicker.getValue());
+        List<Pedido> ventas = servicioVentas.obtenerVentasPorFecha(fecha);
+        float total = servicioVentas.obtenerTotalDelDia(fecha);
+
+        StringBuilder resumen = new StringBuilder();
+        resumen.append("=== Corte de Caja ===\n");
+        resumen.append("Fecha: ").append(fechaCortePicker.getValue()).append("\n"); // Usar LocalDate para mejor formato
+        resumen.append("Ventas registradas: ").append(ventas.size()).append("\n\n");
+
+        for (Pedido p : ventas) {
+            String nombre = nombreSeguro(p);
+            System.out.println("Pedido #" + p.getId() + " nombre: " + nombre + " - Total: $" + p.getTotal());
+            resumen.append("Venta #").append(p.getId())
+                    .append(" - ").append(nombre)
+                    .append(" - Total: $").append(String.format("%.2f", p.getTotal())).append("\n");
+        }
+
+        resumen.append("\nTOTAL DEL DÍA: $").append(String.format("%.2f", total)).append("\n");
+        resumen.append("======================\n");
+        notasArea.setText(resumen.toString());
+    }
+
+    /**
+     * Utilidad para generar un nombre de pedido legible y seguro contra valores nulos.
      */
     private String nombreSeguro(Pedido p) {
         if (p.getNombre() != null && !p.getNombre().isBlank()) return p.getNombre();
         if (p.getItems() == null || p.getItems().isEmpty()) return "Pedido vacío";
+
+        // Reconstruye el resumen si el nombre principal es nulo, usando la lógica del pedido
         StringBuilder sb = new StringBuilder();
         for (var item : p.getItems()) {
             if (item.getPlatillo() != null && item.getPlatillo().getNombre() != null) {
@@ -171,28 +152,4 @@ public class ControladorCorte implements Initializable {
         }
         return sb.length() == 0 ? "Pedido sin detalle" : sb.toString().replaceAll(", $", "");
     }
-
-    @FXML
-    private void imprimirCorte() {
-        Date fecha = java.sql.Date.valueOf(fechaCortePicker.getValue());
-        List<Pedido> ventas = servicioVentas.obtenerVentasPorFecha(fecha);
-        float total = servicioVentas.obtenerTotalDelDia(fecha);
-
-        StringBuilder resumen = new StringBuilder();
-        resumen.append("=== Corte de Caja ===\n");
-        resumen.append("Fecha: ").append(fecha).append("\n");
-        resumen.append("Ventas registradas: ").append(ventas.size()).append("\n\n");
-
-        for (Pedido p : ventas) {
-            String nombre = nombreSeguro(p); // ← nunca null
-            System.out.println("Pedido #" + p.getId() + " nombre: " + nombre + " - Total: $" + p.getTotal());
-            resumen.append("Venta #").append(p.getId())
-                    .append(" - Total: $").append(p.getTotal()).append("\n");
-        }
-
-        resumen.append("\nTOTAL DEL DÍA: $").append(total).append("\n");
-        resumen.append("======================\n");
-        notasArea.setText(resumen.toString());
-    }
-
 }

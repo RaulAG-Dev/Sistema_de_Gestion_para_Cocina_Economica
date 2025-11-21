@@ -12,7 +12,7 @@ public class ServicioInventario {
     private final RepositorioJSON<Ingrediente> repositorio;
 
     public ServicioInventario() {
-        this.repositorio = new RepositorioJSON<>("ingredientes.json", new ConvertidorIngrediente());
+        this.repositorio = new RepositorioJSON<>("System_ek/src/main/data/ingredientes.json", new ConvertidorIngrediente());
     }
 
     public List<Ingrediente> obtenerInventario() {

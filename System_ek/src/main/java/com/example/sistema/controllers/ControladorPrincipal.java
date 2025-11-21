@@ -75,10 +75,8 @@ public class ControladorPrincipal implements Initializable {
     private ObservableList<ItemPedido> itemsPedido = FXCollections.observableArrayList();
     /** Instancia del servicio para interactuar con la lógica de negocio de platillos. */
     private final ServicioMenu servicioMenu = new ServicioMenu();
-    private final ServicioVentas servicioVentas = new ServicioVentas(
-            new com.example.sistema.persistencia.RepositorioJSON<>("pedidos.json",
-                    new com.example.sistema.persistencia.ConvertidorPedido())
-    );
+    // Código corregido (Usando el patrón Singleton):
+    private final ServicioVentas servicioVentas = ServicioVentas.getInstance();
     /** Arreglo estático que contiene los tipos de menú disponibles. */
     private final String[] TIPOS_MENU = {"Desayunos", "Almuerzos", "Cenas"};
 
@@ -347,11 +345,11 @@ public class ControladorPrincipal implements Initializable {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/sistema/Gestion-corte.fxml"));
             Parent root = loader.load();
-            Stage stage = (Stage) selectorMenu.getScene().getWindow();
+            Stage nuevaStage = new Stage();
             Scene scene = new Scene(root);
-            stage.setScene(scene);
-            stage.setTitle("Gestión Cocina Económica - Corte de Caja");
-            stage.show();
+            nuevaStage.setScene(scene);
+            nuevaStage.setTitle("Gestión Cocina Económica - Corte de Caja");
+            nuevaStage.show();
 
         } catch (IOException e) {
             System.err.println("Error al cargar la vista de Corte de Caja.");
@@ -366,11 +364,11 @@ public class ControladorPrincipal implements Initializable {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/sistema/Gestion-inventario.fxml"));
             Parent root = loader.load();
-            Stage stage = (Stage) selectorMenu.getScene().getWindow();
+            Stage nuevaStage = new Stage();
             Scene scene = new Scene(root);
-            stage.setScene(scene);
-            stage.setTitle("Gestión Cocina Económica - Inventario");
-            stage.show();
+            nuevaStage.setScene(scene);
+            nuevaStage.setTitle("Gestión Cocina Económica - Inventario");
+            nuevaStage.show();
 
         } catch (IOException e) {
             System.err.println("Error al cargar la vista de Inventario.");
@@ -393,11 +391,11 @@ public class ControladorPrincipal implements Initializable {
             // Asegúrate de que el FXML se llame "Gestion-clientes.fxml" o como sea
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/sistema/GestionClientes.fxml"));
             Parent root = loader.load();
-            Stage stage = (Stage) selectorMenu.getScene().getWindow();
+            Stage nuevaStage = new Stage();
             Scene scene = new Scene(root);
-            stage.setScene(scene);
-            stage.setTitle("Gestión Cocina Económica - Clientes");
-            stage.show();
+            nuevaStage.setScene(scene);
+            nuevaStage.setTitle("Gestión Cocina Económica - Clientes");
+            nuevaStage.show();
 
         } catch (IOException e) {
             System.err.println("Error al cargar la vista de Clientes.");
@@ -418,11 +416,11 @@ public class ControladorPrincipal implements Initializable {
             Parent root = loader.load();
 
             // Obtener el Stage actual
-            Stage stage = (Stage) selectorMenu.getScene().getWindow();
+            Stage nuevaStage = new Stage();
             Scene scene = new Scene(root);
-            stage.setScene(scene);
-            stage.setTitle("Gestión Cocina Económica - Historial de Ventas");
-            stage.show();
+            nuevaStage.setScene(scene);
+            nuevaStage.setTitle("Gestión Cocina Económica - Historial de Ventas");
+            nuevaStage.show();
 
         } catch (IOException e) {
             System.err.println("Error al cargar la vista de Historial de Ventas.");
@@ -469,5 +467,17 @@ public class ControladorPrincipal implements Initializable {
     }
 
 
-
+    public void abrirVentanaReportes(ActionEvent event) throws IOException {
+        URL fxmlUrl = getClass().getResource("/com/example/sistema/VistaReportes.fxml");
+        if (fxmlUrl == null) {
+            System.err.println("Error: No se encontró el FXML de Reportes.");
+            return;
+        }
+        FXMLLoader fxmlLoader = new FXMLLoader(fxmlUrl);
+        Parent root = fxmlLoader.load();
+        Stage nuevaStage = new Stage();
+        nuevaStage.setTitle("Reporte de Ventas");
+        nuevaStage.setScene(new Scene(root));
+        nuevaStage.show();
+    }
 }

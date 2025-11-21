@@ -3,6 +3,7 @@ package com.example.sistema.services;
 import com.example.sistema.models.ItemPedido;
 import com.example.sistema.models.Pedido;
 import com.example.sistema.persistencia.RepositorioJSON;
+import com.example.sistema.persistencia.ConvertidorPedido;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -11,13 +12,39 @@ import java.util.stream.Collectors;
 
 public class ServicioVentas {
 
+    private static ServicioVentas instance;
+    // Se elimina pedidosMaestros, ya que pedidosMemoria cumple la misma función.
     private final RepositorioJSON<Pedido> repositorio;
     private final List<Pedido> pedidosMemoria;
     private Pedido pedidoActual;
 
-    public ServicioVentas(RepositorioJSON<Pedido> repositorio) {
-        this.repositorio = repositorio;
-        this.pedidosMemoria = repositorio != null ? repositorio.obtenerTodos() : new ArrayList<>();
+    /**
+     * Constructor privado para forzar el patrón Singleton.
+     * Inicializa las dependencias (repositorio y datos) internamente.
+     */
+    private ServicioVentas() {
+        // Inicializa el RepositorioJSON con los argumentos necesarios (nombre de archivo y convertidor)
+        this.repositorio = new RepositorioJSON<Pedido>("System_ek/src/main/data/pedidos.json", new ConvertidorPedido());
+
+        // Inicializa la lista maestra de pedidos cargando desde el repositorio (si existe)
+        this.pedidosMemoria = this.repositorio != null ? this.repositorio.obtenerTodos() : new ArrayList<>();
+    }
+
+    // El constructor original con argumentos (que causaba errores) ha sido eliminado/reemplazado.
+
+    /**
+     * Devuelve la única instancia de ServicioVentas (patrón Singleton).
+     */
+    public static ServicioVentas getInstance() {
+        if (instance == null) {
+            instance = new ServicioVentas(); // Llama al constructor sin argumentos
+        }
+        return instance;
+    }
+
+    public List<Pedido> getPedidosMaestros() {
+        // Usa la lista que contiene los datos de la aplicación
+        return pedidosMemoria;
     }
 
     public Pedido crearPedido() {
@@ -27,6 +54,8 @@ public class ServicioVentas {
         pedidoActual.setPagado(false);
         pedidoActual.setTotal(0f);
 
+        // Si el repositorio es null (lo cual no debería ocurrir con la nueva inicialización),
+        // se usa el generador de IDs en memoria
         int nuevoId = repositorio != null ? repositorio.generarNuevoId() : generarIdMemoria();
         pedidoActual.setId(nuevoId);
 
@@ -51,10 +80,11 @@ public class ServicioVentas {
 
     public void guardarPedido(Pedido pedido) {
         pedido.calcularTotal();
-        pedido.generarNombreDesdeItems(); // ← asegura que el nombre esté listo
+        pedido.generarNombreDesdeItems();
         reemplazarOMeterMemoria(pedido);
         if (repositorio != null) {
             repositorio.guardar(pedido);
+            // Actualizar la lista en memoria si la persistencia fue exitosa
             pedidosMemoria.clear();
             pedidosMemoria.addAll(repositorio.obtenerTodos());
         }
