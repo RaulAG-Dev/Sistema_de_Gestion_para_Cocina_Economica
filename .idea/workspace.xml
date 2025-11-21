@@ -5,36 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="49c8785d-bcea-49e4-b987-9c89bc7874a7" name="Changes" comment="Nueva rama, nuevo: ServicioVentas con su convertidor y metodos creados para Gestión de ventas e Historial de ventas">
-      <change afterPath="$PROJECT_DIR$/System_ek/src/main/resources/com/example/sistema/PlatilloModal.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/System_ek/src/main/resources/com/example/sistema/PrincipalVew.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/System_ek/src/main/data/ingredientes.json" beforeDir="false" afterPath="$PROJECT_DIR$/System_ek/src/main/data/ingredientes.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/System_ek/src/main/data/pedidos.json" beforeDir="false" afterPath="$PROJECT_DIR$/System_ek/src/main/data/pedidos.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/System_ek/src/main/data/platillos.json" beforeDir="false" afterPath="$PROJECT_DIR$/System_ek/src/main/data/platillos.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/System_ek/src/main/java/com/example/sistema/MainApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/System_ek/src/main/java/com/example/sistema/MainApp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/System_ek/src/main/java/com/example/sistema/controllers/ControladorCorte.java" beforeDir="false" afterPath="$PROJECT_DIR$/System_ek/src/main/java/com/example/sistema/controllers/ControladorCorte.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/System_ek/src/main/java/com/example/sistema/controllers/ControladorGestionClientes.java" beforeDir="false" afterPath="$PROJECT_DIR$/System_ek/src/main/java/com/example/sistema/controllers/ControladorGestionClientes.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/System_ek/src/main/java/com/example/sistema/controllers/ControladorHistorialVentas.java" beforeDir="false" afterPath="$PROJECT_DIR$/System_ek/src/main/java/com/example/sistema/controllers/ControladorHistorialVentas.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/System_ek/src/main/java/com/example/sistema/controllers/ControladorInventario.java" beforeDir="false" afterPath="$PROJECT_DIR$/System_ek/src/main/java/com/example/sistema/controllers/ControladorInventario.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/System_ek/src/main/java/com/example/sistema/controllers/ControladorLogin.java" beforeDir="false" afterPath="$PROJECT_DIR$/System_ek/src/main/java/com/example/sistema/controllers/ControladorLogin.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/System_ek/src/main/java/com/example/sistema/controllers/ControladorPlatilloModal.java" beforeDir="false" afterPath="$PROJECT_DIR$/System_ek/src/main/java/com/example/sistema/controllers/ControladorPlatilloModal.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/System_ek/src/main/java/com/example/sistema/controllers/ControladorPrincipal.java" beforeDir="false" afterPath="$PROJECT_DIR$/System_ek/src/main/java/com/example/sistema/controllers/ControladorPrincipal.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/System_ek/src/main/java/com/example/sistema/controllers/ControladorReportes.java" beforeDir="false" afterPath="$PROJECT_DIR$/System_ek/src/main/java/com/example/sistema/controllers/ControladorReportes.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/System_ek/src/main/java/com/example/sistema/controllers/ControlladorVista.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/System_ek/src/main/java/com/example/sistema/controllers/MainController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/System_ek/src/main/java/com/example/sistema/models/Ingrediente.java" beforeDir="false" afterPath="$PROJECT_DIR$/System_ek/src/main/java/com/example/sistema/models/Ingrediente.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/System_ek/src/main/java/com/example/sistema/models/Platillo.java" beforeDir="false" afterPath="$PROJECT_DIR$/System_ek/src/main/java/com/example/sistema/models/Platillo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/System_ek/src/main/java/com/example/sistema/persistencia/ConvertidorPlatillo.java" beforeDir="false" afterPath="$PROJECT_DIR$/System_ek/src/main/java/com/example/sistema/persistencia/ConvertidorPlatillo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/System_ek/src/main/java/com/example/sistema/persistencia/RepositorioJSON.java" beforeDir="false" afterPath="$PROJECT_DIR$/System_ek/src/main/java/com/example/sistema/persistencia/RepositorioJSON.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/System_ek/src/main/java/com/example/sistema/services/ServicioInventario.java" beforeDir="false" afterPath="$PROJECT_DIR$/System_ek/src/main/java/com/example/sistema/services/ServicioInventario.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/System_ek/src/main/java/com/example/sistema/services/ServicioReportes.java" beforeDir="false" afterPath="$PROJECT_DIR$/System_ek/src/main/java/com/example/sistema/services/ServicioReportes.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/System_ek/src/main/java/com/example/sistema/services/ServicioVentas.java" beforeDir="false" afterPath="$PROJECT_DIR$/System_ek/src/main/java/com/example/sistema/services/ServicioVentas.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/System_ek/src/main/resources/com/example/sistema/Gestion-corte.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/System_ek/src/main/resources/com/example/sistema/GestionCorte.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/System_ek/src/main/resources/com/example/sistema/Gestion-inventario.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/System_ek/src/main/resources/com/example/sistema/GestionInventario.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/System_ek/src/main/resources/com/example/sistema/login-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/System_ek/src/main/resources/com/example/sistema/LogginView.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/System_ek/src/main/resources/com/example/sistema/main-view.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/System_ek/src/main/resources/com/example/sistema/platillo-modificacion-view.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/System_ek/src/main/resources/com/example/sistema/principal-view.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/System_ek/src/main/resources/com/example/sistema/VistaReportes.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/System_ek/src/main/resources/com/example/sistema/VistaReportes.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -156,6 +130,7 @@
       <workItem from="1763264064087" duration="8015000" />
       <workItem from="1763313865284" duration="4692000" />
       <workItem from="1763702863895" duration="306000" />
+      <workItem from="1763753596995" duration="6702000" />
     </task>
     <task id="LOCAL-00001" summary="Nueva rama, nuevo: ServicioVentas con su convertidor y metodos creados para Gestión de ventas e Historial de ventas">
       <option name="closed" value="true" />
@@ -178,6 +153,17 @@
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Nueva rama, nuevo: ServicioVentas con su convertidor y metodos creados para Gestión de ventas e Historial de ventas" />
