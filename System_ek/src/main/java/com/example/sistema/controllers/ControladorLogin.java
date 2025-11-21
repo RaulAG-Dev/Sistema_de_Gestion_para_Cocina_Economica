@@ -99,6 +99,7 @@ public class ControladorLogin {
             Scene scene = new Scene(root);
             stage.setScene(scene);
             stage.setTitle("Gestión Cocina Económica - Principal");
+            stage.centerOnScreen();
             stage.show();
         } catch (IOException e) {
             System.err.println("Error al cargar la vista principal después del login.");

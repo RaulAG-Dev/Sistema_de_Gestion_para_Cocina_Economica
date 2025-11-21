@@ -19,9 +19,9 @@
             <Separator orientation="VERTICAL" />
 
             <Button onAction="#gestionarVentas" style="-fx-background-color: transparent; -fx-text-fill: white; -fx-border-color: white; -fx-border-radius: 5; -fx-cursor: hand;" text="Corte de Caja" />
-            <Button onAction="#gestionarInventario" style="-fx-background-color: transparent; -fx-text-fill: white; -fx-cursor: hand;" text="Inventario" />
-            <Button onAction="#verHistorialVentas" style="-fx-background-color: transparent; -fx-text-fill: white; -fx-cursor: hand;" text="Historial" />
-            <Button onAction="#gestionarClientes" style="-fx-background-color: transparent; -fx-text-fill: white; -fx-cursor: hand;" text="Clientes" />
+            <Button onAction="#gestionarInventario" style="-fx-background-color: transparent; -fx-text-fill: white; -fx-border-color: white; -fx-border-radius: 5; -fx-cursor: hand;" text="Inventario" />
+            <Button onAction="#verHistorialVentas" style="-fx-background-color: transparent; -fx-text-fill: white; -fx-border-color: white; -fx-border-radius: 5; -fx-cursor: hand;" text="Historial Ventas" />
+            <Button onAction="#gestionarClientes" style="-fx-background-color: transparent; -fx-text-fill: white; -fx-border-color: white; -fx-border-radius: 5; -fx-cursor: hand;" text="Clientes" />
 
             <padding>
                 <Insets left="20" right="20" />

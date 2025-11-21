@@ -160,7 +160,7 @@ public class ControladorPrincipal implements Initializable {
         HBox header = new HBox(5);
 
         Label nombre = new Label(platillo.getNombre());
-        nombre.setStyle("-fx-font-weight: bold; -fx-font-size: 14px;");
+        nombre.setStyle("-fx-text-fill: black; -fx-font-weight: bold;");
 
         Region spacer = new Region();
         HBox.setHgrow(spacer, Priority.ALWAYS);
@@ -178,6 +178,7 @@ public class ControladorPrincipal implements Initializable {
 
 
         Label descripcion = new Label(platillo.getDescripcion());
+        descripcion.setStyle("-fx-text-fill: #333333;");
         descripcion.setWrapText(true);
 
         Label precio = new Label(String.format("$%.2f", platillo.getPrecio()));
