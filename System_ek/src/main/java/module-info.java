@@ -5,6 +5,7 @@ module com.example.sistema {
     requires org.controlsfx.controls;
     requires json.simple;
     requires javafx.graphics;
+    requires java.sql;
 
     exports com.example.sistema.models;
 

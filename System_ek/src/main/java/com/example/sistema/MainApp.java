@@ -14,6 +14,7 @@ public class MainApp extends Application {
 
         Scene scene = new Scene(fxmlLoader.load(), 400, 480);
         stage.setTitle("Inicio de sesión a cocina economica");
+        stage.centerOnScreen();
         stage.setScene(scene);
         stage.show();
     }

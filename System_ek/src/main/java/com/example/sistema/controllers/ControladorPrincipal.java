@@ -1,9 +1,10 @@
 package com.example.sistema.controllers;
 
-import com.example.sistema.models.ItemPedido;
-import com.example.sistema.models.Platillo;
-import com.example.sistema.models.Usuario;
+import com.example.sistema.models.*;
+import com.example.sistema.persistencia.ConvertidorPedido;
+import com.example.sistema.persistencia.RepositorioJSON;
 import com.example.sistema.services.ServicioMenu;
+import com.example.sistema.services.ServicioVentas;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
@@ -25,6 +26,7 @@ import javafx.scene.layout.HBox;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -73,6 +75,8 @@ public class ControladorPrincipal implements Initializable {
     private ObservableList<ItemPedido> itemsPedido = FXCollections.observableArrayList();
     /** Instancia del servicio para interactuar con la lógica de negocio de platillos. */
     private final ServicioMenu servicioMenu = new ServicioMenu();
+    // Código corregido (Usando el patrón Singleton):
+    private final ServicioVentas servicioVentas = ServicioVentas.getInstance();
     /** Arreglo estático que contiene los tipos de menú disponibles. */
     private final String[] TIPOS_MENU = {"Desayunos", "Almuerzos", "Cenas"};
 
@@ -342,11 +346,11 @@ public class ControladorPrincipal implements Initializable {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/sistema/Gestion-corte.fxml"));
             Parent root = loader.load();
-            Stage stage = (Stage) selectorMenu.getScene().getWindow();
+            Stage nuevaStage = new Stage();
             Scene scene = new Scene(root);
-            stage.setScene(scene);
-            stage.setTitle("Gestión Cocina Económica - Corte de Caja");
-            stage.show();
+            nuevaStage.setScene(scene);
+            nuevaStage.setTitle("Gestión Cocina Económica - Corte de Caja");
+            nuevaStage.show();
 
         } catch (IOException e) {
             System.err.println("Error al cargar la vista de Corte de Caja.");
@@ -361,11 +365,11 @@ public class ControladorPrincipal implements Initializable {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/sistema/Gestion-inventario.fxml"));
             Parent root = loader.load();
-            Stage stage = (Stage) selectorMenu.getScene().getWindow();
+            Stage nuevaStage = new Stage();
             Scene scene = new Scene(root);
-            stage.setScene(scene);
-            stage.setTitle("Gestión Cocina Económica - Inventario");
-            stage.show();
+            nuevaStage.setScene(scene);
+            nuevaStage.setTitle("Gestión Cocina Económica - Inventario");
+            nuevaStage.show();
 
         } catch (IOException e) {
             System.err.println("Error al cargar la vista de Inventario.");
@@ -388,11 +392,11 @@ public class ControladorPrincipal implements Initializable {
             // Asegúrate de que el FXML se llame "Gestion-clientes.fxml" o como sea
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/sistema/GestionClientes.fxml"));
             Parent root = loader.load();
-            Stage stage = (Stage) selectorMenu.getScene().getWindow();
+            Stage nuevaStage = new Stage();
             Scene scene = new Scene(root);
-            stage.setScene(scene);
-            stage.setTitle("Gestión Cocina Económica - Clientes");
-            stage.show();
+            nuevaStage.setScene(scene);
+            nuevaStage.setTitle("Gestión Cocina Económica - Clientes");
+            nuevaStage.show();
 
         } catch (IOException e) {
             System.err.println("Error al cargar la vista de Clientes.");
@@ -413,11 +417,11 @@ public class ControladorPrincipal implements Initializable {
             Parent root = loader.load();
 
             // Obtener el Stage actual
-            Stage stage = (Stage) selectorMenu.getScene().getWindow();
+            Stage nuevaStage = new Stage();
             Scene scene = new Scene(root);
-            stage.setScene(scene);
-            stage.setTitle("Gestión Cocina Económica - Historial de Ventas");
-            stage.show();
+            nuevaStage.setScene(scene);
+            nuevaStage.setTitle("Gestión Cocina Económica - Historial de Ventas");
+            nuevaStage.show();
 
         } catch (IOException e) {
             System.err.println("Error al cargar la vista de Historial de Ventas.");
@@ -432,13 +436,49 @@ public class ControladorPrincipal implements Initializable {
      *
      * @param event El evento de acción.
      */
-    @FXML void confirmarPedido(ActionEvent event) {
-        // Lógica para guardar el pedido (Pedido, ItemsPedido, Cliente, etc.)
-        System.out.println("Pedido confirmado para el cliente: " + nombreClienteField.getText());
+    // Dentro de ControladorPrincipal
+    @FXML
+    void confirmarPedido(ActionEvent event) {
+        // 1. Crear un nuevo pedido desde el servicio
+        Pedido pedido = servicioVentas.crearPedido();
 
-        // (Opcional) Limpiar la vista después de confirmar
-        // itemsPedido.clear();
-        // nombreClienteField.clear();
-        // actualizarTotal();
+        // 2. Asignar datos del cliente (por ahora solo nombre simulado)
+        Cliente cliente = new Cliente(); // si aún no tienes modelo, puedes dejarlo vacío
+        cliente.setNombre(nombreClienteField.getText());
+        pedido.setCliente(cliente);
+
+        // 3. Pasar los items de la tabla al pedido
+        pedido.setItems(new ArrayList<>(itemsPedido));
+
+        // 4. Calcular total y marcar como pagado
+        pedido.calcularTotal();
+        pedido.setPagado(true);
+
+        // 5. Guardar el pedido en memoria y JSON
+        servicioVentas.guardarPedido(pedido);
+
+        // 6. Feedback en consola
+        System.out.println("Pedido confirmado para el cliente: " + nombreClienteField.getText());
+        System.out.println("Total: $" + pedido.getTotal());
+
+        // 7. Limpiar la vista para un nuevo pedido
+        itemsPedido.clear();
+        nombreClienteField.clear();
+        totalPagarLabel.setText("$0.00");
+    }
+
+
+    public void abrirVentanaReportes(ActionEvent event) throws IOException {
+        URL fxmlUrl = getClass().getResource("/com/example/sistema/VistaReportes.fxml");
+        if (fxmlUrl == null) {
+            System.err.println("Error: No se encontró el FXML de Reportes.");
+            return;
+        }
+        FXMLLoader fxmlLoader = new FXMLLoader(fxmlUrl);
+        Parent root = fxmlLoader.load();
+        Stage nuevaStage = new Stage();
+        nuevaStage.setTitle("Reporte de Ventas");
+        nuevaStage.setScene(new Scene(root));
+        nuevaStage.show();
     }
 }

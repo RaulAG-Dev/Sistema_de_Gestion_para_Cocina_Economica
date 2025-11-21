@@ -13,8 +13,14 @@
   },
   {
     "id": 3,
-    "nombre": "emi",
-    "contrasena": "salbut123",
+  "nombre": "emi",
+  "contrasena": "salbut123",
+    "rol" : "empleado"
+  },
+  {
+    "id": 4,
+    "nombre": "",
+    "contrasena": "",
     "rol" : "empleado"
   }
 ]
