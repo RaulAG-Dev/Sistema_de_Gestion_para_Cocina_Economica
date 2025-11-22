@@ -84,7 +84,7 @@ public class ControladorCorte implements Initializable {
             // 2. Lógica para guardar el registro de corte de caja...
             // ...
 
-            // 🔑 3. ABRIR LA VENTANA DEL TICKET E INYECTAR DATOS
+            //3. ABRIR LA VENTANA DEL TICKET E INYECTAR DATOS
             abrirVentanaTicket(pedidosDelDia, efectivoContado, tarjetaContada, totalSistema, diferencia);
 
             // Cierra la ventana del Corte de Caja
