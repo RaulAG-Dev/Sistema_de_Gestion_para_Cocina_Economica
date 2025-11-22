@@ -1,7 +1,6 @@
 package com.example.sistema.controllers;
 
 import com.example.sistema.models.ItemPedido;
-import com.example.sistema.models.Pedido;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -11,7 +10,6 @@ import javafx.stage.Stage;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
 import java.util.Locale;
 
 public class ControladorTicketPedido {
@@ -24,25 +22,35 @@ public class ControladorTicketPedido {
     private static final DateTimeFormatter DATETIME_FORMAT =
             DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
 
-
-    public void inicializarTicketPedido(ObservableList<ItemPedido> pedidos, float total) {
+    public void inicializarTicketPedido(ObservableList<ItemPedido> pedidos, float total, String cliente) {
 
         StringBuilder ticket = new StringBuilder();
+        LocalDateTime horaCierre = LocalDateTime.now();
+
         ticket.append("===================================================\n");
-        ticket.append("                    COCINA EK\n");
+        ticket.append("         TICKET DE VENTA - COCINA EK\n");
         ticket.append("===================================================\n");
         ticket.append("\n\n");
-        ticket.append("DESCRIPCION                      CANT.     TOTAL\n");
+        ticket.append(String.format("Fecha/Hora: %s\n", horaCierre.format(DATETIME_FORMAT)));
+        ticket.append("Cliente: " + cliente);
+        ticket.append("\n\n");
         ticket.append("---------------------------------------------------\n");
+        ticket.append("DESCRIPCION                      CANT.       TOTAL\n");
+        ticket.append("---------------------------------------------------\n");
+
         for (ItemPedido item : pedidos) {
-                String nombrePlatillo = item.getPlatillo().getNombre();
-                String nombreCorto = nombrePlatillo.length() > 27 ? nombrePlatillo.substring(0, 27) : nombrePlatillo;
-                ticket.append(String.format(" %-32s %-7d %6s\n", nombreCorto, item.getCantidad(), currencyFormatter.format(item.calcularSubtotal())));
+            String nombrePlatillo = item.getPlatillo().getNombre();
+            String nombreCorto = nombrePlatillo.length() > 32 ? nombrePlatillo.substring(0, 32) : nombrePlatillo;
+            ticket.append(String.format(" %-32s %-7d %6s\n",
+                    nombreCorto,
+                    item.getCantidad(),
+                    currencyFormatter.format(item.calcularSubtotal())
+            ));
         }
+
         ticket.append("---------------------------------------------------\n");
         ticket.append(String.format("\n TOTAL: %40s", currencyFormatter.format(total)));
         ticketTextArea.setText(ticket.toString());
-
     }
 
     @FXML

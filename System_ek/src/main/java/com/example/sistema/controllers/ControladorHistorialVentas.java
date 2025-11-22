@@ -107,7 +107,7 @@ public class ControladorHistorialVentas {
         ticket.append("ID Venta: ").append(seleccionado.getId()).append("\n");
         ticket.append("Fecha: ").append(seleccionado.getFechaHora()).append("\n");
         ticket.append("Cliente: ").append(
-                seleccionado.getCliente() != null ? seleccionado.getCliente().getNombre() : "motoo"
+                seleccionado.getCliente() != null ? seleccionado.getCliente().getNombre() : "N/A"
         ).append("\n");
         ticket.append("----------------------------\n");
 

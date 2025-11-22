@@ -14,7 +14,7 @@
 
 <VBox prefHeight="300.0" prefWidth="400.0" spacing="20.0" style="-fx-padding: 25; -fx-background-color: white; -fx-background-radius: 10; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10, 0, 0, 0);" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.sistema.controllers.ControladorCorte">
 
-    <Label text="Confirmar Cierre de Caja" textFill="#2C3E50">
+    <Label text="Cierre de caja" textFill="#2C3E50">
         <font>
             <Font name="System Bold" size="22.0" />
         </font>
@@ -38,10 +38,10 @@
             <RowConstraints minHeight="30.0" prefHeight="35.0" vgrow="SOMETIMES" />
         </rowConstraints>
 
-        <Label style="-fx-font-weight: bold;" text="Monto en Efectivo:" />
-        <TextField fx:id="efectivoField" promptText="0.00" style="-fx-background-radius: 5; -fx-border-color: #ccc; -fx-border-radius: 5; -fx-padding: 8;" GridPane.columnIndex="1" />
+        <Label style="-fx-font-weight: bold;" text="Monto en efectivo:" />
+        <TextField fx:id="efectivoField" prefHeight="35.0" prefWidth="204.0" promptText="0.00" style="-fx-background-radius: 5; -fx-border-color: #ccc; -fx-border-radius: 5; -fx-padding: 8;" GridPane.columnIndex="1" />
 
-        <Label style="-fx-font-weight: bold;" text="Monto en Tarjeta:" GridPane.rowIndex="1" />
+        <Label style="-fx-font-weight: bold;" text="Monto en tarjeta:" GridPane.rowIndex="1" />
         <TextField fx:id="tarjetaField" promptText="0.00" style="-fx-background-radius: 5; -fx-border-color: #ccc; -fx-border-radius: 5; -fx-padding: 8;" GridPane.columnIndex="1" GridPane.rowIndex="1" />
     </GridPane>
 
@@ -53,7 +53,7 @@
                 <Insets bottom="8.0" left="15.0" right="15.0" top="8.0" />
             </padding>
         </Button>
-        <Button fx:id="confirmarButton" mnemonicParsing="false" onAction="#confirmarCorte" style="-fx-background-color: #27AE60; -fx-text-fill: white; -fx-font-weight: bold; -fx-cursor: hand; -fx-background-radius: 5;" text="Confirmar Corte">
+        <Button fx:id="confirmarButton" mnemonicParsing="false" onAction="#confirmarCorte" style="-fx-background-color: #27AE60; -fx-text-fill: white; -fx-font-weight: bold; -fx-cursor: hand; -fx-background-radius: 5;" text="Confirmar">
             <padding>
                 <Insets bottom="8.0" left="20.0" right="20.0" top="8.0" />
             </padding>

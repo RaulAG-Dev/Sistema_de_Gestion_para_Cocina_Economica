@@ -421,14 +421,14 @@ public class ControladorPrincipal implements Initializable {
     }
 
 
-    private void abrirVentanaTicketPedido(ObservableList<ItemPedido> pedidos, float totalSistema) throws IOException {
+    private void abrirVentanaTicketPedido(ObservableList<ItemPedido> pedidos, float totalSistema, String cliente) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/sistema/TicketPedido.fxml"));
         Parent root = loader.load();
 
         ControladorTicketPedido controladorTicket = loader.getController();
 
         // Inyectar todos los datos necesarios para construir el ticket
-        controladorTicket.inicializarTicketPedido(pedidos, totalSistema);
+        controladorTicket.inicializarTicketPedido(pedidos, totalSistema, cliente);
 
         Stage stage = new Stage();
         stage.initModality(Modality.APPLICATION_MODAL);
@@ -460,7 +460,7 @@ public class ControladorPrincipal implements Initializable {
         float total = actualizarTotal();
 
         servicioVentas.guardarPedido(pedido);
-        abrirVentanaTicketPedido(itemsPedido, total);
+        abrirVentanaTicketPedido(itemsPedido, total, nombreClienteField.getText());
 
         System.out.println("Pedido confirmado para el cliente: " + nombreClienteField.getText());
         System.out.println("Total: $" + pedido.getTotal());
@@ -469,7 +469,6 @@ public class ControladorPrincipal implements Initializable {
         nombreClienteField.clear();
         totalPagarLabel.setText("$0.00");
     }
-
 
     public void abrirVentanaReportes(ActionEvent event) throws IOException {
         URL fxmlUrl = getClass().getResource("/com/example/sistema/VistaReportes.fxml");
