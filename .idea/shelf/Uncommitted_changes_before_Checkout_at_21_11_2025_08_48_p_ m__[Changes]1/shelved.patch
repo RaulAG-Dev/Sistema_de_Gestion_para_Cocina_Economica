@@ -1,0 +1,92 @@
+Index: .idea/shelf/Uncommitted_changes_before_Checkout_at_13_11_2025_06_34_p_ m__[Changes]/shelved.patch
+===================================================================
+diff --git a/.idea/shelf/Uncommitted_changes_before_Checkout_at_13_11_2025_06_34_p_ m__[Changes]/shelved.patch b/.idea/shelf/Uncommitted_changes_before_Checkout_at_13_11_2025_06_34_p_ m__[Changes]/shelved.patch
+deleted file mode 100644
+--- a/.idea/shelf/Uncommitted_changes_before_Checkout_at_13_11_2025_06_34_p_ m__[Changes]/shelved.patch	(revision 339f7306302f3ef592a05c90b1552b50885c427a)
++++ /dev/null	(revision 339f7306302f3ef592a05c90b1552b50885c427a)
+@@ -1,73 +0,0 @@
+-Index: .idea/.gitignore
+-===================================================================
+-diff --git a/.idea/.gitignore b/.idea/.gitignore
+-deleted file mode 100644
+---- a/.idea/.gitignore	(revision 68ea2a9c23fd7647bcc00c4985cb59bf0d716723)
+-+++ /dev/null	(revision 68ea2a9c23fd7647bcc00c4985cb59bf0d716723)
+-@@ -1,8 +0,0 @@
+--# Default ignored files
+--/shelf/
+--/workspace.xml
+--# Editor-based HTTP Client requests
+--/httpRequests/
+--# Datasource local storage ignored files
+--/dataSources/
+--/dataSources.local.xml
+-Index: .idea/material_theme_project_new.xml
+-===================================================================
+-diff --git a/.idea/material_theme_project_new.xml b/.idea/material_theme_project_new.xml
+-deleted file mode 100644
+---- a/.idea/material_theme_project_new.xml	(revision 68ea2a9c23fd7647bcc00c4985cb59bf0d716723)
+-+++ /dev/null	(revision 68ea2a9c23fd7647bcc00c4985cb59bf0d716723)
+-@@ -1,12 +0,0 @@
+--<?xml version="1.0" encoding="UTF-8"?>
+--<project version="4">
+--  <component name="MaterialThemeProjectNewConfig">
+--    <option name="metadata">
+--      <MTProjectMetadataState>
+--        <option name="migrated" value="true" />
+--        <option name="pristineConfig" value="false" />
+--        <option name="userId" value="-23317912:198e2cbade4:-7ffe" />
+--      </MTProjectMetadataState>
+--    </option>
+--  </component>
+--</project>
+-\ No newline at end of file
+-Index: .idea/encodings.xml
+-IDEA additional info:
+-Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+-<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"Encoding\">\r\n    <file url=\"file://$PROJECT_DIR$/System_ek/src/main/java\" charset=\"UTF-8\" />\r\n    <file url=\"file://$PROJECT_DIR$/System_ek/src/main/resources\" charset=\"UTF-8\" />\r\n    <file url=\"file://$PROJECT_DIR$/src/main/java\" charset=\"UTF-8\" />\r\n    <file url=\"file://$PROJECT_DIR$/src/main/resources\" charset=\"UTF-8\" />\r\n  </component>\r\n</project>
+-Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+-<+>UTF-8
+-===================================================================
+-diff --git a/.idea/encodings.xml b/.idea/encodings.xml
+---- a/.idea/encodings.xml	(revision 68ea2a9c23fd7647bcc00c4985cb59bf0d716723)
+-+++ b/.idea/encodings.xml	(date 1763080050836)
+-@@ -1,8 +1,6 @@
+- <?xml version="1.0" encoding="UTF-8"?>
+- <project version="4">
+-   <component name="Encoding">
+--    <file url="file://$PROJECT_DIR$/System_ek/src/main/java" charset="UTF-8" />
+--    <file url="file://$PROJECT_DIR$/System_ek/src/main/resources" charset="UTF-8" />
+-     <file url="file://$PROJECT_DIR$/src/main/java" charset="UTF-8" />
+-     <file url="file://$PROJECT_DIR$/src/main/resources" charset="UTF-8" />
+-   </component>
+-Index: .idea/vcs.xml
+-IDEA additional info:
+-Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+-<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"VcsDirectoryMappings\">\r\n    <mapping directory=\"$PROJECT_DIR$\" vcs=\"Git\" />\r\n  </component>\r\n</project>
+-Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+-<+>UTF-8
+-===================================================================
+-diff --git a/.idea/vcs.xml b/.idea/vcs.xml
+---- a/.idea/vcs.xml	(revision 68ea2a9c23fd7647bcc00c4985cb59bf0d716723)
+-+++ b/.idea/vcs.xml	(date 1763080050858)
+-@@ -1,6 +1,6 @@
+- <?xml version="1.0" encoding="UTF-8"?>
+- <project version="4">
+-   <component name="VcsDirectoryMappings">
+--    <mapping directory="$PROJECT_DIR$" vcs="Git" />
+-+    <mapping directory="" vcs="Git" />
+-   </component>
+- </project>
+-\ No newline at end of file
+Index: .idea/shelf/Uncommitted_changes_before_Checkout_at_13_11_2025_06_34_p__m___Changes_.xml
+===================================================================
+diff --git a/.idea/shelf/Uncommitted_changes_before_Checkout_at_13_11_2025_06_34_p__m___Changes_.xml b/.idea/shelf/Uncommitted_changes_before_Checkout_at_13_11_2025_06_34_p__m___Changes_.xml
+deleted file mode 100644
+--- a/.idea/shelf/Uncommitted_changes_before_Checkout_at_13_11_2025_06_34_p__m___Changes_.xml	(revision 339f7306302f3ef592a05c90b1552b50885c427a)
++++ /dev/null	(revision 339f7306302f3ef592a05c90b1552b50885c427a)
+@@ -1,4 +0,0 @@
+-<changelist name="Uncommitted_changes_before_Checkout_at_13_11_2025_06_34_p_ m__[Changes]" date="1763080457594" recycled="true" deleted="true">
+-  <option name="PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_13_11_2025_06_34_p_ m__[Changes]/shelved.patch" />
+-  <option name="DESCRIPTION" value="Uncommitted changes before Checkout at 13/11/2025 06:34 p. m. [Changes]" />
+-</changelist>
+\ No newline at end of file
