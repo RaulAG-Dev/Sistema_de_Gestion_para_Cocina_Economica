@@ -1,19 +1,52 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<VBox prefHeight="600.0" prefWidth="428.0" spacing="10.0" style="-fx-padding: 15;" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.sistema.controllers.ControladorTicketCorte">
-    <Label alignment="CENTER" maxWidth="Infinity" style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-alignment: center;" text="Resumen de corte de caja" />
+<VBox prefHeight="650.0" prefWidth="450.0" spacing="15.0" style="-fx-padding: 25; -fx-background-color: white; -fx-background-radius: 10; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.15), 10, 0, 0, 0);" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.sistema.controllers.ControladorTicketCorte">
+
+    <VBox alignment="CENTER" spacing="5">
+        <Label text="Vista Previa del Ticket" textFill="#2C3E50">
+            <font>
+                <Font name="System Bold" size="18.0" />
+            </font>
+        </Label>
+        <Label text="Verifique los datos antes de imprimir" textFill="#7f8c8d">
+            <font>
+                <Font size="12.0" />
+            </font>
+        </Label>
+    </VBox>
+
     <Separator />
 
-    <TextArea fx:id="ticketTextArea" editable="false" style="-fx-font-family: 'Monospaced'; -fx-font-size: 12px; -fx-text-fill: #000000" wrapText="true" VBox.vgrow="ALWAYS" />
+    <VBox style="-fx-border-color: #e0e0e0; -fx-border-radius: 3; -fx-padding: 1;" VBox.vgrow="ALWAYS">
+        <TextArea fx:id="ticketTextArea" editable="false" wrapText="true" style="-fx-font-family: 'Consolas', 'Monospaced'; -fx-font-size: 13px; -fx-text-fill: #333333; -fx-control-inner-background: #FAFAFA; -fx-background-color: #FAFAFA;" VBox.vgrow="ALWAYS" />
+    </VBox>
 
-    <HBox alignment="CENTER" spacing="10.0">
-        <Button onAction="#cerrar" text="Cerrar" />
+    <Separator />
+
+    <HBox alignment="CENTER_RIGHT" spacing="15.0">
+        <Button onAction="#cerrar" style="-fx-background-color: #ecf0f1; -fx-text-fill: #555; -fx-cursor: hand; -fx-background-radius: 5;" text="Cerrar Ventana">
+            <padding>
+                <Insets bottom="10.0" left="20.0" right="20.0" top="10.0" />
+            </padding>
+        </Button>
+
+        <Button onAction="#imprimir" style="-fx-background-color: #2980b9; -fx-text-fill: white; -fx-font-weight: bold; -fx-cursor: hand; -fx-background-radius: 5;" text="Imprimir Ticket">
+            <padding>
+                <Insets bottom="10.0" left="20.0" right="20.0" top="10.0" />
+            </padding>
+            <font>
+                <Font size="14.0" />
+            </font>
+        </Button>
     </HBox>
+
 </VBox>

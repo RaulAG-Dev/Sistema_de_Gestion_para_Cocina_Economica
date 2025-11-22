@@ -21,8 +21,9 @@ public class MainApp extends Application {
 
         FXMLLoader fxmlLoader = new FXMLLoader(MainApp.class.getResource("/com/example/sistema/LogginView.fxml"));
 
-        Scene scene = new Scene(fxmlLoader.load(), 320, 240);
+        Scene scene = new Scene(fxmlLoader.load(), 400, 480);
         stage.setTitle("Inicio de sesión a cocina economica");
+        stage.centerOnScreen();
         stage.setScene(scene);
         stage.show();
     }

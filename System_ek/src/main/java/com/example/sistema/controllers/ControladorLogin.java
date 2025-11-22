@@ -98,6 +98,7 @@ public class ControladorLogin {
             stage.setScene(scene);
             stage.setMaximized(true);
             stage.setTitle("Cocina EK");
+            stage.centerOnScreen();
             stage.show();
         } catch (IOException e) {
             System.err.println("Error al cargar la vista principal después del login.");

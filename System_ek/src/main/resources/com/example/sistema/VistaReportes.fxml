@@ -27,7 +27,7 @@
              </HBox>
 
              <HBox alignment="CENTER_LEFT" spacing="10.0">
-   
+
                 <HBox alignment="CENTER_LEFT" spacing="10.0">
                     <Label text="Personalizado: " />
                     <DatePicker fx:id="dpFechaInicio" promptText="Fecha inicio" />
