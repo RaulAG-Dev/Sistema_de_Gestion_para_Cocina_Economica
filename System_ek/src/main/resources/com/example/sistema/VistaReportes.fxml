@@ -48,9 +48,9 @@
 
             <TableView fx:id="tablaReportes" prefHeight="492.0" prefWidth="930.0">
                 <columns>
-                    <TableColumn fx:id="colFecha" prefWidth="150.0" text="Fecha y Hora" />
-                    <TableColumn fx:id="colNombre" prefWidth="350.0" text="Descripción del Pedido" />
-                    <TableColumn fx:id="colTotal" prefWidth="150.0" text="Monto Total" />
+                    <TableColumn fx:id="colFecha" prefWidth="150.0" text="Fecha y hora" />
+                    <TableColumn fx:id="colNombre" prefWidth="350.0" text="Descripción del pedido" />
+                    <TableColumn fx:id="colTotal" prefWidth="150.0" text="Monto total" />
                 </columns>
             </TableView>
         </VBox>

@@ -1,1 +1,328 @@
-[{"descripcion":"300gr de carne de pollo en 500ml de consome con 250gr de verduras varias","precio":55.0,"receta":[{"ingredienteId":1,"cantidadRequerida":10.0},{"ingredienteId":4,"cantidadRequerida":0.15},{"ingredienteId":16,"cantidadRequerida":0.15},{"ingredienteId":14,"cantidadRequerida":0.08},{"ingredienteId":22,"cantidadRequerida":0.55}],"tipoMenu":"Almuerzos","id":1,"nombre":"Caldo de pollo","disponible":true},{"descripcion":"4 piezas de waffles con topping de nutella y fresa","precio":60.0,"receta":[],"tipoMenu":"Desayunos","id":3,"nombre":"Waffles con nutella","disponible":true},{"descripcion":"Chilaquiles bañados en salsa verde con huevo, cebolla, frijol y queso fresco","precio":95.0,"receta":[{"ingredienteId":1,"cantidadRequerida":0.115},{"ingredienteId":10,"cantidadRequerida":0.45},{"ingredienteId":22,"cantidadRequerida":0.3},{"ingredienteId":11,"cantidadRequerida":0.2},{"ingredienteId":18,"cantidadRequerida":0.035},{"ingredienteId":15,"cantidadRequerida":0.05},{"ingredienteId":12,"cantidadRequerida":0.02}],"tipoMenu":"Almuerzos","id":5,"nombre":"Chilaquiles","disponible":true},{"descripcion":"Pechuga de pollo a la plancha en un pannini con aderezos y papas","precio":80.0,"receta":[{"ingredienteId":20,"cantidadRequerida":0.35},{"ingredienteId":19,"cantidadRequerida":1.0},{"ingredienteId":21,"cantidadRequerida":0.035}],"tipoMenu":"Cenas","id":6,"nombre":"Pannini de pollo","disponible":true},{"descripcion":"Medio litro de dulce jugo de naranja","precio":35.0,"receta":[{"ingredienteId":22,"cantidadRequerida":0.5},{"ingredienteId":2,"cantidadRequerida":0.5}],"tipoMenu":"Desayunos","id":7,"nombre":"Jugo de naranja","disponible":true}]
+[
+  {
+    "descripcion":"4 piezas de waffles con topping de nutella y fresa",
+    "precio":60.0,
+    "receta":[
+      {"ingredienteId":7,"cantidadRequerida":0.1},
+      {"ingredienteId":8,"cantidadRequerida":0.3},
+      {"ingredienteId":24,"cantidadRequerida":0.02},
+      {"ingredienteId":41,"cantidadRequerida":0.015},
+      {"ingredienteId":17,"cantidadRequerida":0.035},
+      {"ingredienteId":13,"cantidadRequerida":2.0},
+      {"ingredienteId":42,"cantidadRequerida":0.25}
+    ],
+    "tipoMenu":"Desayunos",
+    "id":3,
+    "nombre":"Waffles con nutella",
+    "disponible":true
+  },
+
+  {
+    "descripcion":"Huevos revueltos con tomate y cebolla",
+    "precio":45.0,
+    "receta":[
+      {"ingredienteId":13,"cantidadRequerida":2},
+      {"ingredienteId":26,"cantidadRequerida":0.1},
+      {"ingredienteId":14,"cantidadRequerida":0.05},
+      {"ingredienteId":41,"cantidadRequerida":0.01}
+    ],
+    "tipoMenu":"Desayunos",
+    "id":4,
+    "nombre":"Huevos a la Mexicana",
+    "disponible":true
+  },
+  {
+    "descripcion":"Tortilla de harina rellena de pollo deshebrado con tomate y cilantro",
+    "precio":55.0,
+    "receta":[
+      {"ingredienteId":1,"cantidadRequerida":0.15},
+      {"ingredienteId":8,"cantidadRequerida":0.2},
+      {"ingredienteId":26,"cantidadRequerida":0.05},
+      {"ingredienteId":29,"cantidadRequerida":0.02}
+    ],
+    "tipoMenu":"Desayunos",
+    "id":5,
+    "nombre":"Burrito de Pollo",
+    "disponible":true
+  },
+  {
+    "descripcion":"Pan tostado con mantequilla y huevo",
+    "precio":40.0,
+    "receta":[
+      {"ingredienteId":19,"cantidadRequerida":1},
+      {"ingredienteId":41,"cantidadRequerida":0.02},
+      {"ingredienteId":13,"cantidadRequerida":1}
+    ],
+    "tipoMenu":"Desayunos",
+    "id":6,
+    "nombre":"Toast con huevo",
+    "disponible":true
+  },
+  {
+    "descripcion":"Avena con leche y fresa fresca",
+    "precio":38.0,
+    "receta":[
+      {"ingredienteId":42,"cantidadRequerida":0.3},
+      {"ingredienteId":7,"cantidadRequerida":0.08},
+      {"ingredienteId":24,"cantidadRequerida":0.03}
+    ],
+    "tipoMenu":"Desayunos",
+    "id":7,
+    "nombre":"Avena con fresa",
+    "disponible":true
+  },
+  {
+    "descripcion":"Quesadillas de queso fresco con salsa de tomate",
+    "precio":42.0,
+    "receta":[
+      {"ingredienteId":10,"cantidadRequerida":0.15},
+      {"ingredienteId":12,"cantidadRequerida":0.08},
+      {"ingredienteId":26,"cantidadRequerida":0.05}
+    ],
+    "tipoMenu":"Cenas",
+    "id":8,
+    "nombre":"Quesadillas",
+    "disponible":true
+  },
+
+  {
+    "descripcion":"Jugo natural de naranja",
+    "precio":25.0,
+    "receta":[
+      {"ingredienteId":2,"cantidadRequerida":0.3}
+    ],
+    "tipoMenu":"Desayunos",
+    "id":9,
+    "nombre":"Jugo de Naranja",
+    "disponible":true
+  },
+  {
+    "descripcion":"Leche fría simple",
+    "precio":20.0,
+    "receta":[
+      {"ingredienteId":42,"cantidadRequerida":0.35}
+    ],
+    "tipoMenu":"Desayunos",
+    "id":10,
+    "nombre":"Vaso de leche",
+    "disponible":true
+  },
+  {
+    "descripcion":"Agua natural",
+    "precio":10.0,
+    "receta":[
+      {"ingredienteId":22,"cantidadRequerida":0.4}
+    ],
+    "tipoMenu":"Desayunos",
+    "id":11,
+    "nombre":"Agua",
+    "disponible":true
+  },
+
+  {
+    "descripcion":"Pollo a la plancha con arroz y ensalada",
+    "precio":75.0,
+    "receta":[
+      {"ingredienteId":1,"cantidadRequerida":0.25},
+      {"ingredienteId":23,"cantidadRequerida":0.1},
+      {"ingredienteId":37,"cantidadRequerida":0.05},
+      {"ingredienteId":35,"cantidadRequerida":0.01}
+    ],
+    "tipoMenu":"Almuerzos",
+    "id":12,
+    "nombre":"Pollo con arroz",
+    "disponible":true
+  },
+  {
+    "descripcion":"Carne molida guisada con tomate y papa",
+    "precio":80.0,
+    "receta":[
+      {"ingredienteId":32,"cantidadRequerida":0.25},
+      {"ingredienteId":26,"cantidadRequerida":0.08},
+      {"ingredienteId":27,"cantidadRequerida":0.15},
+      {"ingredienteId":14,"cantidadRequerida":0.05}
+    ],
+    "tipoMenu":"Almuerzos",
+    "id":13,
+    "nombre":"Carne molida guisada",
+    "disponible":true
+  },
+  {
+    "descripcion":"Ensalada fresca con lechuga, pepino y fresa",
+    "precio":55.0,
+    "receta":[
+      {"ingredienteId":37,"cantidadRequerida":0.07},
+      {"ingredienteId":36,"cantidadRequerida":0.05},
+      {"ingredienteId":7,"cantidadRequerida":0.05}
+    ],
+    "tipoMenu":"Almuerzos",
+    "id":14,
+    "nombre":"Ensalada fresca",
+    "disponible":true
+  },
+  {
+    "descripcion":"Frijoles guisados con tortilla y queso fresco",
+    "precio":48.0,
+    "receta":[
+      {"ingredienteId":15,"cantidadRequerida":0.15},
+      {"ingredienteId":10,"cantidadRequerida":0.1},
+      {"ingredienteId":12,"cantidadRequerida":0.05}
+    ],
+    "tipoMenu":"Almuerzos",
+    "id":15,
+    "nombre":"Frijoles con queso",
+    "disponible":true
+  },
+  {
+    "descripcion":"Pasta con salsa de tomate y queso rallado",
+    "precio":62.0,
+    "receta":[
+      {"ingredienteId":33,"cantidadRequerida":0.15},
+      {"ingredienteId":26,"cantidadRequerida":0.1},
+      {"ingredienteId":43,"cantidadRequerida":0.05}
+    ],
+    "tipoMenu":"Almuerzos",
+    "id":16,
+    "nombre":"Pasta roja",
+    "disponible":true
+  },
+
+  {
+    "descripcion":"Agua fresca de naranja",
+    "precio":18.0,
+    "receta":[
+      {"ingredienteId":2,"cantidadRequerida":0.2},
+      {"ingredienteId":22,"cantidadRequerida":0.5}
+    ],
+    "tipoMenu":"Almuerzos",
+    "id":17,
+    "nombre":"Agua de naranja",
+    "disponible":true
+  },
+  {
+    "descripcion":"Limonada con azúcar",
+    "precio":20.0,
+    "receta":[
+      {"ingredienteId":22,"cantidadRequerida":0.4},
+      {"ingredienteId":24,"cantidadRequerida":0.03}
+    ],
+    "tipoMenu":"Almuerzos",
+    "id":18,
+    "nombre":"Limonada",
+    "disponible":true
+  },
+  {
+    "descripcion":"Agua simple",
+    "precio":10.0,
+    "receta":[
+      {"ingredienteId":22,"cantidadRequerida":0.4}
+    ],
+    "tipoMenu":"Almuerzos",
+    "id":19,
+    "nombre":"Agua",
+    "disponible":true
+  },
+
+  {
+    "descripcion":"Sándwich de jamón, queso y tomate",
+    "precio":50.0,
+    "receta":[
+      {"ingredienteId":19,"cantidadRequerida":2},
+      {"ingredienteId":39,"cantidadRequerida":0.05},
+      {"ingredienteId":43,"cantidadRequerida":0.04},
+      {"ingredienteId":26,"cantidadRequerida":0.04}
+    ],
+    "tipoMenu":"Cenas",
+    "id":20,
+    "nombre":"Sándwich sencillo",
+    "disponible":true
+  },
+  {
+    "descripcion":"Sopa de pasta con tomate",
+    "precio":45.0,
+    "receta":[
+      {"ingredienteId":33,"cantidadRequerida":0.1},
+      {"ingredienteId":26,"cantidadRequerida":0.08},
+      {"ingredienteId":22,"cantidadRequerida":0.4}
+    ],
+    "tipoMenu":"Cenas",
+    "id":21,
+    "nombre":"Sopa de pasta",
+    "disponible":true
+  },
+  {
+    "descripcion":"Tacos de pollo con cebolla y cilantro",
+    "precio":58.0,
+    "receta":[
+      {"ingredienteId":20,"cantidadRequerida":0.18},
+      {"ingredienteId":14,"cantidadRequerida":0.05},
+      {"ingredienteId":29,"cantidadRequerida":0.02},
+      {"ingredienteId":10,"cantidadRequerida":0.1}
+    ],
+    "tipoMenu":"Cenas",
+    "id":22,
+    "nombre":"Tacos de pollo",
+    "disponible":true
+  },
+  {
+    "descripcion":"Calabaza salteada con ajo y cebolla",
+    "precio":40.0,
+    "receta":[
+      {"ingredienteId":16,"cantidadRequerida":0.15},
+      {"ingredienteId":35,"cantidadRequerida":0.01},
+      {"ingredienteId":14,"cantidadRequerida":0.04}
+    ],
+    "tipoMenu":"Cenas",
+    "id":23,
+    "nombre":"Calabaza salteada",
+    "disponible":true
+  },
+  {
+    "descripcion":"Huevos con jamón",
+    "precio":50.0,
+    "receta":[
+      {"ingredienteId":13,"cantidadRequerida":2},
+      {"ingredienteId":39,"cantidadRequerida":0.05}
+    ],
+    "tipoMenu":"Desayunos",
+    "id":24,
+    "nombre":"Huevos con jamón",
+    "disponible":true
+  },
+
+
+  {
+    "descripcion":"Leche caliente",
+    "precio":18.0,
+    "receta":[
+      {"ingredienteId":42,"cantidadRequerida":0.35}
+    ],
+    "tipoMenu":"Cenas",
+    "id":25,
+    "nombre":"Leche caliente",
+    "disponible":true
+  },
+  {
+    "descripcion":"Agua simple",
+    "precio":10.0,
+    "receta":[
+      {"ingredienteId":22,"cantidadRequerida":0.4}
+    ],
+    "tipoMenu":"Cenas",
+    "id":26,
+    "nombre":"Agua",
+    "disponible":true
+  },
+  {
+    "descripcion":"Jugo de fresa natural",
+    "precio":25.0,
+    "receta":[
+      {"ingredienteId":7,"cantidadRequerida":0.15},
+      {"ingredienteId":22,"cantidadRequerida":0.4}
+    ],
+    "tipoMenu":"Cenas",
+    "id":27,
+    "nombre":"Jugo de fresa",
+    "disponible":true
+  }
+]

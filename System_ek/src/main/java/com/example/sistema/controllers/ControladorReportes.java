@@ -104,9 +104,6 @@ public class ControladorReportes implements Initializable {
     @FXML
     void generarReportePersonalizado(ActionEvent event) {
         if (dpFechaInicio.getValue() != null && dpFechaFin.getValue() != null) {
-            monthlySelectionBox.setVisible(false);
-            monthlySelectionBox.setManaged(false);
-
             LocalDateTime inicio = dpFechaInicio.getValue().atStartOfDay();
             LocalDateTime fin = dpFechaFin.getValue().atTime(23, 59, 59);
 

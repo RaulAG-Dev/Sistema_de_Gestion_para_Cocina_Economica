@@ -59,9 +59,13 @@ public class ControladorHistorialVentas {
         });
 
         // Nombre del cliente
-        clienteColumn.setCellValueFactory(data -> new javafx.beans.property.SimpleStringProperty(
-                data.getValue().getCliente() != null ? data.getValue().getCliente().getNombre() : "N/A"
-        ));
+        clienteColumn.setCellValueFactory(cellData -> {
+            Pedido pedido = cellData.getValue();
+            String nombreCliente = (pedido.getCliente() != null)
+                    ? pedido.getCliente().getNombre()
+                    : "N/A";
+            return new javafx.beans.property.SimpleStringProperty(nombreCliente);
+        });
 
         totalColumn.setCellValueFactory(data -> new javafx.beans.property.SimpleObjectProperty<>(data.getValue().getTotal()));
         ventasTable.getItems().setAll(servicioVentas.obtenerTodasLasVentas());
@@ -70,7 +74,7 @@ public class ControladorHistorialVentas {
                 StringBuilder detalles = new StringBuilder();
                 detalles.append("Venta ID: ").append(newSel.getId()).append("\n");
                 detalles.append("Fecha: ").append(newSel.getFechaHora()).append("\n");
-                detalles.append("Cliente: ").append(newSel.getCliente() != null ? newSel.getCliente().getNombre() : "N/A").append("\n");
+                detalles.append("cliente: ").append(newSel.getCliente()).append("\n");
                 detalles.append("Nombre: ").append(newSel.getNombre()).append("\n");
                 detalles.append("Total: $").append(newSel.getTotal()).append("\n\n");
                 detalles.append("Items:\n");
@@ -106,7 +110,7 @@ public class ControladorHistorialVentas {
         ticket.append("ID Venta: ").append(seleccionado.getId()).append("\n");
         ticket.append("Fecha: ").append(seleccionado.getFechaHora()).append("\n");
         ticket.append("Cliente: ").append(
-                seleccionado.getCliente() != null ? seleccionado.getCliente().getNombre() : "N/A"
+                seleccionado.getCliente() != null ? seleccionado.getCliente().getNombre() : "motoo"
         ).append("\n");
         ticket.append("----------------------------\n");
 
