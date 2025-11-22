@@ -37,6 +37,9 @@ public class ControladorHistorialVentas {
     private TableColumn<Pedido, String> clienteColumn;
 
     @FXML
+    private TableColumn<Pedido, String> nombreColumn;
+
+    @FXML
     private TableColumn<Pedido, Float> totalColumn;
 
     @FXML
@@ -55,6 +58,7 @@ public class ControladorHistorialVentas {
             return new javafx.beans.property.SimpleStringProperty(sdf.format(data.getValue().getFechaHora()));
         });
 
+        // Nombre del cliente
         clienteColumn.setCellValueFactory(data -> new javafx.beans.property.SimpleStringProperty(
                 data.getValue().getCliente() != null ? data.getValue().getCliente().getNombre() : "N/A"
         ));
@@ -67,6 +71,7 @@ public class ControladorHistorialVentas {
                 detalles.append("Venta ID: ").append(newSel.getId()).append("\n");
                 detalles.append("Fecha: ").append(newSel.getFechaHora()).append("\n");
                 detalles.append("Cliente: ").append(newSel.getCliente() != null ? newSel.getCliente().getNombre() : "N/A").append("\n");
+                detalles.append("Nombre: ").append(newSel.getNombre()).append("\n");
                 detalles.append("Total: $").append(newSel.getTotal()).append("\n\n");
                 detalles.append("Items:\n");
                 for (var item : newSel.getItems()) {
