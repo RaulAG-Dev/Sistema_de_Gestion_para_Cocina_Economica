@@ -63,7 +63,7 @@ public class ControladorCorte implements Initializable {
         Stage stage = new Stage();
         stage.initModality(Modality.APPLICATION_MODAL);
         stage.setScene(new Scene(root));
-        stage.setTitle("Ticket de Corte de Caja");
+        stage.setTitle("Corte de caja");
         stage.show();
     }
 

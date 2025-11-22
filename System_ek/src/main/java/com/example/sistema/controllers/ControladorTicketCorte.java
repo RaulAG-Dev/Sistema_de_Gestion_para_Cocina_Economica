@@ -16,10 +16,10 @@ import java.util.Locale;
 public class ControladorTicketCorte {
 
     @FXML private TextArea ticketTextArea;
-    private static final java.text.NumberFormat currencyFormatter =
+    static final java.text.NumberFormat currencyFormatter =
             java.text.NumberFormat.getCurrencyInstance(new Locale("es", "MX"));
 
-    private static final DateTimeFormatter DATETIME_FORMAT =
+    static final DateTimeFormatter DATETIME_FORMAT =
             DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
 
     /**
@@ -67,11 +67,6 @@ public class ControladorTicketCorte {
 
         ticket.append(String.format("\n\n%s:   %36s\n", diferenciaTexto, diferenciaMonto));
         ticketTextArea.setText(ticket.toString());
-    }
-
-    @FXML
-    private void imprimir(ActionEvent event) {
-        System.out.println("Imprimiendo ticket...");
     }
 
     @FXML

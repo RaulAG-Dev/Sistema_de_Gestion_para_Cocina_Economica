@@ -284,13 +284,16 @@ public class ControladorPrincipal implements Initializable {
 
     /**
      * Calcula la suma de todos los subtotales en el pedido y actualiza la etiqueta {@code totalPagarLabel}.
+     *
+     * @return
      */
-    private void actualizarTotal() {
+    private float actualizarTotal() {
         float total = 0;
         for (ItemPedido item : itemsPedido) {
             total += item.calcularSubtotal();
         }
         totalPagarLabel.setText(String.format("$%.2f", total));
+        return total;
     }
 
     /**
@@ -417,6 +420,22 @@ public class ControladorPrincipal implements Initializable {
         }
     }
 
+
+    private void abrirVentanaTicketPedido(ObservableList<ItemPedido> pedidos, float totalSistema) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/sistema/TicketPedido.fxml"));
+        Parent root = loader.load();
+
+        ControladorTicketPedido controladorTicket = loader.getController();
+
+        // Inyectar todos los datos necesarios para construir el ticket
+        controladorTicket.inicializarTicketPedido(pedidos, totalSistema);
+
+        Stage stage = new Stage();
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.setScene(new Scene(root));
+        stage.setTitle("Confirmación pedido");
+        stage.show();
+    }
     /**
      * Maneja el evento de clic para confirmar el pedido actual.
      * <p>Este método contendría la lógica para guardar el pedido completo en la base de datos
@@ -426,7 +445,7 @@ public class ControladorPrincipal implements Initializable {
      */
     // Dentro de ControladorPrincipal
     @FXML
-    void confirmarPedido(ActionEvent event) {
+    void confirmarPedido(ActionEvent event) throws IOException {
         Pedido pedido = servicioVentas.crearPedido();
 
         Cliente cliente = new Cliente();
@@ -438,7 +457,10 @@ public class ControladorPrincipal implements Initializable {
         pedido.calcularTotal();
         pedido.setPagado(true);
 
+        float total = actualizarTotal();
+
         servicioVentas.guardarPedido(pedido);
+        abrirVentanaTicketPedido(itemsPedido, total);
 
         System.out.println("Pedido confirmado para el cliente: " + nombreClienteField.getText());
         System.out.println("Total: $" + pedido.getTotal());

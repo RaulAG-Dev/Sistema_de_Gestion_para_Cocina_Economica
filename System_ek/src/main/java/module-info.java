@@ -7,6 +7,7 @@ module com.example.sistema {
     requires javafx.graphics;
     requires java.sql;
 
+
     exports com.example.sistema.models;
 
     opens com.example.sistema to javafx.fxml;
