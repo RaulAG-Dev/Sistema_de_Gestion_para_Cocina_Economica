@@ -1,9 +1,6 @@
 package com.example.sistema.services;
 
-import com.example.sistema.models.ItemPedido;
-import com.example.sistema.models.ItemReceta;
-import com.example.sistema.models.Pedido;
-import com.example.sistema.models.Platillo;
+import com.example.sistema.models.*;
 import com.example.sistema.persistencia.RepositorioJSON;
 import com.example.sistema.persistencia.ConvertidorPedido;
 
@@ -15,38 +12,32 @@ import java.util.stream.Collectors;
 public class ServicioVentas {
 
     private static ServicioVentas instance;
-    // Se elimina pedidosMaestros, ya que pedidosMemoria cumple la misma función.
     private final RepositorioJSON<Pedido> repositorio;
     private final List<Pedido> pedidosMemoria;
     private Pedido pedidoActual;
+
     private final ServicioInventario servicioInventario = ServicioInventario.getInstance();
+    private final ServicioCliente servicioCliente = ServicioCliente.getInstance();
 
     /**
      * Constructor privado para forzar el patrón Singleton.
-     * Inicializa las dependencias (repositorio y datos) internamente.
      */
     private ServicioVentas() {
-        // Inicializa el RepositorioJSON con los argumentos necesarios (nombre de archivo y convertidor)
         this.repositorio = new RepositorioJSON<Pedido>("System_ek/src/main/data/pedidos.json", new ConvertidorPedido());
-
-        // Inicializa la lista maestra de pedidos cargando desde el repositorio (si existe)
         this.pedidosMemoria = this.repositorio != null ? this.repositorio.obtenerTodos() : new ArrayList<>();
     }
-
-    // El constructor original con argumentos (que causaba errores) ha sido eliminado/reemplazado.
 
     /**
      * Devuelve la única instancia de ServicioVentas (patrón Singleton).
      */
     public static ServicioVentas getInstance() {
         if (instance == null) {
-            instance = new ServicioVentas(); // Llama al constructor sin argumentos
+            instance = new ServicioVentas();
         }
         return instance;
     }
 
     public List<Pedido> getPedidosMaestros() {
-        // Usa la lista que contiene los datos de la aplicación
         return pedidosMemoria;
     }
 
@@ -57,8 +48,6 @@ public class ServicioVentas {
         pedidoActual.setPagado(false);
         pedidoActual.setTotal(0f);
 
-        // Si el repositorio es null (lo cual no debería ocurrir con la nueva inicialización),
-        // se usa el generador de IDs en memoria
         int nuevoId = repositorio != null ? repositorio.generarNuevoId() : generarIdMemoria();
         pedidoActual.setId(nuevoId);
 
@@ -79,6 +68,47 @@ public class ServicioVentas {
         items.add(item);
         pedidoActual.calcularTotal();
         pedidoActual.generarNombreDesdeItems();
+    }
+
+    /**
+     * Valida, persiste el pedido y ejecuta la deducción de stock.
+     */
+    public void guardarPedido(Pedido pedido) {
+        pedido.calcularTotal();
+        pedido.generarNombreDesdeItems();
+        vincularYGuardarCliente(pedido);
+
+        reemplazarOMeterMemoria(pedido);
+        deducirStock(pedido);
+
+        if (repositorio != null) {
+            repositorio.guardar(pedido);
+            pedidosMemoria.clear();
+            pedidosMemoria.addAll(repositorio.obtenerTodos());
+        }
+        if (pedidoActual == pedido) pedidoActual = null;
+    }
+
+    /**
+     * Registra o actualiza el cliente asociado al pedido, usando ServicioCliente.
+     */
+    private void vincularYGuardarCliente(Pedido pedido) {
+        Cliente clientePedido = pedido.getCliente();
+
+        if (clientePedido != null) {
+            if (clientePedido.getId() <= 0) {
+
+                Cliente clienteExistente = servicioCliente.buscarClientePorNombre(clientePedido.getNombre());
+
+                if (clienteExistente == null) {
+                    clientePedido.setId(servicioCliente.generarNuevoId());
+                } else {
+                    pedido.setCliente(clienteExistente);
+                    clientePedido = clienteExistente;
+                }
+            }
+            servicioCliente.guardar(clientePedido);
+        }
     }
 
     private void deducirStock(Pedido pedido) {
@@ -110,19 +140,6 @@ public class ServicioVentas {
         if (stockCambiado) {
             servicioInventario.guardarStock();
         }
-    }
-
-    public void guardarPedido(Pedido pedido) {
-        pedido.calcularTotal();
-        pedido.generarNombreDesdeItems();
-        reemplazarOMeterMemoria(pedido);
-        deducirStock(pedido);
-        if (repositorio != null) {
-            repositorio.guardar(pedido);
-            pedidosMemoria.clear();
-            pedidosMemoria.addAll(repositorio.obtenerTodos());
-        }
-        if (pedidoActual == pedido) pedidoActual = null;
     }
 
     public List<Pedido> obtenerVentasPorFecha(Date fechaDia) {

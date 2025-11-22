@@ -23,22 +23,15 @@ import java.util.ResourceBundle;
  */
 public class ControladorCorte implements Initializable {
 
-    // --- Componentes FXML Nuevos ---
     @FXML private TextField efectivoField;
     @FXML private TextField tarjetaField;
     @FXML private Button confirmarButton;
     @FXML private Button cancelarButton;
 
-    // --- Componentes Antiguos Eliminados (Solo dejo el Button de ejemplo) ---
-    // @FXML private TableView<Pedido> ventasTable; <--- ELIMINADO
-    // ...
-
     private final ServicioVentas servicioVentas = ServicioVentas.getInstance();
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        // Lógica de inicialización simplificada.
-        // Aquí podrías cargar la fecha actual o el total esperado si fuera necesario.
     }
 
     /**
@@ -46,7 +39,6 @@ public class ControladorCorte implements Initializable {
      */
     @FXML
     void manejarCancelacion(ActionEvent event) {
-        // Obtiene la Stage actual (la ventana modal) y la cierra
         Stage stageActual = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stageActual.close();
     }
@@ -56,8 +48,6 @@ public class ControladorCorte implements Initializable {
         Parent root = loader.load();
 
         ControladorTicketCorte controladorTicket = loader.getController();
-
-        // Inyectar todos los datos necesarios para construir el ticket
         controladorTicket.inicializarTicket(pedidos, efectivo, tarjeta, totalSistema, diferencia);
 
         Stage stage = new Stage();
@@ -72,28 +62,19 @@ public class ControladorCorte implements Initializable {
         try {
             float efectivoContado = Float.parseFloat(efectivoField.getText());
             float tarjetaContada = Float.parseFloat(tarjetaField.getText());
-
-            // 1. Obtener el Total Esperado del Sistema (Necesitas la lógica aquí, ej: totalVentasHoy)
             java.util.Date hoy = new java.util.Date();
             float totalSistema = servicioVentas.obtenerTotalDelDia(hoy);
-            List<Pedido> pedidosDelDia = servicioVentas.obtenerVentasPorFecha(hoy); // Lista de pedidos del día
+            List<Pedido> pedidosDelDia = servicioVentas.obtenerVentasPorFecha(hoy);
 
             float totalContado = efectivoContado + tarjetaContada;
             float diferencia = totalContado - totalSistema;
-
-            // 2. Lógica para guardar el registro de corte de caja...
-            // ...
-
-            //3. ABRIR LA VENTANA DEL TICKET E INYECTAR DATOS
             abrirVentanaTicket(pedidosDelDia, efectivoContado, tarjetaContada, totalSistema, diferencia);
-
-            // Cierra la ventana del Corte de Caja
             manejarCancelacion(event);
 
         } catch (NumberFormatException e) {
-            // ... manejo de error ...
+            e.printStackTrace();
         } catch (Exception e) {
-            // ... manejo de error ...
+            e.printStackTrace();
         }
     }
 }

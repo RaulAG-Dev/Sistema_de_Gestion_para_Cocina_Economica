@@ -18,21 +18,21 @@
             <Label alignment="CENTER" style="-fx-font-size: 20px; -fx-font-weight: bold;" text="Generación de reportes de ventas" />
 
                       <HBox fx:id="monthlySelectionBox" alignment="CENTER_LEFT" spacing="10.0">
-                 <Label style="-fx-font-weight: bold;" text="Reporte Mensual:" />
+                 <Label style="-fx-font-weight: bold;" text="Reporte mensual:" />
                  <ComboBox fx:id="cmbMes" prefWidth="150.0" promptText="Mes" />
                  <ComboBox fx:id="cmbAnioMensual" prefWidth="80.0" promptText="Año" />
                  <Button onAction="#generarReporteMensualSeleccionado" style="-fx-base: #5cb85c; -fx-text-fill: white;" text="Generar" />
-                 <Label text="Reportes Rápidos: " />
-                 <Button onAction="#generarReporteHoy" text="Ventas de Hoy" />
+                 <Label text="Reporte del dia: " />
+                 <Button onAction="#generarReporteHoy" text="Ventas de hoy" />
              </HBox>
 
              <HBox alignment="CENTER_LEFT" spacing="10.0">
    
                 <HBox alignment="CENTER_LEFT" spacing="10.0">
                     <Label text="Personalizado: " />
-                    <DatePicker fx:id="dpFechaInicio" promptText="Fecha de Inicio" />
+                    <DatePicker fx:id="dpFechaInicio" promptText="Fecha inicio" />
                     <Label text=" a " />
-                    <DatePicker fx:id="dpFechaFin" promptText="Fecha de Fin" />
+                    <DatePicker fx:id="dpFechaFin" promptText="Fecha final" />
                     <Button onAction="#generarReportePersonalizado" style="-fx-base: #5cb85c; -fx-text-fill: white;" text="Generar" />
                 </HBox>
              </HBox>

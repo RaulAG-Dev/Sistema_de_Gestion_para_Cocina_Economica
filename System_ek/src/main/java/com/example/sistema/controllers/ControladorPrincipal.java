@@ -1,6 +1,7 @@
 package com.example.sistema.controllers;
 
 import com.example.sistema.models.*;
+import com.example.sistema.services.ServicioCliente;
 import com.example.sistema.services.ServicioMenu;
 import com.example.sistema.services.ServicioVentas;
 import javafx.beans.property.SimpleObjectProperty;
@@ -77,7 +78,6 @@ public class ControladorPrincipal implements Initializable {
     private final ServicioVentas servicioVentas = ServicioVentas.getInstance();
     /** Arreglo estático que contiene los tipos de menú disponibles. */
     private final String[] TIPOS_MENU = {"Desayunos", "Almuerzos", "Cenas"};
-
 
     /**
      * Metodo de inicialización estándar de JavaFX.
@@ -344,7 +344,7 @@ public class ControladorPrincipal implements Initializable {
             Stage nuevaStage = new Stage();
             Scene scene = new Scene(root);
             nuevaStage.setScene(scene);
-            nuevaStage.setTitle("Gestión Cocina Económica - Corte de Caja");
+            nuevaStage.setTitle("Corte de caja");
             nuevaStage.show();
 
         } catch (IOException e) {
@@ -363,7 +363,7 @@ public class ControladorPrincipal implements Initializable {
             Stage nuevaStage = new Stage();
             Scene scene = new Scene(root);
             nuevaStage.setScene(scene);
-            nuevaStage.setTitle("Gestión Cocina Económica - Inventario");
+            nuevaStage.setTitle("Inventario");
             nuevaStage.show();
 
         } catch (IOException e) {
@@ -388,7 +388,7 @@ public class ControladorPrincipal implements Initializable {
             Stage nuevaStage = new Stage();
             Scene scene = new Scene(root);
             nuevaStage.setScene(scene);
-            nuevaStage.setTitle("Gestión Cocina Económica - Clientes");
+            nuevaStage.setTitle("Gestión de clientes");
             nuevaStage.show();
 
         } catch (IOException e) {
@@ -411,7 +411,7 @@ public class ControladorPrincipal implements Initializable {
             Stage nuevaStage = new Stage();
             Scene scene = new Scene(root);
             nuevaStage.setScene(scene);
-            nuevaStage.setTitle("Gestión Cocina Económica - Historial de Ventas");
+            nuevaStage.setTitle("Historial de ventas");
             nuevaStage.show();
 
         } catch (IOException e) {
@@ -480,7 +480,7 @@ public class ControladorPrincipal implements Initializable {
         FXMLLoader fxmlLoader = new FXMLLoader(fxmlUrl);
         Parent root = fxmlLoader.load();
         Stage nuevaStage = new Stage();
-        nuevaStage.setTitle("Reporte de Ventas");
+        nuevaStage.setTitle("Reportes de ventas");
         nuevaStage.setScene(new Scene(root));
         nuevaStage.show();
     }

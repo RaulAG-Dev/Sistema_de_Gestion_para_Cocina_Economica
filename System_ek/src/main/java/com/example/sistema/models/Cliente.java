@@ -31,6 +31,20 @@ public class Cliente extends ModelManagement {
         this.preferencias = preferencias;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Cliente cliente = (Cliente) o;
+        return id == cliente.id;
+    }
+
+    @Override
+    public int hashCode() {
+        return Integer.hashCode(id);
+    }
+
     /** @return Teléfono del cliente*/
     public String getTelefono() {
         return telefono;

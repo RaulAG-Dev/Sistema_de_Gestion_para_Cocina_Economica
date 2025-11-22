@@ -21,7 +21,7 @@
 
     <top>
         <HBox alignment="CENTER_LEFT" spacing="15" style="-fx-background-color: #2C3E50; -fx-padding: 15;">
-            <Label text="Sistema Cocina" textFill="WHITE">
+            <Label text=" Cocina EK" textFill="WHITE">
                 <font>
                     <Font name="System Bold" size="18.0" />
                 </font>
@@ -41,7 +41,7 @@
                <Font size="13.0" />
             </font></Button>
 
-            <Button onAction="#gestionarVentas" style="-fx-background-color: transparent; -fx-text-fill: white; -fx-border-color: white; -fx-border-radius: 5; -fx-cursor: hand;" text="Corte de Caja">
+            <Button onAction="#gestionarVentas" style="-fx-background-color: transparent; -fx-text-fill: white; -fx-border-color: white; -fx-border-radius: 5; -fx-cursor: hand;" text="Corte de caja">
             <font>
                <Font size="13.0" />
             </font></Button>
@@ -63,12 +63,12 @@
             <VBox spacing="15" HBox.hgrow="ALWAYS">
 
                 <HBox alignment="CENTER_LEFT" prefWidth="742.0" spacing="15" style="-fx-background-color: white; -fx-padding: 15; -fx-background-radius: 10; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.05), 5, 0, 0, 2);">
-                    <Label style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: #2C3E50;" text="Menú Disponible:" />
+                    <Label style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: #2C3E50;" text="Menú de" />
                     <ChoiceBox fx:id="selectorMenu" prefWidth="200" style="-fx-background-color: #ecf0f1; -fx-background-radius: 5;" />
 
                     <Region HBox.hgrow="ALWAYS" />
 
-                    <Button fx:id="añadirPlatilloButton" onAction="#abrirVentanaPlatillo" style="-fx-background-color: #2980b9; -fx-text-fill: white; -fx-background-radius: 5; -fx-cursor: hand;" text="➕ Nuevo Platillo">
+                    <Button fx:id="añadirPlatilloButton" onAction="#abrirVentanaPlatillo" style="-fx-background-color: #2980b9; -fx-text-fill: white; -fx-background-radius: 5; -fx-cursor: hand;" text="➕ Nuevo platillo">
                         <font>
                             <Font name="System Bold" size="12.0" />
                         </font>
@@ -90,7 +90,7 @@
                     <DropShadow blurType="GAUSSIAN" color="#0000001a" height="20.0" radius="9.5" width="20.0" />
                 </effect>
 
-                <Label style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: #2C3E50;" text="Nueva Orden" />
+                <Label style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: #2C3E50;" text="Nueva orden" />
                 <Separator />
 
                 <VBox spacing="5">
@@ -115,11 +115,11 @@
 
                 <VBox spacing="10" style="-fx-padding: 10 0 0 0;">
                     <HBox alignment="CENTER_RIGHT" spacing="10">
-                        <Label style="-fx-font-size: 14px; -fx-text-fill: #7f8c8d;" text="Total a Pagar:" />
+                        <Label style="-fx-font-size: 14px; -fx-text-fill: #7f8c8d;" text="Total:" />
                         <Label fx:id="totalPagarLabel" style="-fx-font-size: 28px; -fx-font-weight: bold; -fx-text-fill: #27ae60;" text="\$0.00" />
                     </HBox>
 
-                    <Button maxWidth="Infinity" onAction="#confirmarPedido" style="-fx-background-color: #27ae60; -fx-text-fill: white; -fx-font-size: 16px; -fx-padding: 12; -fx-background-radius: 8; -fx-font-weight: bold; -fx-cursor: hand;" text="CONFIRMAR PEDIDO" />
+                    <Button maxWidth="Infinity" onAction="#confirmarPedido" style="-fx-background-color: #27ae60; -fx-text-fill: white; -fx-font-size: 16px; -fx-padding: 12; -fx-background-radius: 8; -fx-font-weight: bold; -fx-cursor: hand;" text="CONFIRMAR" />
                 </VBox>
             </VBox>
         </HBox>

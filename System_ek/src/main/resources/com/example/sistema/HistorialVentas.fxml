@@ -1,20 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.HBox?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.sistema.controllers.ControladorHistorialVentas">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.sistema.controllers.ControladorHistorialVentas">
     <children>
 
         <Button fx:id="regresarButton" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#manejarRegreso" text="Regresar" />
 
-        <Label layoutX="45.0" layoutY="55.0" prefHeight="34.0" prefWidth="200.0" style="-fx-font-size: 16px; -fx-font-weight: bold;" text="Historial de Ventas:" />
+        <Label layoutX="45.0" layoutY="55.0" prefHeight="34.0" prefWidth="200.0" style="-fx-font-size: 16px; -fx-font-weight: bold;" text="Historial de ventas:" />
 
         <TableView fx:id="ventasTable" layoutX="45.0" layoutY="100.0" prefHeight="562.0" prefWidth="552.0" style="-fx-font-weight: bold;">
             <columnResizePolicy>
@@ -28,10 +26,10 @@
             </columns>
         </TableView>
 
-        <Label layoutX="609.0" layoutY="117.0" style="-fx-font-weight: bold;" text="Detalles de la Venta:" />
+        <Label layoutX="609.0" layoutY="117.0" style="-fx-font-weight: bold;" text="Detalles:" />
         <TextArea fx:id="detallesVentaArea" editable="false" layoutX="609.0" layoutY="150.0" prefHeight="450.0" prefWidth="346.0" promptText="Seleccione una venta de la tabla para ver los platillos..." wrapText="true" />
 
-        <Button fx:id="reimprimirButton" layoutX="609.0" layoutY="620.0" mnemonicParsing="false" onAction="#reimprimirTicket" prefWidth="346.0" text="Reimprimir Ticket" />
+        <Button fx:id="reimprimirButton" layoutX="609.0" layoutY="620.0" mnemonicParsing="false" onAction="#reimprimirTicket" prefWidth="346.0" text="Reimprimir ticket" />
 
     </children>
 </AnchorPane>

@@ -13,7 +13,7 @@
 
 <VBox prefHeight="250.0" prefWidth="350.0" spacing="15.0" style="-fx-padding: 20;" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.sistema.controllers.ControladorCorte">
     <children>
-        <Label style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: #1976D2;" text="Corte de Caja" />
+        <Label style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: #1976D2;" text="Corte de caja" />
       <Label prefHeight="20.0" prefWidth="158.0" text="Importes percibidos:">
          <font>
             <Font name="System Bold" size="14.0" />
@@ -41,7 +41,7 @@
 
         <HBox alignment="CENTER_RIGHT" spacing="15.0">
             <Button fx:id="cancelarButton" mnemonicParsing="false" onAction="#manejarCancelacion" style="-fx-background-color: #AAAAAA;" text="Cancelar" />
-            <Button fx:id="confirmarButton" mnemonicParsing="false" onAction="#confirmarCorte" style="-fx-background-color: #4CAF50; -fx-text-fill: white; -fx-font-weight: bold;" text="Confirmar Corte" />
+            <Button fx:id="confirmarButton" mnemonicParsing="false" onAction="#confirmarCorte" style="-fx-background-color: #4CAF50; -fx-text-fill: white; -fx-font-weight: bold;" text="Confirmar" />
         </HBox>
     </children>
 </VBox>

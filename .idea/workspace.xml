@@ -9,9 +9,25 @@
       <change beforePath="$PROJECT_DIR$/System_ek/src/main/data/clientes.json" beforeDir="false" afterPath="$PROJECT_DIR$/System_ek/src/main/data/clientes.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/System_ek/src/main/data/ingredientes.json" beforeDir="false" afterPath="$PROJECT_DIR$/System_ek/src/main/data/ingredientes.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/System_ek/src/main/data/pedidos.json" beforeDir="false" afterPath="$PROJECT_DIR$/System_ek/src/main/data/pedidos.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/System_ek/src/main/data/platillos.json" beforeDir="false" afterPath="$PROJECT_DIR$/System_ek/src/main/data/platillos.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/System_ek/src/main/java/com/example/sistema/MainApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/System_ek/src/main/java/com/example/sistema/MainApp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/System_ek/src/main/java/com/example/sistema/controllers/ControladorCorte.java" beforeDir="false" afterPath="$PROJECT_DIR$/System_ek/src/main/java/com/example/sistema/controllers/ControladorCorte.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/System_ek/src/main/java/com/example/sistema/controllers/ControladorGestionClientes.java" beforeDir="false" afterPath="$PROJECT_DIR$/System_ek/src/main/java/com/example/sistema/controllers/ControladorGestionClientes.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/System_ek/src/main/java/com/example/sistema/controllers/ControladorHistorialVentas.java" beforeDir="false" afterPath="$PROJECT_DIR$/System_ek/src/main/java/com/example/sistema/controllers/ControladorHistorialVentas.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/System_ek/src/main/java/com/example/sistema/controllers/ControladorLogin.java" beforeDir="false" afterPath="$PROJECT_DIR$/System_ek/src/main/java/com/example/sistema/controllers/ControladorLogin.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/System_ek/src/main/java/com/example/sistema/controllers/ControladorPrincipal.java" beforeDir="false" afterPath="$PROJECT_DIR$/System_ek/src/main/java/com/example/sistema/controllers/ControladorPrincipal.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/System_ek/src/main/java/com/example/sistema/models/Cliente.java" beforeDir="false" afterPath="$PROJECT_DIR$/System_ek/src/main/java/com/example/sistema/models/Cliente.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/System_ek/src/main/java/com/example/sistema/persistencia/ConvertidorPedido.java" beforeDir="false" afterPath="$PROJECT_DIR$/System_ek/src/main/java/com/example/sistema/persistencia/ConvertidorPedido.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/System_ek/src/main/java/com/example/sistema/services/ServicioCliente.java" beforeDir="false" afterPath="$PROJECT_DIR$/System_ek/src/main/java/com/example/sistema/services/ServicioCliente.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/System_ek/src/main/java/com/example/sistema/services/ServicioVentas.java" beforeDir="false" afterPath="$PROJECT_DIR$/System_ek/src/main/java/com/example/sistema/services/ServicioVentas.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/System_ek/src/main/resources/com/example/sistema/GestionClientes.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/System_ek/src/main/resources/com/example/sistema/GestionClientes.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/System_ek/src/main/resources/com/example/sistema/GestionCorte.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/System_ek/src/main/resources/com/example/sistema/GestionCorte.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/System_ek/src/main/resources/com/example/sistema/GestionInventario.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/System_ek/src/main/resources/com/example/sistema/GestionInventario.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/System_ek/src/main/resources/com/example/sistema/HistorialVentas.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/System_ek/src/main/resources/com/example/sistema/HistorialVentas.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/System_ek/src/main/resources/com/example/sistema/LogginView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/System_ek/src/main/resources/com/example/sistema/LogginView.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/System_ek/src/main/resources/com/example/sistema/PlatilloModal.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/System_ek/src/main/resources/com/example/sistema/PlatilloModal.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/System_ek/src/main/resources/com/example/sistema/PrincipalVew.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/System_ek/src/main/resources/com/example/sistema/PrincipalVew.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/System_ek/src/main/resources/com/example/sistema/TicketPedido.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/System_ek/src/main/resources/com/example/sistema/TicketPedido.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/System_ek/src/main/resources/com/example/sistema/VistaReportes.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/System_ek/src/main/resources/com/example/sistema/VistaReportes.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -21,8 +37,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="FxmlFile" />
+        <option value="Class" />
       </list>
     </option>
   </component>

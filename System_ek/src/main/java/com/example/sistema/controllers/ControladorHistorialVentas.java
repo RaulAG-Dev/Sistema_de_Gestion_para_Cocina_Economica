@@ -17,10 +17,8 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-//hola juan calos
 
 public class ControladorHistorialVentas {
-// en los privates debes de cmabiar lo que esta dentro de los ¿? por los modelos corresponientes
     @FXML
     private Button regresarButton;
 
@@ -58,7 +56,6 @@ public class ControladorHistorialVentas {
             return new javafx.beans.property.SimpleStringProperty(sdf.format(data.getValue().getFechaHora()));
         });
 
-        // Nombre del cliente
         clienteColumn.setCellValueFactory(cellData -> {
             Pedido pedido = cellData.getValue();
             String nombreCliente = (pedido.getCliente() != null)

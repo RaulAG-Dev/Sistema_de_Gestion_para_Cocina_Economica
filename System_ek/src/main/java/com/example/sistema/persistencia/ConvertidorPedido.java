@@ -22,12 +22,10 @@ public class ConvertidorPedido implements ConvertidorJSON<Pedido> {
         json.put("total", pedido.getTotal());
         json.put("pagado", pedido.isPagado());
 
-        // 🔑 SERIALIZACIÓN DE CLIENTE (Tu código actual, que es correcto)
         if (pedido.getCliente() != null) {
             JSONObject clienteJson = new JSONObject();
             clienteJson.put("clienteId", pedido.getCliente().getId());
             clienteJson.put("clienteNombre", pedido.getCliente().getNombre());
-            // Si Cliente tiene otros datos, los serializas aquí.
             json.put("cliente", clienteJson);
         } else {
             json.put("cliente", null);
@@ -58,7 +56,6 @@ public class ConvertidorPedido implements ConvertidorJSON<Pedido> {
         p.setTotal(((Number) jsonObject.get("total")).floatValue());
         p.setPagado((Boolean) jsonObject.get("pagado"));
 
-        // 🔑 INICIO DE DESERIALIZACIÓN DE CLIENTE (LA PARTE QUE FALTABA)
         JSONObject clienteJson = (JSONObject) jsonObject.get("cliente");
         Cliente cliente = null;
 
@@ -67,23 +64,18 @@ public class ConvertidorPedido implements ConvertidorJSON<Pedido> {
             Long idLong = (Long) clienteJson.get("clienteId");
             String nombre = (String) clienteJson.get("clienteNombre");
 
-            // Reconstruir el objeto Cliente si los datos existen
             if (idLong != null && nombre != null) {
                 cliente.setId(Math.toIntExact(idLong));
                 cliente.setNombre(nombre);
-                // Si Cliente tiene otros setters (ej. setTelefono), llámalos aquí.
             } else {
-                cliente = null; // Si los datos están incompletos, dejarlo nulo.
+                cliente = null;
             }
         }
-        p.setCliente(cliente); // 🔑 ASIGNAR EL CLIENTE RECONSTRUIDO AL PEDIDO
-        // 🔑 FIN DE DESERIALIZACIÓN DE CLIENTE
-
+        p.setCliente(cliente);
 
         List<ItemPedido> items = new ArrayList<>();
         JSONArray itemsArray = (JSONArray) jsonObject.get("items");
         if (itemsArray != null) {
-            // ... (Tu lógica existente para Items) ...
             for (Object obj : itemsArray) {
                 JSONObject it = (JSONObject) obj;
                 ItemPedido item = new ItemPedido();
