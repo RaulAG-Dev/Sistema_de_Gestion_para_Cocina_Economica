@@ -6,9 +6,13 @@
   <component name="ChangeListManager">
     <list default="true" id="49c8785d-bcea-49e4-b987-9c89bc7874a7" name="Changes" comment="Nueva rama, nuevo: ServicioVentas con su convertidor y metodos creados para Gestión de ventas e Historial de ventas">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/System_ek/src/main/data/ingredientes.json" beforeDir="false" afterPath="$PROJECT_DIR$/System_ek/src/main/data/ingredientes.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/System_ek/src/main/data/pedidos.json" beforeDir="false" afterPath="$PROJECT_DIR$/System_ek/src/main/data/pedidos.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/System_ek/src/main/data/platillos.json" beforeDir="false" afterPath="$PROJECT_DIR$/System_ek/src/main/data/platillos.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/System_ek/src/main/data/usuarios.json" beforeDir="false" afterPath="$PROJECT_DIR$/System_ek/src/main/data/usuarios.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/System_ek/src/main/java/com/example/sistema/controllers/ControladorCorte.java" beforeDir="false" afterPath="$PROJECT_DIR$/System_ek/src/main/java/com/example/sistema/controllers/ControladorCorte.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/System_ek/src/main/java/com/example/sistema/controllers/ControladorReportes.java" beforeDir="false" afterPath="$PROJECT_DIR$/System_ek/src/main/java/com/example/sistema/controllers/ControladorReportes.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/System_ek/src/main/resources/com/example/sistema/VistaReportes.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/System_ek/src/main/resources/com/example/sistema/VistaReportes.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/System_ek/src/main/resources/com/example/sistema/GestionCorte.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/System_ek/src/main/resources/com/example/sistema/GestionCorte.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -130,7 +134,7 @@
       <workItem from="1763264064087" duration="8015000" />
       <workItem from="1763313865284" duration="4692000" />
       <workItem from="1763702863895" duration="306000" />
-      <workItem from="1763753596995" duration="6702000" />
+      <workItem from="1763753596995" duration="18677000" />
     </task>
     <task id="LOCAL-00001" summary="Nueva rama, nuevo: ServicioVentas con su convertidor y metodos creados para Gestión de ventas e Historial de ventas">
       <option name="closed" value="true" />

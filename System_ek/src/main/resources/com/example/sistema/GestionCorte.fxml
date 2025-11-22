@@ -1,39 +1,47 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Separator?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.TextArea?>
-<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.sistema.controllers.ControladorCorte">
+<VBox prefHeight="250.0" prefWidth="350.0" spacing="15.0" style="-fx-padding: 20;" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.sistema.controllers.ControladorCorte">
     <children>
-        <Button fx:id="regresarButton" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#manejarRegreso" text="Regresar" />
+        <Label style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: #1976D2;" text="Corte de Caja" />
+      <Label prefHeight="20.0" prefWidth="158.0" text="Importes percibidos:">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
 
-        <Label layoutX="31.0" layoutY="57.0" style="-fx-font-size: 16; -fx-font-weight: bold;" text="Corte de caja:" />
+        <GridPane hgap="15.0" prefHeight="92.0" prefWidth="310.0" vgap="10.0">
+            <columnConstraints>
+                <ColumnConstraints hgrow="NEVER" minWidth="120.0" prefWidth="120.0" />
+                <ColumnConstraints hgrow="ALWAYS" minWidth="150.0" prefWidth="150.0" />
+            </columnConstraints>
+            <rowConstraints>
+                <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            </rowConstraints>
 
-        <TableView fx:id="ventasTable" layoutX="45.0" layoutY="158.0" prefHeight="384.0" prefWidth="570.0">
-            <columns>
-                <TableColumn fx:id="numVentaColumn" prefWidth="75.0" text="N. venta" />
-                <TableColumn fx:id="detalleVentaColumn" prefWidth="350.4" text="VENTAS" />
-                <TableColumn fx:id="totalVentaColumn" prefWidth="144.0" text="Total " />
-            </columns>
-        </TableView>
+            <Label contentDisplay="TEXT_ONLY" nodeOrientation="RIGHT_TO_LEFT" prefHeight="17.0" prefWidth="120.0" text="Efectivo:" />
+            <TextField fx:id="efectivoField" promptText="0.00" GridPane.columnIndex="1" />
 
-        <Label layoutX="435.0" layoutY="558.0" prefHeight="26.0" prefWidth="130.0" style="-fx-font-size: 16; -fx-font-weight: bold;" text="Total:" />
-        <Label fx:id="totalCorteLabel" layoutX="500.0" layoutY="558.0" prefHeight="26.0" prefWidth="100.0" style="-fx-font-size: 16; -fx-font-weight: bold;" text="\$0.00" />
+            <Label contentDisplay="TEXT_ONLY" nodeOrientation="RIGHT_TO_LEFT" prefHeight="17.0" prefWidth="126.0" text="Tarjeta:" GridPane.rowIndex="1" />
+            <TextField fx:id="tarjetaField" promptText="0.00" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+        </GridPane>
 
-        <DatePicker fx:id="fechaCortePicker" layoutX="689.0" layoutY="225.0" />
+        <Separator prefWidth="200.0" />
 
-        <Button fx:id="guardarButton" layoutX="746.0" layoutY="277.0" mnemonicParsing="false" onAction="#guardarCorte" text="Guardar" />
-        <Button fx:id="imprimirButton" layoutX="746.0" layoutY="324.0" mnemonicParsing="false" onAction="#imprimirCorte" text="Imprimir" />
-
-        <Separator layoutX="631.0" layoutY="99.0" orientation="VERTICAL" prefHeight="519.0" prefWidth="46.0" />
-
-        <Label layoutX="754.0" layoutY="369.0" style="-fx-font-size: 15; -fx-font-weight: bold;" text="Notas:" />
-        <TextArea fx:id="notasArea" layoutX="684.0" layoutY="398.0" prefHeight="200.0" prefWidth="200.0" />
+        <HBox alignment="CENTER_RIGHT" spacing="15.0">
+            <Button fx:id="cancelarButton" mnemonicParsing="false" onAction="#manejarCancelacion" style="-fx-background-color: #AAAAAA;" text="Cancelar" />
+            <Button fx:id="confirmarButton" mnemonicParsing="false" onAction="#confirmarCorte" style="-fx-background-color: #4CAF50; -fx-text-fill: white; -fx-font-weight: bold;" text="Confirmar Corte" />
+        </HBox>
     </children>
-</AnchorPane>
+</VBox>
