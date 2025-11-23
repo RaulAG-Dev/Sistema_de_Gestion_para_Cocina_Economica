@@ -6,27 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="49c8785d-bcea-49e4-b987-9c89bc7874a7" name="Changes" comment="Nueva rama, nuevo: ServicioVentas con su convertidor y metodos creados para Gestión de ventas e Historial de ventas">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/System_ek/src/main/data/clientes.json" beforeDir="false" afterPath="$PROJECT_DIR$/System_ek/src/main/data/clientes.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/System_ek/src/main/data/ingredientes.json" beforeDir="false" afterPath="$PROJECT_DIR$/System_ek/src/main/data/ingredientes.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/System_ek/src/main/data/pedidos.json" beforeDir="false" afterPath="$PROJECT_DIR$/System_ek/src/main/data/pedidos.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/System_ek/src/main/java/com/example/sistema/MainApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/System_ek/src/main/java/com/example/sistema/MainApp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/System_ek/src/main/java/com/example/sistema/controllers/ControladorCorte.java" beforeDir="false" afterPath="$PROJECT_DIR$/System_ek/src/main/java/com/example/sistema/controllers/ControladorCorte.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/System_ek/src/main/java/com/example/sistema/controllers/ControladorGestionClientes.java" beforeDir="false" afterPath="$PROJECT_DIR$/System_ek/src/main/java/com/example/sistema/controllers/ControladorGestionClientes.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/System_ek/src/main/java/com/example/sistema/controllers/ControladorHistorialVentas.java" beforeDir="false" afterPath="$PROJECT_DIR$/System_ek/src/main/java/com/example/sistema/controllers/ControladorHistorialVentas.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/System_ek/src/main/java/com/example/sistema/controllers/ControladorLogin.java" beforeDir="false" afterPath="$PROJECT_DIR$/System_ek/src/main/java/com/example/sistema/controllers/ControladorLogin.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/System_ek/src/main/java/com/example/sistema/controllers/ControladorPrincipal.java" beforeDir="false" afterPath="$PROJECT_DIR$/System_ek/src/main/java/com/example/sistema/controllers/ControladorPrincipal.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/System_ek/src/main/java/com/example/sistema/models/Cliente.java" beforeDir="false" afterPath="$PROJECT_DIR$/System_ek/src/main/java/com/example/sistema/models/Cliente.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/System_ek/src/main/java/com/example/sistema/persistencia/ConvertidorPedido.java" beforeDir="false" afterPath="$PROJECT_DIR$/System_ek/src/main/java/com/example/sistema/persistencia/ConvertidorPedido.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/System_ek/src/main/java/com/example/sistema/services/ServicioCliente.java" beforeDir="false" afterPath="$PROJECT_DIR$/System_ek/src/main/java/com/example/sistema/services/ServicioCliente.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/System_ek/src/main/java/com/example/sistema/services/ServicioVentas.java" beforeDir="false" afterPath="$PROJECT_DIR$/System_ek/src/main/java/com/example/sistema/services/ServicioVentas.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/System_ek/src/main/resources/com/example/sistema/GestionClientes.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/System_ek/src/main/resources/com/example/sistema/GestionClientes.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/System_ek/src/main/resources/com/example/sistema/GestionCorte.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/System_ek/src/main/resources/com/example/sistema/GestionCorte.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/System_ek/src/main/resources/com/example/sistema/GestionInventario.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/System_ek/src/main/resources/com/example/sistema/GestionInventario.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/System_ek/src/main/resources/com/example/sistema/HistorialVentas.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/System_ek/src/main/resources/com/example/sistema/HistorialVentas.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/System_ek/src/main/resources/com/example/sistema/LogginView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/System_ek/src/main/resources/com/example/sistema/LogginView.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/System_ek/src/main/resources/com/example/sistema/PlatilloModal.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/System_ek/src/main/resources/com/example/sistema/PlatilloModal.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/System_ek/src/main/resources/com/example/sistema/PrincipalVew.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/System_ek/src/main/resources/com/example/sistema/PrincipalVew.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/System_ek/src/main/resources/com/example/sistema/TicketPedido.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/System_ek/src/main/resources/com/example/sistema/TicketPedido.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/System_ek/src/main/resources/com/example/sistema/VistaReportes.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/System_ek/src/main/resources/com/example/sistema/VistaReportes.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -37,15 +16,15 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="FxmlFile" />
         <option value="Class" />
+        <option value="FxmlFile" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="temp_modul_clientes2" />
+        <entry key="$PROJECT_DIR$" value="pre_final_version" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -81,26 +60,26 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.Launcher.executor": "Run",
-    "Maven.Sistema_de_Gestion_para_Cocina_Economica [org.openjfx:javafx-maven-plugin:0.0.8:run].executor": "Run",
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "temp__modul__clientes3",
-    "ignore.virus.scanning.warn.message": "true",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/miche/IdeaProjects/Sistema_de_Gestion_para_Cocina_Economica/pom.xml",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.Launcher.executor&quot;: &quot;Run&quot;,
+    &quot;Maven.Sistema_de_Gestion_para_Cocina_Economica [org.openjfx:javafx-maven-plugin:0.0.8:run].executor&quot;: &quot;Run&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;temp__modul__clientes3&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/miche/IdeaProjects/Sistema_de_Gestion_para_Cocina_Economica/pom.xml&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\miche\IdeaProjects\Sistema_de_Gestion_para_Cocina_Economica" />

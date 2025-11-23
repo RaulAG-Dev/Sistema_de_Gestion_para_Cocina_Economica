@@ -1,0 +1,90 @@
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"AutoImportSettings\">\r\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"49c8785d-bcea-49e4-b987-9c89bc7874a7\" name=\"Changes\" comment=\"Nueva rama, nuevo: ServicioVentas con su convertidor y metodos creados para Gestión de ventas e Historial de ventas\">\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/System_ek/src/main/data/platillos.json\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/System_ek/src/main/data/platillos.json\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/System_ek/src/main/java/com/example/sistema/controllers/ControladorCorte.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/System_ek/src/main/java/com/example/sistema/controllers/ControladorCorte.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/System_ek/src/main/java/com/example/sistema/controllers/ControladorHistorialVentas.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/System_ek/src/main/java/com/example/sistema/controllers/ControladorHistorialVentas.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/System_ek/src/main/java/com/example/sistema/controllers/ControladorInventario.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/System_ek/src/main/java/com/example/sistema/controllers/ControladorInventario.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/System_ek/src/main/java/com/example/sistema/controllers/ControladorPrincipal.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/System_ek/src/main/java/com/example/sistema/controllers/ControladorPrincipal.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/System_ek/src/main/java/com/example/sistema/models/Ingrediente.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/System_ek/src/main/java/com/example/sistema/models/Ingrediente.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/System_ek/src/main/java/com/example/sistema/models/Pedido.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/System_ek/src/main/java/com/example/sistema/models/Pedido.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/System_ek/src/main/java/com/example/sistema/persistencia/ConvertidorPedido.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/System_ek/src/main/java/com/example/sistema/persistencia/ConvertidorPedido.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/System_ek/src/main/java/com/example/sistema/services/ServicioVentas.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/System_ek/src/main/java/com/example/sistema/services/ServicioVentas.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/System_ek/src/main/resources/com/example/sistema/Gestion-inventario.fxml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/System_ek/src/main/resources/com/example/sistema/Gestion-inventario.fxml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/pedidos.json\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/pedidos.json\" afterDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"FileTemplateManagerImpl\">\r\n    <option name=\"RECENT_TEMPLATES\">\r\n      <list>\r\n        <option value=\"Class\" />\r\n      </list>\r\n    </option>\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_BRANCH_BY_REPOSITORY\">\r\n      <map>\r\n        <entry key=\"$PROJECT_DIR$\" value=\"temp_modul_clientes\" />\r\n      </map>\r\n    </option>\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n  </component>\r\n  <component name=\"GitHubPullRequestSearchHistory\">{\r\n  &quot;lastFilter&quot;: {\r\n    &quot;state&quot;: &quot;OPEN&quot;,\r\n    &quot;assignee&quot;: &quot;MichelleFirst&quot;\r\n  }\r\n}</component>\r\n  <component name=\"GithubPullRequestsUISettings\">{\r\n  &quot;selectedUrlAndAccountId&quot;: {\r\n    &quot;url&quot;: &quot;https://github.com/RaulAG-Dev/Sistema_de_Gestion_para_Cocina_Economica.git&quot;,\r\n    &quot;accountId&quot;: &quot;05f4dddc-93e4-4e19-bce2-b0de0f1ae32c&quot;\r\n  }\r\n}</component>\r\n  <component name=\"MavenImportPreferences\">\r\n    <option name=\"generalSettings\">\r\n      <MavenGeneralSettings>\r\n        <option name=\"mavenHomeTypeForPersistence\" value=\"WRAPPER\" />\r\n      </MavenGeneralSettings>\r\n    </option>\r\n  </component>\r\n  <component name=\"ProjectColorInfo\">{\r\n  &quot;customColor&quot;: &quot;&quot;,\r\n  &quot;associatedIndex&quot;: 6\r\n}</component>\r\n  <component name=\"ProjectId\" id=\"35RjxNI00EubSuoCmHQ47Hlftrn\" />\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\"><![CDATA[{\r\n  \"keyToString\": {\r\n    \"Application.Launcher.executor\": \"Run\",\r\n    \"Maven.Sistema_de_Gestion_para_Cocina_Economica [org.openjfx:javafx-maven-plugin:0.0.8:run].executor\": \"Run\",\r\n    \"ModuleVcsDetector.initialDetectionPerformed\": \"true\",\r\n    \"RunOnceActivity.ShowReadmeOnStart\": \"true\",\r\n    \"RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252\": \"true\",\r\n    \"RunOnceActivity.git.unshallow\": \"true\",\r\n    \"git-widget-placeholder\": \"temp__modul__clientes2\",\r\n    \"ignore.virus.scanning.warn.message\": \"true\",\r\n    \"kotlin-language-version-configured\": \"true\",\r\n    \"last_opened_file_path\": \"C:/Users/miche/IdeaProjects/Sistema_de_Gestion_para_Cocina_Economica/pom.xml\",\r\n    \"node.js.detected.package.eslint\": \"true\",\r\n    \"node.js.detected.package.tslint\": \"true\",\r\n    \"node.js.selected.package.eslint\": \"(autodetect)\",\r\n    \"node.js.selected.package.tslint\": \"(autodetect)\",\r\n    \"nodejs_package_manager_path\": \"npm\",\r\n    \"vue.rearranger.settings.migration\": \"true\"\r\n  }\r\n}]]></component>\r\n  <component name=\"RecentsManager\">\r\n    <key name=\"MoveFile.RECENT_KEYS\">\r\n      <recent name=\"C:\\Users\\miche\\IdeaProjects\\Sistema_de_Gestion_para_Cocina_Economica\" />\r\n      <recent name=\"C:\\Users\\miche\\IdeaProjects\\Sistema_de_Gestion_para_Cocina_Economica\\System_ek\\src\\main\\data\" />\r\n    </key>\r\n  </component>\r\n  <component name=\"SharedIndexes\">\r\n    <attachedChunks>\r\n      <set>\r\n        <option value=\"bundled-jdk-9823dce3aa75-bf35d07a577b-intellij.indexing.shared.core-IU-252.26830.84\" />\r\n        <option value=\"bundled-js-predefined-d6986cc7102b-3aa1da707db6-JavaScript-IU-252.26830.84\" />\r\n      </set>\r\n    </attachedChunks>\r\n  </component>\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"49c8785d-bcea-49e4-b987-9c89bc7874a7\" name=\"Changes\" comment=\"\" />\r\n      <created>1763080024959</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1763080024959</updated>\r\n      <workItem from=\"1763080028044\" duration=\"23000\" />\r\n      <workItem from=\"1763080104957\" duration=\"2429000\" />\r\n      <workItem from=\"1763141317209\" duration=\"234000\" />\r\n      <workItem from=\"1763173367804\" duration=\"9842000\" />\r\n      <workItem from=\"1763264064087\" duration=\"8015000\" />\r\n      <workItem from=\"1763313865284\" duration=\"4692000\" />\r\n    </task>\r\n    <task id=\"LOCAL-00001\" summary=\"Nueva rama, nuevo: ServicioVentas con su convertidor y metodos creados para Gestión de ventas e Historial de ventas\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1763182681070</created>\r\n      <option name=\"number\" value=\"00001\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1763182681070</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00002\" summary=\"Nueva rama, nuevo: ServicioVentas con su convertidor y metodos creados para Gestión de ventas e Historial de ventas\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1763183001827</created>\r\n      <option name=\"number\" value=\"00002\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00002\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1763183001827</updated>\r\n    </task>\r\n    <option name=\"localTasksCounter\" value=\"3\" />\r\n    <servers />\r\n  </component>\r\n  <component name=\"TypeScriptGeneratedFilesManager\">\r\n    <option name=\"version\" value=\"3\" />\r\n  </component>\r\n  <component name=\"VcsManagerConfiguration\">\r\n    <MESSAGE value=\"Nueva rama, nuevo: ServicioVentas con su convertidor y metodos creados para Gestión de ventas e Historial de ventas\" />\r\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"Nueva rama, nuevo: ServicioVentas con su convertidor y metodos creados para Gestión de ventas e Historial de ventas\" />\r\n  </component>\r\n</project>
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision 339f7306302f3ef592a05c90b1552b50885c427a)
++++ b/.idea/workspace.xml	(date 1763490159397)
+@@ -6,17 +6,6 @@
+   <component name="ChangeListManager">
+     <list default="true" id="49c8785d-bcea-49e4-b987-9c89bc7874a7" name="Changes" comment="Nueva rama, nuevo: ServicioVentas con su convertidor y metodos creados para Gestión de ventas e Historial de ventas">
+       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/System_ek/src/main/data/platillos.json" beforeDir="false" afterPath="$PROJECT_DIR$/System_ek/src/main/data/platillos.json" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/System_ek/src/main/java/com/example/sistema/controllers/ControladorCorte.java" beforeDir="false" afterPath="$PROJECT_DIR$/System_ek/src/main/java/com/example/sistema/controllers/ControladorCorte.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/System_ek/src/main/java/com/example/sistema/controllers/ControladorHistorialVentas.java" beforeDir="false" afterPath="$PROJECT_DIR$/System_ek/src/main/java/com/example/sistema/controllers/ControladorHistorialVentas.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/System_ek/src/main/java/com/example/sistema/controllers/ControladorInventario.java" beforeDir="false" afterPath="$PROJECT_DIR$/System_ek/src/main/java/com/example/sistema/controllers/ControladorInventario.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/System_ek/src/main/java/com/example/sistema/controllers/ControladorPrincipal.java" beforeDir="false" afterPath="$PROJECT_DIR$/System_ek/src/main/java/com/example/sistema/controllers/ControladorPrincipal.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/System_ek/src/main/java/com/example/sistema/models/Ingrediente.java" beforeDir="false" afterPath="$PROJECT_DIR$/System_ek/src/main/java/com/example/sistema/models/Ingrediente.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/System_ek/src/main/java/com/example/sistema/models/Pedido.java" beforeDir="false" afterPath="$PROJECT_DIR$/System_ek/src/main/java/com/example/sistema/models/Pedido.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/System_ek/src/main/java/com/example/sistema/persistencia/ConvertidorPedido.java" beforeDir="false" afterPath="$PROJECT_DIR$/System_ek/src/main/java/com/example/sistema/persistencia/ConvertidorPedido.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/System_ek/src/main/java/com/example/sistema/services/ServicioVentas.java" beforeDir="false" afterPath="$PROJECT_DIR$/System_ek/src/main/java/com/example/sistema/services/ServicioVentas.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/System_ek/src/main/resources/com/example/sistema/Gestion-inventario.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/System_ek/src/main/resources/com/example/sistema/Gestion-inventario.fxml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/pedidos.json" beforeDir="false" afterPath="$PROJECT_DIR$/pedidos.json" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+@@ -66,26 +55,26 @@
+     <option name="hideEmptyMiddlePackages" value="true" />
+     <option name="showLibraryContents" value="true" />
+   </component>
+-  <component name="PropertiesComponent"><![CDATA[{
+-  "keyToString": {
+-    "Application.Launcher.executor": "Run",
+-    "Maven.Sistema_de_Gestion_para_Cocina_Economica [org.openjfx:javafx-maven-plugin:0.0.8:run].executor": "Run",
+-    "ModuleVcsDetector.initialDetectionPerformed": "true",
+-    "RunOnceActivity.ShowReadmeOnStart": "true",
+-    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+-    "RunOnceActivity.git.unshallow": "true",
+-    "git-widget-placeholder": "temp__modul__clientes2",
+-    "ignore.virus.scanning.warn.message": "true",
+-    "kotlin-language-version-configured": "true",
+-    "last_opened_file_path": "C:/Users/miche/IdeaProjects/Sistema_de_Gestion_para_Cocina_Economica/pom.xml",
+-    "node.js.detected.package.eslint": "true",
+-    "node.js.detected.package.tslint": "true",
+-    "node.js.selected.package.eslint": "(autodetect)",
+-    "node.js.selected.package.tslint": "(autodetect)",
+-    "nodejs_package_manager_path": "npm",
+-    "vue.rearranger.settings.migration": "true"
++  <component name="PropertiesComponent">{
++  &quot;keyToString&quot;: {
++    &quot;Application.Launcher.executor&quot;: &quot;Run&quot;,
++    &quot;Maven.Sistema_de_Gestion_para_Cocina_Economica [org.openjfx:javafx-maven-plugin:0.0.8:run].executor&quot;: &quot;Run&quot;,
++    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
++    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
++    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
++    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
++    &quot;git-widget-placeholder&quot;: &quot;temp__modul__clientes2&quot;,
++    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
++    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
++    &quot;last_opened_file_path&quot;: &quot;C:/Users/miche/IdeaProjects/Sistema_de_Gestion_para_Cocina_Economica/pom.xml&quot;,
++    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
++    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
++    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
++    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
++    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
++    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+   }
+-}]]></component>
++}</component>
+   <component name="RecentsManager">
+     <key name="MoveFile.RECENT_KEYS">
+       <recent name="C:\Users\miche\IdeaProjects\Sistema_de_Gestion_para_Cocina_Economica" />
+@@ -135,6 +124,17 @@
+   </component>
+   <component name="TypeScriptGeneratedFilesManager">
+     <option name="version" value="3" />
++  </component>
++  <component name="Vcs.Log.Tabs.Properties">
++    <option name="TAB_STATES">
++      <map>
++        <entry key="MAIN">
++          <value>
++            <State />
++          </value>
++        </entry>
++      </map>
++    </option>
+   </component>
+   <component name="VcsManagerConfiguration">
+     <MESSAGE value="Nueva rama, nuevo: ServicioVentas con su convertidor y metodos creados para Gestión de ventas e Historial de ventas" />
