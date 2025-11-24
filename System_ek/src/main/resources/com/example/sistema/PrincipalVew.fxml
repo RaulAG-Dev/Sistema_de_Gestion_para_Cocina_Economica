@@ -21,7 +21,7 @@
 
     <top>
         <HBox alignment="CENTER_LEFT" spacing="15" style="-fx-background-color: #2C3E50; -fx-padding: 15;">
-            <Label text=" Cocina EK" textFill="WHITE">
+            <Label text=" Cocina Economica" textFill="WHITE">
                 <font>
                     <Font name="System Bold" size="18.0" />
                 </font>
@@ -76,7 +76,7 @@
 
                     <Region HBox.hgrow="ALWAYS" />
 
-                    <Button fx:id="añadirPlatilloButton" onAction="#abrirVentanaPlatillo" style="-fx-background-color: #2980b9; -fx-text-fill: white; -fx-background-radius: 5; -fx-cursor: hand;" text="➕ Nuevo platillo">
+                    <Button fx:id="añadirPlatilloButton" onAction="#abrirVentanaPlatillo" style="-fx-background-color: #2980b9; -fx-text-fill: white; -fx-background-radius: 5; -fx-cursor: hand;" text="Nuevo platillo">
                         <font>
                             <Font name="System Bold" size="12.0" />
                         </font>
