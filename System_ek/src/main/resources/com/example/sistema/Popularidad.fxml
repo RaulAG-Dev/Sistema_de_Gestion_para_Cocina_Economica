@@ -1,23 +1,48 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
+<AnchorPane prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.sistema.controllers.ControladorPopularidad">
+    <children>
+        <VBox layoutX="10.0" layoutY="10.0" prefHeight="680.0" prefWidth="980.0" spacing="15.0">
+            <Button fx:id="regresarButton" mnemonicParsing="false" onAction="#manejarRegreso" text="Regresar" />
+            <Label alignment="CENTER" style="-fx-font-size: 20px; -fx-font-weight: bold;" text="Popularidad de platillos" />
 
-<AnchorPane prefHeight="600.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="CONTROLLER_NAME">
-   <children>
-      <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" text="Regresar" />
-      <Label layoutX="125.0" layoutY="70.0" style="-fx-font-size: 20; -fx-font-weight: bold;" text="Historial de Popularidad:" />
-      <TableView layoutX="71.0" layoutY="116.0" prefHeight="416.0" prefWidth="558.0">
-        <columns>
-          <TableColumn prefWidth="75.0" text="No." />
-          <TableColumn prefWidth="209.59999084472656" text="Platillo" />
-            <TableColumn prefWidth="141.59996337890624" text="Veces pedido" />
-            <TableColumn prefWidth="141.59996337890624" text="Ingresos generados" />
-        </columns>
-      </TableView>
-   </children>
+            <HBox fx:id="monthlySelectionBox" alignment="CENTER_LEFT" spacing="10.0">
+                <Label style="-fx-font-weight: bold;" text="Reporte mensual:" />
+                <ComboBox fx:id="cmbMes" prefWidth="150.0" promptText="Mes" />
+                <ComboBox fx:id="cmbAnioMensual" prefWidth="80.0" promptText="Año" />
+                <Button onAction="#generarReporteMensualSeleccionado" style="-fx-base: #5cb85c; -fx-text-fill: white;" text="Generar" />
+            </HBox>
+
+            <HBox alignment="CENTER_LEFT" spacing="10.0">
+
+                <HBox alignment="CENTER_LEFT" spacing="10.0">
+                    <Label text="Personalizado: " />
+                    <DatePicker fx:id="dpFechaInicio" promptText="Fecha inicio" />
+                    <Label text=" a " />
+                    <DatePicker fx:id="dpFechaFin" promptText="Fecha final" />
+                    <Button onAction="#generarReportePersonalizado" style="-fx-base: #5cb85c; -fx-text-fill: white;" text="Generar" />
+                </HBox>
+            </HBox>
+
+            <TableView fx:id="tablaPopularidad" prefHeight="492.0" prefWidth="930.0">
+                <columns>
+                    <TableColumn fx:id="colPlatillo" prefWidth="300.0" text="Platillo" />
+                    <TableColumn fx:id="colCantidad" prefWidth="200.0" text="Cantidad total" />
+                    <TableColumn fx:id="colIngresos" prefWidth="200.0" text="Ingresos generados" />
+                </columns>
+            </TableView>
+
+        </VBox>
+    </children>
 </AnchorPane>
