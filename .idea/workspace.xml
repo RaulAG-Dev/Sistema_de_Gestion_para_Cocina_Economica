@@ -5,10 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="49c8785d-bcea-49e4-b987-9c89bc7874a7" name="Changes" comment="Nueva rama, nuevo: ServicioVentas con su convertidor y metodos creados para Gestión de ventas e Historial de ventas">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/System_ek/src/main/java/com/example/sistema/controllers/ControladorReportes.java" beforeDir="false" afterPath="$PROJECT_DIR$/System_ek/src/main/java/com/example/sistema/controllers/ControladorReportes.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/System_ek/src/main/java/com/example/sistema/models/Platillo.java" beforeDir="false" afterPath="$PROJECT_DIR$/System_ek/src/main/java/com/example/sistema/models/Platillo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/System_ek/src/main/java/com/example/sistema/services/ServicioVentas.java" beforeDir="false" afterPath="$PROJECT_DIR$/System_ek/src/main/java/com/example/sistema/services/ServicioVentas.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/System_ek/src/main/resources/com/example/sistema/ClienteFrecuente.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/System_ek/src/main/resources/com/example/sistema/ClienteFrecuente.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/System_ek/src/main/resources/com/example/sistema/Popularidad.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/System_ek/src/main/resources/com/example/sistema/Popularidad.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/System_ek/src/main/resources/com/example/sistema/PrincipalVew.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/System_ek/src/main/resources/com/example/sistema/PrincipalVew.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/System_ek/src/main/resources/com/example/sistema/VistaReportes.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/System_ek/src/main/resources/com/example/sistema/VistaReportes.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />

@@ -1,26 +1,63 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<VBox prefHeight="600.0" prefWidth="550.0" spacing="15.0" style="-fx-padding: 20;" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.sistema.controllers.ControladorClientesFrecuentes">
-     <Button onAction="#manejarCierre" text="Regresar" />
-    <Label style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: #333333;" text="Clientes frecuentes" />
+<VBox prefHeight="600.0" prefWidth="550.0" spacing="15.0" style="-fx-padding: 25; -fx-background-color: white; -fx-background-radius: 10; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.15), 10, 0, 0, 0);" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.sistema.controllers.ControladorClientesFrecuentes">
 
-    <TableView fx:id="frecuentesTable" prefHeight="450.0" VBox.vgrow="ALWAYS">
+    <HBox alignment="CENTER_LEFT">
+        <Label text="Clientes frecuentes" textFill="#2C3E50">
+            <font>
+                <Font name="System Bold" size="20.0" />
+            </font>
+        </Label>
+        <Region HBox.hgrow="ALWAYS" />
+    </HBox>
+
+    <Separator />
+
+    <TableView fx:id="frecuentesTable" style="-fx-background-color: white; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.1), 5, 0, 0, 2);" VBox.vgrow="ALWAYS">
+        <columnResizePolicy>
+            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+        </columnResizePolicy>
         <columns>
-            <TableColumn fx:id="rankingColumn" maxWidth="50.0" minWidth="50.0" prefWidth="50.0" text="Nº" />
-            <TableColumn fx:id="nombreColumn" prefWidth="250.0" text="Nombre" />
-            <TableColumn fx:id="telefonoColumn" prefWidth="120.0" text="Teléfono" />
-            <TableColumn fx:id="pedidosColumn" prefWidth="80.0" text="Cant. pedidos" />
+            <TableColumn fx:id="rankingColumn" maxWidth="60.0" minWidth="50.0" prefWidth="50.0" style="-fx-alignment: CENTER; -fx-font-weight: bold;" text="Nº" />
+
+            <TableColumn fx:id="nombreColumn" prefWidth="250.0" text="Nombre del Cliente" />
+
+            <TableColumn fx:id="telefonoColumn" prefWidth="120.0" style="-fx-alignment: CENTER;" text="Teléfono" />
+
+            <TableColumn fx:id="pedidosColumn" prefWidth="100.0" style="-fx-alignment: CENTER; -fx-text-fill: #27ae60; -fx-font-weight: bold;" text="Total Pedidos" />
         </columns>
     </TableView>
 
-    <Label fx:id="notaLabel" style="-fx-text-fill: #666666;" text="* Ordenados por la cantidad de pedidos realizados." />
+    <Separator />
 
-    <HBox alignment="CENTER_RIGHT" />
+    <HBox alignment="CENTER_LEFT" spacing="10">
+        <Label fx:id="notaLabel" text="* Ranking basado en el historial total de pedidos." textFill="#7f8c8d">
+            <font>
+                <Font size="11.0" />
+            </font>
+        </Label>
+
+        <Region HBox.hgrow="ALWAYS" />
+
+        <Button onAction="#manejarCierre" style="-fx-background-color: #ecf0f1; -fx-text-fill: #555; -fx-cursor: hand; -fx-background-radius: 5;" text="Cerrar Ventana">
+            <padding>
+                <Insets bottom="10.0" left="20.0" right="20.0" top="10.0" />
+            </padding>
+            <font>
+                <Font name="System Bold" size="12.0" />
+            </font>
+        </Button>
+    </HBox>
+
 </VBox>
