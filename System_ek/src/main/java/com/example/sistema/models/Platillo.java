@@ -40,10 +40,22 @@ public class Platillo extends ModelManagement {
     private List<ItemReceta> receta;
 
     /**
+     * Cantidad total vendida de este platillo (para estadísticas de ventas).
+     */
+    private int cantidadVendida;
+
+    /**
+     * Ingresos generados por este platillo.
+     */
+    private float ingresosGenerados;
+
+    /**
      * Constructor por defecto (sin argumentos) de la clase Platillo.
      */
     public Platillo(){
         this.receta = new ArrayList<>();
+        this.cantidadVendida = 0;
+        this.ingresosGenerados = 0f;
     }
 
     /**
@@ -57,15 +69,29 @@ public class Platillo extends ModelManagement {
      * @param receta La lista de ingredientes requeridos.
      */
     public Platillo(int id, String nombre, String descripcion, float precio, boolean activo, List<ItemReceta> receta, String tipoMenu) {
-
         this.id = id;
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.precio = precio;
-        this.disponible = activo; // Usamos 'disponible' en lugar de 'activo'
-        this.receta = (receta != null) ? receta : new ArrayList<>(); // Inicializa la receta
+        this.disponible = activo;
+        this.receta = (receta != null) ? receta : new ArrayList<>();
         this.tipoMenu = tipoMenu;
+        this.cantidadVendida = 0;
+        this.ingresosGenerados = 0f;
     }
+
+    public Platillo(Platillo original) {
+        this.id = original.id;
+        this.nombre = original.nombre;
+        this.descripcion = original.descripcion;
+        this.precio = original.precio;
+        this.disponible = original.disponible;
+        this.receta = original.receta;
+        this.tipoMenu = original.tipoMenu;
+        this.cantidadVendida = 0;
+        this.ingresosGenerados = 0;
+    }
+
 
     //getters y setters
 
@@ -160,6 +186,20 @@ public class Platillo extends ModelManagement {
      */
     public void setIngredientes(List<Ingrediente> ingredientes) {
         this.ingredientes = ingredientes;
+    }
+
+    public int getCantidadVendida() {
+        return cantidadVendida;
+    }
+    public void setCantidadVendida(int cantidadVendida) {
+        this.cantidadVendida = cantidadVendida;
+    }
+
+    public float getIngresosGenerados() {
+        return ingresosGenerados;
+    }
+    public void setIngresosGenerados(float ingresosGenerados) {
+        this.ingresosGenerados = ingresosGenerados;
     }
 
 

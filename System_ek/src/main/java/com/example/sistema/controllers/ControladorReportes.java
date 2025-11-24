@@ -1,18 +1,25 @@
 package com.example.sistema.controllers;
 
 import com.example.sistema.models.Pedido;
+import com.example.sistema.models.Platillo;
 import com.example.sistema.services.ServicioReportes;
+import com.example.sistema.services.ServicioVentas;
 import javafx.beans.property.SimpleFloatProperty;
+import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.net.URL;
 import java.text.NumberFormat;
 import java.time.LocalDate;
@@ -127,4 +134,21 @@ public class ControladorReportes implements Initializable {
         alert.setContentText(mensaje);
         alert.showAndWait();
     }
+
+    @FXML
+    void mostrarPopularidad(ActionEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/sistema/Popularidad.fxml"));
+            Parent root = loader.load();
+
+            Stage stage = new Stage();
+            stage.setTitle("Platillos Populares");
+            stage.setScene(new Scene(root));
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+            mostrarAlerta("Error", "No se pudo abrir la ventana de popularidad.");
+        }
+    }
+
 }

@@ -24,7 +24,9 @@
                  <Button onAction="#generarReporteMensualSeleccionado" style="-fx-base: #5cb85c; -fx-text-fill: white;" text="Generar" />
                  <Label text="Reporte del dia: " />
                  <Button onAction="#generarReporteHoy" text="Ventas de hoy" />
-             </HBox>
+                 <Label text="Reporte de popularidad: " />
+                 <Button fx:id="popularidadButton" onAction="#mostrarPopularidad" text="Popularidad de platillos" />
+        </HBox>
 
              <HBox alignment="CENTER_LEFT" spacing="10.0">
 

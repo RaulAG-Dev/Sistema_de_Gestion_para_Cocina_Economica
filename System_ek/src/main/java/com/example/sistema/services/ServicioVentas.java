@@ -4,9 +4,8 @@ import com.example.sistema.models.*;
 import com.example.sistema.persistencia.RepositorioJSON;
 import com.example.sistema.persistencia.ConvertidorPedido;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+import java.time.LocalDateTime;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class ServicioVentas {
@@ -194,4 +193,92 @@ public class ServicioVentas {
         c.set(java.util.Calendar.MILLISECOND, 0);
         return c.getTime();
     }
+
+    public Platillo obtenerPlatilloMasVendido() {
+        Map<Integer, Platillo> mapa = new HashMap<>();
+
+        for (Pedido pedido : pedidosMemoria) {
+            for (ItemPedido item : pedido.getItems()) {
+                Platillo platillo = item.getPlatillo();
+                if (platillo != null) {
+                    Platillo acumulado = mapa.get(platillo.getId());
+                    if (acumulado == null) {
+                        acumulado = new Platillo(platillo); // copia precio correcto
+                    }
+                    acumulado.setCantidadVendida(acumulado.getCantidadVendida() + item.getCantidad());
+                    acumulado.setIngresosGenerados(acumulado.getIngresosGenerados() + (item.getCantidad() * item.getPrecioUnitario()));
+
+                    mapa.put(platillo.getId(), acumulado);
+                }
+            }
+        }
+
+        return mapa.values().stream()
+                .max(Comparator.comparingInt(Platillo::getCantidadVendida))
+                .orElse(null);
+    }
+    /**
+     * Devuelve un ranking de todos los platillos vendidos,
+     * ordenados de mayor a menor por cantidad vendida.
+     */
+    public List<Platillo> obtenerRankingPlatillos() {
+        Map<Integer, Platillo> mapa = new HashMap<>();
+
+        for (Pedido pedido : pedidosMemoria) {
+            for (ItemPedido item : pedido.getItems()) {
+                Platillo platillo = item.getPlatillo();
+                if (platillo != null) {
+                    Platillo acumulado = mapa.get(platillo.getId());
+                    if (acumulado == null) {
+                        acumulado = new Platillo(platillo); // copia precio correcto
+                    }
+                    acumulado.setCantidadVendida(acumulado.getCantidadVendida() + item.getCantidad());
+                    acumulado.setIngresosGenerados(acumulado.getIngresosGenerados() + (item.getCantidad() * item.getPrecioUnitario()));
+
+                    mapa.put(platillo.getId(), acumulado);
+
+                }
+            }
+        }
+
+        return mapa.values().stream()
+                .sorted(Comparator.comparingInt(Platillo::getCantidadVendida).reversed())
+                .collect(Collectors.toList());
+    }
+
+    /**
+     * Devuelve un ranking de platillos vendidos en un rango de fechas,
+     * ordenados de mayor a menor por cantidad vendida.
+     */
+    public List<Platillo> obtenerRankingPlatillosPorFechas(LocalDateTime inicio, LocalDateTime fin) {
+        Map<Integer, Platillo> mapa = new HashMap<>();
+
+        for (Pedido pedido : pedidosMemoria) {
+            LocalDateTime fechaPedido = pedido.getFechaHora().toInstant()
+                    .atZone(java.time.ZoneId.systemDefault())
+                    .toLocalDateTime();
+
+            if (!fechaPedido.isBefore(inicio) && !fechaPedido.isAfter(fin)) {
+                for (ItemPedido item : pedido.getItems()) {
+                    Platillo platillo = item.getPlatillo();
+                    if (platillo != null) {
+                        Platillo acumulado = mapa.get(platillo.getId());
+                        if (acumulado == null) {
+                            acumulado = new Platillo(platillo); // copia precio correcto
+                        }
+                        acumulado.setCantidadVendida(acumulado.getCantidadVendida() + item.getCantidad());
+                        acumulado.setIngresosGenerados(acumulado.getIngresosGenerados() + (item.getCantidad() * item.getPrecioUnitario()));
+
+                        mapa.put(platillo.getId(), acumulado);
+
+                    }
+                }
+            }
+        }
+
+        return mapa.values().stream()
+                .sorted(Comparator.comparingInt(Platillo::getCantidadVendida).reversed())
+                .collect(Collectors.toList());
+    }
+
 }
