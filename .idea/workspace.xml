@@ -5,8 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="49c8785d-bcea-49e4-b987-9c89bc7874a7" name="Changes" comment="Nueva rama, nuevo: ServicioVentas con su convertidor y metodos creados para Gestión de ventas e Historial de ventas">
-      <change beforePath="$PROJECT_DIR$/System_ek/src/main/data/clientes.json" beforeDir="false" afterPath="$PROJECT_DIR$/System_ek/src/main/data/clientes.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/System_ek/src/main/data/pedidos.json" beforeDir="false" afterPath="$PROJECT_DIR$/System_ek/src/main/data/pedidos.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/System_ek/src/main/java/com/example/sistema/MainApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/System_ek/src/main/java/com/example/sistema/MainApp.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,12 +35,12 @@
     &quot;assignee&quot;: &quot;MichelleFirst&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/RaulAG-Dev/Sistema_de_Gestion_para_Cocina_Economica.git",
-    "accountId": "dda92793-fc6a-42a0-8a1d-dbab545500ff"
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/RaulAG-Dev/Sistema_de_Gestion_para_Cocina_Economica.git&quot;,
+    &quot;accountId&quot;: &quot;dda92793-fc6a-42a0-8a1d-dbab545500ff&quot;
   }
-}]]></component>
+}</component>
   <component name="MavenImportPreferences">
     <option name="generalSettings">
       <MavenGeneralSettings>
@@ -82,6 +82,7 @@
 }</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\eduar\AppData\Local\SceneBuilder\Sistema_de_Gestion_para_Cocina_Economica\System_ek\src\main\resources\Imagenes" />
       <recent name="C:\Users\miche\IdeaProjects\Sistema_de_Gestion_para_Cocina_Economica" />
       <recent name="C:\Users\miche\IdeaProjects\Sistema_de_Gestion_para_Cocina_Economica\System_ek\src\main\data" />
     </key>
@@ -130,7 +131,8 @@
       <workItem from="1763313865284" duration="4692000" />
       <workItem from="1763702863895" duration="306000" />
       <workItem from="1763753596995" duration="18677000" />
-      <workItem from="1764001638890" duration="529000" />
+      <workItem from="1764001638890" duration="959000" />
+      <workItem from="1764036820878" duration="1429000" />
     </task>
     <task id="LOCAL-00001" summary="Nueva rama, nuevo: ServicioVentas con su convertidor y metodos creados para Gestión de ventas e Historial de ventas">
       <option name="closed" value="true" />

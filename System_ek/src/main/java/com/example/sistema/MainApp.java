@@ -6,6 +6,7 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import javafx.scene.image.Image;
 
 import java.io.IOException;
 
@@ -22,6 +23,7 @@ public class MainApp extends Application {
         FXMLLoader fxmlLoader = new FXMLLoader(MainApp.class.getResource("/com/example/sistema/LogginView.fxml"));
 
         Scene scene = new Scene(fxmlLoader.load(), 400, 480);
+        stage.getIcons().add(new Image(MainApp.class.getResourceAsStream("/imagenes/logo jaguar.png")));
         stage.setTitle("Inicio de sesión a cocina economica");
         stage.centerOnScreen();
         stage.setScene(scene);
