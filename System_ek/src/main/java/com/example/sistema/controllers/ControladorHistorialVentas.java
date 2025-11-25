@@ -17,11 +17,24 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-
+/**
+ * **Controlador de la vista para la consulta del Historial de Ventas (Pedidos).**
+ * <p>
+ * Permite a los usuarios visualizar todos los pedidos registrados en el sistema,
+ * ver los detalles de un pedido seleccionado y generar una simulación de
+ * reimpresión de ticket.
+ *
+ * @author Raul Aguayo , Eduardo Calán y Michelle Chuc
+ * @version 6.0
+ * @since 2025-11-22
+ */
 public class ControladorHistorialVentas {
+
+    // --- Componentes FXML de la Vista ---
     @FXML
     private Button regresarButton;
 
+    /** Tabla principal que muestra la lista de todos los pedidos. */
     @FXML
     private TableView<Pedido> ventasTable;
 
@@ -40,22 +53,34 @@ public class ControladorHistorialVentas {
     @FXML
     private TableColumn<Pedido, Float> totalColumn;
 
+    /** Área de texto FXML para mostrar los detalles del pedido seleccionado. */
     @FXML
     private TextArea detallesVentaArea;
 
+    /** Botón FXML para generar la simulación de reimpresión de ticket. */
     @FXML
     private Button reimprimirButton;
+
+    // --- Servicios ---
     private final ServicioVentas servicioVentas = ServicioVentas.getInstance();
 
-
+    /**
+     * Inicializa el controlador, configura las fábricas de celdas para la tabla
+     * y carga la lista de pedidos al inicio. También añade el listener para
+     * mostrar los detalles del pedido seleccionado.
+     *
+     * @Override
+     */
     @FXML
     public void initialize() {
+        // Configuración de Cell Value Factories
         idVentaColumn.setCellValueFactory(data -> new javafx.beans.property.SimpleObjectProperty<>(data.getValue().getId()));
+        // Formateo de fecha y hora
         fechaColumn.setCellValueFactory(data -> {
             java.text.SimpleDateFormat sdf = new java.text.SimpleDateFormat("dd/MM/yyyy HH:mm");
             return new javafx.beans.property.SimpleStringProperty(sdf.format(data.getValue().getFechaHora()));
         });
-
+        // Mostrar nombre del cliente (o N/A si no tiene cliente asociado)
         clienteColumn.setCellValueFactory(cellData -> {
             Pedido pedido = cellData.getValue();
             String nombreCliente = (pedido.getCliente() != null)
@@ -65,7 +90,9 @@ public class ControladorHistorialVentas {
         });
 
         totalColumn.setCellValueFactory(data -> new javafx.beans.property.SimpleObjectProperty<>(data.getValue().getTotal()));
+        // Carga inicial de datos desde el servicio
         ventasTable.getItems().setAll(servicioVentas.obtenerTodasLasVentas());
+        // Listener para la selección de fila
         ventasTable.getSelectionModel().selectedItemProperty().addListener((obs, oldSel, newSel) -> {
             if (newSel != null) {
                 StringBuilder detalles = new StringBuilder();
@@ -76,6 +103,7 @@ public class ControladorHistorialVentas {
                 detalles.append("Total: $").append(newSel.getTotal()).append("\n\n");
                 detalles.append("Items:\n");
                 for (var item : newSel.getItems()) {
+                    // Usar la representación en cadena de ItemPedido o un formato específico
                     detalles.append(item.toString()).append("\n");
                 }
                 detallesVentaArea.setText(detalles.toString());
@@ -84,6 +112,11 @@ public class ControladorHistorialVentas {
         System.out.println("ControladorHistorialVentas inicializado.");
     }
 
+    /**
+     * Maneja el evento de clic del botón "Regresar". Cierra la ventana actual.
+     *
+     * @param event El evento de acción.
+     */
     @FXML
     void manejarRegreso(ActionEvent event) {
         Node source = (Node) event.getSource();
@@ -92,7 +125,12 @@ public class ControladorHistorialVentas {
         stageActual.close();
     }
 
-
+    /**
+     * Genera un formato de ticket de venta para el pedido seleccionado en la tabla
+     * y muestra el resultado en el área de detalles.
+     *
+     * @param event El evento de acción.
+     */
     @FXML
     void reimprimirTicket(ActionEvent event) {
         Pedido seleccionado = ventasTable.getSelectionModel().getSelectedItem();
@@ -111,6 +149,7 @@ public class ControladorHistorialVentas {
         ).append("\n");
         ticket.append("----------------------------\n");
 
+        // Listado de ítems
         for (ItemPedido item : seleccionado.getItems()) {
             ticket.append(item.getPlatillo().getNombre())
                     .append(" x").append(item.getCantidad())
