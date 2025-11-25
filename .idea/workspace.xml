@@ -5,134 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="49c8785d-bcea-49e4-b987-9c89bc7874a7" name="Changes" comment="Nueva rama, nuevo: ServicioVentas con su convertidor y metodos creados para Gestión de ventas e Historial de ventas">
-      <change beforePath="$PROJECT_DIR$/System_ek/docs/allclasses-index.html" beforeDir="false" afterPath="$PROJECT_DIR$/System_ek/docs/allclasses-index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/System_ek/docs/allpackages-index.html" beforeDir="false" afterPath="$PROJECT_DIR$/System_ek/docs/allpackages-index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/System_ek/docs/com.example.sistema/com/example/sistema/Launcher.html" beforeDir="false" afterPath="$PROJECT_DIR$/System_ek/docs/com.example.sistema/com/example/sistema/Launcher.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/System_ek/docs/com.example.sistema/com/example/sistema/MainApp.html" beforeDir="false" afterPath="$PROJECT_DIR$/System_ek/docs/com.example.sistema/com/example/sistema/MainApp.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/System_ek/docs/com.example.sistema/com/example/sistema/class-use/Launcher.html" beforeDir="false" afterPath="$PROJECT_DIR$/System_ek/docs/com.example.sistema/com/example/sistema/class-use/Launcher.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/System_ek/docs/com.example.sistema/com/example/sistema/class-use/MainApp.html" beforeDir="false" afterPath="$PROJECT_DIR$/System_ek/docs/com.example.sistema/com/example/sistema/class-use/MainApp.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/System_ek/docs/com.example.sistema/com/example/sistema/controllers/ControladorClientesFrecuentes.html" beforeDir="false" afterPath="$PROJECT_DIR$/System_ek/docs/com.example.sistema/com/example/sistema/controllers/ControladorClientesFrecuentes.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/System_ek/docs/com.example.sistema/com/example/sistema/controllers/ControladorCorte.html" beforeDir="false" afterPath="$PROJECT_DIR$/System_ek/docs/com.example.sistema/com/example/sistema/controllers/ControladorCorte.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/System_ek/docs/com.example.sistema/com/example/sistema/controllers/ControladorGestionClientes.html" beforeDir="false" afterPath="$PROJECT_DIR$/System_ek/docs/com.example.sistema/com/example/sistema/controllers/ControladorGestionClientes.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/System_ek/docs/com.example.sistema/com/example/sistema/controllers/ControladorHistorialVentas.html" beforeDir="false" afterPath="$PROJECT_DIR$/System_ek/docs/com.example.sistema/com/example/sistema/controllers/ControladorHistorialVentas.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/System_ek/docs/com.example.sistema/com/example/sistema/controllers/ControladorInventario.html" beforeDir="false" afterPath="$PROJECT_DIR$/System_ek/docs/com.example.sistema/com/example/sistema/controllers/ControladorInventario.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/System_ek/docs/com.example.sistema/com/example/sistema/controllers/ControladorLogin.html" beforeDir="false" afterPath="$PROJECT_DIR$/System_ek/docs/com.example.sistema/com/example/sistema/controllers/ControladorLogin.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/System_ek/docs/com.example.sistema/com/example/sistema/controllers/ControladorPlatilloModal.html" beforeDir="false" afterPath="$PROJECT_DIR$/System_ek/docs/com.example.sistema/com/example/sistema/controllers/ControladorPlatilloModal.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/System_ek/docs/com.example.sistema/com/example/sistema/controllers/ControladorPrincipal.html" beforeDir="false" afterPath="$PROJECT_DIR$/System_ek/docs/com.example.sistema/com/example/sistema/controllers/ControladorPrincipal.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/System_ek/docs/com.example.sistema/com/example/sistema/controllers/ControladorReportes.html" beforeDir="false" afterPath="$PROJECT_DIR$/System_ek/docs/com.example.sistema/com/example/sistema/controllers/ControladorReportes.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/System_ek/docs/com.example.sistema/com/example/sistema/controllers/ControladorTicketCorte.html" beforeDir="false" afterPath="$PROJECT_DIR$/System_ek/docs/com.example.sistema/com/example/sistema/controllers/ControladorTicketCorte.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/System_ek/docs/com.example.sistema/com/example/sistema/controllers/ControladorTicketPedido.html" beforeDir="false" afterPath="$PROJECT_DIR$/System_ek/docs/com.example.sistema/com/example/sistema/controllers/ControladorTicketPedido.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/System_ek/docs/com.example.sistema/com/example/sistema/controllers/class-use/ControladorClientesFrecuentes.html" beforeDir="false" afterPath="$PROJECT_DIR$/System_ek/docs/com.example.sistema/com/example/sistema/controllers/class-use/ControladorClientesFrecuentes.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/System_ek/docs/com.example.sistema/com/example/sistema/controllers/class-use/ControladorCorte.html" beforeDir="false" afterPath="$PROJECT_DIR$/System_ek/docs/com.example.sistema/com/example/sistema/controllers/class-use/ControladorCorte.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/System_ek/docs/com.example.sistema/com/example/sistema/controllers/class-use/ControladorGestionClientes.html" beforeDir="false" afterPath="$PROJECT_DIR$/System_ek/docs/com.example.sistema/com/example/sistema/controllers/class-use/ControladorGestionClientes.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/System_ek/docs/com.example.sistema/com/example/sistema/controllers/class-use/ControladorHistorialVentas.html" beforeDir="false" afterPath="$PROJECT_DIR$/System_ek/docs/com.example.sistema/com/example/sistema/controllers/class-use/ControladorHistorialVentas.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/System_ek/docs/com.example.sistema/com/example/sistema/controllers/class-use/ControladorInventario.html" beforeDir="false" afterPath="$PROJECT_DIR$/System_ek/docs/com.example.sistema/com/example/sistema/controllers/class-use/ControladorInventario.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/System_ek/docs/com.example.sistema/com/example/sistema/controllers/class-use/ControladorLogin.html" beforeDir="false" afterPath="$PROJECT_DIR$/System_ek/docs/com.example.sistema/com/example/sistema/controllers/class-use/ControladorLogin.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/System_ek/docs/com.example.sistema/com/example/sistema/controllers/class-use/ControladorPlatilloModal.html" beforeDir="false" afterPath="$PROJECT_DIR$/System_ek/docs/com.example.sistema/com/example/sistema/controllers/class-use/ControladorPlatilloModal.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/System_ek/docs/com.example.sistema/com/example/sistema/controllers/class-use/ControladorPrincipal.html" beforeDir="false" afterPath="$PROJECT_DIR$/System_ek/docs/com.example.sistema/com/example/sistema/controllers/class-use/ControladorPrincipal.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/System_ek/docs/com.example.sistema/com/example/sistema/controllers/class-use/ControladorReportes.html" beforeDir="false" afterPath="$PROJECT_DIR$/System_ek/docs/com.example.sistema/com/example/sistema/controllers/class-use/ControladorReportes.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/System_ek/docs/com.example.sistema/com/example/sistema/controllers/class-use/ControladorTicketCorte.html" beforeDir="false" afterPath="$PROJECT_DIR$/System_ek/docs/com.example.sistema/com/example/sistema/controllers/class-use/ControladorTicketCorte.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/System_ek/docs/com.example.sistema/com/example/sistema/controllers/class-use/ControladorTicketPedido.html" beforeDir="false" afterPath="$PROJECT_DIR$/System_ek/docs/com.example.sistema/com/example/sistema/controllers/class-use/ControladorTicketPedido.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/System_ek/docs/com.example.sistema/com/example/sistema/controllers/package-summary.html" beforeDir="false" afterPath="$PROJECT_DIR$/System_ek/docs/com.example.sistema/com/example/sistema/controllers/package-summary.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/System_ek/docs/com.example.sistema/com/example/sistema/controllers/package-tree.html" beforeDir="false" afterPath="$PROJECT_DIR$/System_ek/docs/com.example.sistema/com/example/sistema/controllers/package-tree.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/System_ek/docs/com.example.sistema/com/example/sistema/controllers/package-use.html" beforeDir="false" afterPath="$PROJECT_DIR$/System_ek/docs/com.example.sistema/com/example/sistema/controllers/package-use.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/System_ek/docs/com.example.sistema/com/example/sistema/models/Cliente.html" beforeDir="false" afterPath="$PROJECT_DIR$/System_ek/docs/com.example.sistema/com/example/sistema/models/Cliente.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/System_ek/docs/com.example.sistema/com/example/sistema/models/ClienteFrecuente.html" beforeDir="false" afterPath="$PROJECT_DIR$/System_ek/docs/com.example.sistema/com/example/sistema/models/ClienteFrecuente.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/System_ek/docs/com.example.sistema/com/example/sistema/models/CorteCaja.html" beforeDir="false" afterPath="$PROJECT_DIR$/System_ek/docs/com.example.sistema/com/example/sistema/models/CorteCaja.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/System_ek/docs/com.example.sistema/com/example/sistema/models/Ingrediente.html" beforeDir="false" afterPath="$PROJECT_DIR$/System_ek/docs/com.example.sistema/com/example/sistema/models/Ingrediente.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/System_ek/docs/com.example.sistema/com/example/sistema/models/ItemPedido.html" beforeDir="false" afterPath="$PROJECT_DIR$/System_ek/docs/com.example.sistema/com/example/sistema/models/ItemPedido.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/System_ek/docs/com.example.sistema/com/example/sistema/models/ItemReceta.html" beforeDir="false" afterPath="$PROJECT_DIR$/System_ek/docs/com.example.sistema/com/example/sistema/models/ItemReceta.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/System_ek/docs/com.example.sistema/com/example/sistema/models/ModelManagement.html" beforeDir="false" afterPath="$PROJECT_DIR$/System_ek/docs/com.example.sistema/com/example/sistema/models/ModelManagement.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/System_ek/docs/com.example.sistema/com/example/sistema/models/Pedido.html" beforeDir="false" afterPath="$PROJECT_DIR$/System_ek/docs/com.example.sistema/com/example/sistema/models/Pedido.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/System_ek/docs/com.example.sistema/com/example/sistema/models/Platillo.html" beforeDir="false" afterPath="$PROJECT_DIR$/System_ek/docs/com.example.sistema/com/example/sistema/models/Platillo.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/System_ek/docs/com.example.sistema/com/example/sistema/models/Usuario.html" beforeDir="false" afterPath="$PROJECT_DIR$/System_ek/docs/com.example.sistema/com/example/sistema/models/Usuario.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/System_ek/docs/com.example.sistema/com/example/sistema/models/class-use/Cliente.html" beforeDir="false" afterPath="$PROJECT_DIR$/System_ek/docs/com.example.sistema/com/example/sistema/models/class-use/Cliente.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/System_ek/docs/com.example.sistema/com/example/sistema/models/class-use/ClienteFrecuente.html" beforeDir="false" afterPath="$PROJECT_DIR$/System_ek/docs/com.example.sistema/com/example/sistema/models/class-use/ClienteFrecuente.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/System_ek/docs/com.example.sistema/com/example/sistema/models/class-use/CorteCaja.html" beforeDir="false" afterPath="$PROJECT_DIR$/System_ek/docs/com.example.sistema/com/example/sistema/models/class-use/CorteCaja.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/System_ek/docs/com.example.sistema/com/example/sistema/models/class-use/Ingrediente.html" beforeDir="false" afterPath="$PROJECT_DIR$/System_ek/docs/com.example.sistema/com/example/sistema/models/class-use/Ingrediente.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/System_ek/docs/com.example.sistema/com/example/sistema/models/class-use/ItemPedido.html" beforeDir="false" afterPath="$PROJECT_DIR$/System_ek/docs/com.example.sistema/com/example/sistema/models/class-use/ItemPedido.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/System_ek/docs/com.example.sistema/com/example/sistema/models/class-use/ItemReceta.html" beforeDir="false" afterPath="$PROJECT_DIR$/System_ek/docs/com.example.sistema/com/example/sistema/models/class-use/ItemReceta.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/System_ek/docs/com.example.sistema/com/example/sistema/models/class-use/ModelManagement.html" beforeDir="false" afterPath="$PROJECT_DIR$/System_ek/docs/com.example.sistema/com/example/sistema/models/class-use/ModelManagement.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/System_ek/docs/com.example.sistema/com/example/sistema/models/class-use/Pedido.html" beforeDir="false" afterPath="$PROJECT_DIR$/System_ek/docs/com.example.sistema/com/example/sistema/models/class-use/Pedido.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/System_ek/docs/com.example.sistema/com/example/sistema/models/class-use/Platillo.html" beforeDir="false" afterPath="$PROJECT_DIR$/System_ek/docs/com.example.sistema/com/example/sistema/models/class-use/Platillo.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/System_ek/docs/com.example.sistema/com/example/sistema/models/class-use/Usuario.html" beforeDir="false" afterPath="$PROJECT_DIR$/System_ek/docs/com.example.sistema/com/example/sistema/models/class-use/Usuario.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/System_ek/docs/com.example.sistema/com/example/sistema/models/package-summary.html" beforeDir="false" afterPath="$PROJECT_DIR$/System_ek/docs/com.example.sistema/com/example/sistema/models/package-summary.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/System_ek/docs/com.example.sistema/com/example/sistema/models/package-tree.html" beforeDir="false" afterPath="$PROJECT_DIR$/System_ek/docs/com.example.sistema/com/example/sistema/models/package-tree.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/System_ek/docs/com.example.sistema/com/example/sistema/models/package-use.html" beforeDir="false" afterPath="$PROJECT_DIR$/System_ek/docs/com.example.sistema/com/example/sistema/models/package-use.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/System_ek/docs/com.example.sistema/com/example/sistema/package-summary.html" beforeDir="false" afterPath="$PROJECT_DIR$/System_ek/docs/com.example.sistema/com/example/sistema/package-summary.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/System_ek/docs/com.example.sistema/com/example/sistema/package-tree.html" beforeDir="false" afterPath="$PROJECT_DIR$/System_ek/docs/com.example.sistema/com/example/sistema/package-tree.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/System_ek/docs/com.example.sistema/com/example/sistema/package-use.html" beforeDir="false" afterPath="$PROJECT_DIR$/System_ek/docs/com.example.sistema/com/example/sistema/package-use.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/System_ek/docs/com.example.sistema/com/example/sistema/persistencia/ConvertidorCliente.html" beforeDir="false" afterPath="$PROJECT_DIR$/System_ek/docs/com.example.sistema/com/example/sistema/persistencia/ConvertidorCliente.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/System_ek/docs/com.example.sistema/com/example/sistema/persistencia/ConvertidorIngrediente.html" beforeDir="false" afterPath="$PROJECT_DIR$/System_ek/docs/com.example.sistema/com/example/sistema/persistencia/ConvertidorIngrediente.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/System_ek/docs/com.example.sistema/com/example/sistema/persistencia/ConvertidorJSON.html" beforeDir="false" afterPath="$PROJECT_DIR$/System_ek/docs/com.example.sistema/com/example/sistema/persistencia/ConvertidorJSON.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/System_ek/docs/com.example.sistema/com/example/sistema/persistencia/ConvertidorPedido.html" beforeDir="false" afterPath="$PROJECT_DIR$/System_ek/docs/com.example.sistema/com/example/sistema/persistencia/ConvertidorPedido.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/System_ek/docs/com.example.sistema/com/example/sistema/persistencia/ConvertidorPlatillo.html" beforeDir="false" afterPath="$PROJECT_DIR$/System_ek/docs/com.example.sistema/com/example/sistema/persistencia/ConvertidorPlatillo.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/System_ek/docs/com.example.sistema/com/example/sistema/persistencia/ConvertidorUsuario.html" beforeDir="false" afterPath="$PROJECT_DIR$/System_ek/docs/com.example.sistema/com/example/sistema/persistencia/ConvertidorUsuario.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/System_ek/docs/com.example.sistema/com/example/sistema/persistencia/Identificable.html" beforeDir="false" afterPath="$PROJECT_DIR$/System_ek/docs/com.example.sistema/com/example/sistema/persistencia/Identificable.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/System_ek/docs/com.example.sistema/com/example/sistema/persistencia/RepositorioJSON.html" beforeDir="false" afterPath="$PROJECT_DIR$/System_ek/docs/com.example.sistema/com/example/sistema/persistencia/RepositorioJSON.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/System_ek/docs/com.example.sistema/com/example/sistema/persistencia/class-use/ConvertidorCliente.html" beforeDir="false" afterPath="$PROJECT_DIR$/System_ek/docs/com.example.sistema/com/example/sistema/persistencia/class-use/ConvertidorCliente.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/System_ek/docs/com.example.sistema/com/example/sistema/persistencia/class-use/ConvertidorIngrediente.html" beforeDir="false" afterPath="$PROJECT_DIR$/System_ek/docs/com.example.sistema/com/example/sistema/persistencia/class-use/ConvertidorIngrediente.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/System_ek/docs/com.example.sistema/com/example/sistema/persistencia/class-use/ConvertidorJSON.html" beforeDir="false" afterPath="$PROJECT_DIR$/System_ek/docs/com.example.sistema/com/example/sistema/persistencia/class-use/ConvertidorJSON.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/System_ek/docs/com.example.sistema/com/example/sistema/persistencia/class-use/ConvertidorPedido.html" beforeDir="false" afterPath="$PROJECT_DIR$/System_ek/docs/com.example.sistema/com/example/sistema/persistencia/class-use/ConvertidorPedido.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/System_ek/docs/com.example.sistema/com/example/sistema/persistencia/class-use/ConvertidorPlatillo.html" beforeDir="false" afterPath="$PROJECT_DIR$/System_ek/docs/com.example.sistema/com/example/sistema/persistencia/class-use/ConvertidorPlatillo.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/System_ek/docs/com.example.sistema/com/example/sistema/persistencia/class-use/ConvertidorUsuario.html" beforeDir="false" afterPath="$PROJECT_DIR$/System_ek/docs/com.example.sistema/com/example/sistema/persistencia/class-use/ConvertidorUsuario.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/System_ek/docs/com.example.sistema/com/example/sistema/persistencia/class-use/Identificable.html" beforeDir="false" afterPath="$PROJECT_DIR$/System_ek/docs/com.example.sistema/com/example/sistema/persistencia/class-use/Identificable.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/System_ek/docs/com.example.sistema/com/example/sistema/persistencia/class-use/RepositorioJSON.html" beforeDir="false" afterPath="$PROJECT_DIR$/System_ek/docs/com.example.sistema/com/example/sistema/persistencia/class-use/RepositorioJSON.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/System_ek/docs/com.example.sistema/com/example/sistema/persistencia/package-summary.html" beforeDir="false" afterPath="$PROJECT_DIR$/System_ek/docs/com.example.sistema/com/example/sistema/persistencia/package-summary.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/System_ek/docs/com.example.sistema/com/example/sistema/persistencia/package-tree.html" beforeDir="false" afterPath="$PROJECT_DIR$/System_ek/docs/com.example.sistema/com/example/sistema/persistencia/package-tree.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/System_ek/docs/com.example.sistema/com/example/sistema/persistencia/package-use.html" beforeDir="false" afterPath="$PROJECT_DIR$/System_ek/docs/com.example.sistema/com/example/sistema/persistencia/package-use.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/System_ek/docs/com.example.sistema/com/example/sistema/services/ServicioCliente.html" beforeDir="false" afterPath="$PROJECT_DIR$/System_ek/docs/com.example.sistema/com/example/sistema/services/ServicioCliente.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/System_ek/docs/com.example.sistema/com/example/sistema/services/ServicioInventario.html" beforeDir="false" afterPath="$PROJECT_DIR$/System_ek/docs/com.example.sistema/com/example/sistema/services/ServicioInventario.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/System_ek/docs/com.example.sistema/com/example/sistema/services/ServicioMenu.html" beforeDir="false" afterPath="$PROJECT_DIR$/System_ek/docs/com.example.sistema/com/example/sistema/services/ServicioMenu.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/System_ek/docs/com.example.sistema/com/example/sistema/services/ServicioReportes.html" beforeDir="false" afterPath="$PROJECT_DIR$/System_ek/docs/com.example.sistema/com/example/sistema/services/ServicioReportes.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/System_ek/docs/com.example.sistema/com/example/sistema/services/ServicioUsuarios.html" beforeDir="false" afterPath="$PROJECT_DIR$/System_ek/docs/com.example.sistema/com/example/sistema/services/ServicioUsuarios.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/System_ek/docs/com.example.sistema/com/example/sistema/services/ServicioVentas.html" beforeDir="false" afterPath="$PROJECT_DIR$/System_ek/docs/com.example.sistema/com/example/sistema/services/ServicioVentas.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/System_ek/docs/com.example.sistema/com/example/sistema/services/class-use/ServicioCliente.html" beforeDir="false" afterPath="$PROJECT_DIR$/System_ek/docs/com.example.sistema/com/example/sistema/services/class-use/ServicioCliente.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/System_ek/docs/com.example.sistema/com/example/sistema/services/class-use/ServicioInventario.html" beforeDir="false" afterPath="$PROJECT_DIR$/System_ek/docs/com.example.sistema/com/example/sistema/services/class-use/ServicioInventario.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/System_ek/docs/com.example.sistema/com/example/sistema/services/class-use/ServicioMenu.html" beforeDir="false" afterPath="$PROJECT_DIR$/System_ek/docs/com.example.sistema/com/example/sistema/services/class-use/ServicioMenu.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/System_ek/docs/com.example.sistema/com/example/sistema/services/class-use/ServicioReportes.html" beforeDir="false" afterPath="$PROJECT_DIR$/System_ek/docs/com.example.sistema/com/example/sistema/services/class-use/ServicioReportes.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/System_ek/docs/com.example.sistema/com/example/sistema/services/class-use/ServicioUsuarios.html" beforeDir="false" afterPath="$PROJECT_DIR$/System_ek/docs/com.example.sistema/com/example/sistema/services/class-use/ServicioUsuarios.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/System_ek/docs/com.example.sistema/com/example/sistema/services/class-use/ServicioVentas.html" beforeDir="false" afterPath="$PROJECT_DIR$/System_ek/docs/com.example.sistema/com/example/sistema/services/class-use/ServicioVentas.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/System_ek/docs/com.example.sistema/com/example/sistema/services/package-summary.html" beforeDir="false" afterPath="$PROJECT_DIR$/System_ek/docs/com.example.sistema/com/example/sistema/services/package-summary.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/System_ek/docs/com.example.sistema/com/example/sistema/services/package-tree.html" beforeDir="false" afterPath="$PROJECT_DIR$/System_ek/docs/com.example.sistema/com/example/sistema/services/package-tree.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/System_ek/docs/com.example.sistema/com/example/sistema/services/package-use.html" beforeDir="false" afterPath="$PROJECT_DIR$/System_ek/docs/com.example.sistema/com/example/sistema/services/package-use.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/System_ek/docs/com.example.sistema/module-summary.html" beforeDir="false" afterPath="$PROJECT_DIR$/System_ek/docs/com.example.sistema/module-summary.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/System_ek/docs/help-doc.html" beforeDir="false" afterPath="$PROJECT_DIR$/System_ek/docs/help-doc.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/System_ek/docs/index-files/index-1.html" beforeDir="false" afterPath="$PROJECT_DIR$/System_ek/docs/index-files/index-1.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/System_ek/docs/index-files/index-10.html" beforeDir="false" afterPath="$PROJECT_DIR$/System_ek/docs/index-files/index-10.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/System_ek/docs/index-files/index-11.html" beforeDir="false" afterPath="$PROJECT_DIR$/System_ek/docs/index-files/index-11.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/System_ek/docs/index-files/index-12.html" beforeDir="false" afterPath="$PROJECT_DIR$/System_ek/docs/index-files/index-12.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/System_ek/docs/index-files/index-13.html" beforeDir="false" afterPath="$PROJECT_DIR$/System_ek/docs/index-files/index-13.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/System_ek/docs/index-files/index-14.html" beforeDir="false" afterPath="$PROJECT_DIR$/System_ek/docs/index-files/index-14.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/System_ek/docs/index-files/index-15.html" beforeDir="false" afterPath="$PROJECT_DIR$/System_ek/docs/index-files/index-15.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/System_ek/docs/index-files/index-16.html" beforeDir="false" afterPath="$PROJECT_DIR$/System_ek/docs/index-files/index-16.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/System_ek/docs/index-files/index-17.html" beforeDir="false" afterPath="$PROJECT_DIR$/System_ek/docs/index-files/index-17.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/System_ek/docs/index-files/index-2.html" beforeDir="false" afterPath="$PROJECT_DIR$/System_ek/docs/index-files/index-2.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/System_ek/docs/index-files/index-3.html" beforeDir="false" afterPath="$PROJECT_DIR$/System_ek/docs/index-files/index-3.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/System_ek/docs/index-files/index-4.html" beforeDir="false" afterPath="$PROJECT_DIR$/System_ek/docs/index-files/index-4.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/System_ek/docs/index-files/index-5.html" beforeDir="false" afterPath="$PROJECT_DIR$/System_ek/docs/index-files/index-5.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/System_ek/docs/index-files/index-6.html" beforeDir="false" afterPath="$PROJECT_DIR$/System_ek/docs/index-files/index-6.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/System_ek/docs/index-files/index-7.html" beforeDir="false" afterPath="$PROJECT_DIR$/System_ek/docs/index-files/index-7.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/System_ek/docs/index-files/index-8.html" beforeDir="false" afterPath="$PROJECT_DIR$/System_ek/docs/index-files/index-8.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/System_ek/docs/index-files/index-9.html" beforeDir="false" afterPath="$PROJECT_DIR$/System_ek/docs/index-files/index-9.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/System_ek/docs/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/System_ek/docs/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/System_ek/docs/legal/jqueryUI.md" beforeDir="false" afterPath="$PROJECT_DIR$/System_ek/docs/legal/jqueryUI.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/System_ek/docs/member-search-index.js" beforeDir="false" afterPath="$PROJECT_DIR$/System_ek/docs/member-search-index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/System_ek/docs/overview-tree.html" beforeDir="false" afterPath="$PROJECT_DIR$/System_ek/docs/overview-tree.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/System_ek/docs/package-search-index.js" beforeDir="false" afterPath="$PROJECT_DIR$/System_ek/docs/package-search-index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/System_ek/docs/resource-files/jquery-ui.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/System_ek/docs/resource-files/jquery-ui.min.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/System_ek/docs/resource-files/link.svg" beforeDir="false" afterPath="$PROJECT_DIR$/System_ek/docs/resource-files/link.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/System_ek/docs/resource-files/stylesheet.css" beforeDir="false" afterPath="$PROJECT_DIR$/System_ek/docs/resource-files/stylesheet.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/System_ek/docs/script-files/jquery-ui.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/System_ek/docs/script-files/jquery-ui.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/System_ek/docs/script-files/script.js" beforeDir="false" afterPath="$PROJECT_DIR$/System_ek/docs/script-files/script.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/System_ek/docs/script-files/search-page.js" beforeDir="false" afterPath="$PROJECT_DIR$/System_ek/docs/script-files/search-page.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/System_ek/docs/script-files/search.js" beforeDir="false" afterPath="$PROJECT_DIR$/System_ek/docs/script-files/search.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/System_ek/docs/search.html" beforeDir="false" afterPath="$PROJECT_DIR$/System_ek/docs/search.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/System_ek/docs/type-search-index.js" beforeDir="false" afterPath="$PROJECT_DIR$/System_ek/docs/type-search-index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/System_ek/src/main/java/com/example/sistema/controllers/ControladorClientesFrecuentes.java" beforeDir="false" afterPath="$PROJECT_DIR$/System_ek/src/main/java/com/example/sistema/controllers/ControladorClientesFrecuentes.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/System_ek/src/main/java/com/example/sistema/controllers/ControladorCorte.java" beforeDir="false" afterPath="$PROJECT_DIR$/System_ek/src/main/java/com/example/sistema/controllers/ControladorCorte.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/System_ek/src/main/java/com/example/sistema/controllers/ControladorTicketPedido.java" beforeDir="false" afterPath="$PROJECT_DIR$/System_ek/src/main/java/com/example/sistema/controllers/ControladorTicketPedido.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/System_ek/src/main/resources/Imagenes/logo jaguar.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/System_ek/src/main/java/com/example/sistema/controllers/ControladorLogin.java" beforeDir="false" afterPath="$PROJECT_DIR$/System_ek/src/main/java/com/example/sistema/controllers/ControladorLogin.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -142,8 +17,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="FxmlFile" />
         <option value="Class" />
+        <option value="FxmlFile" />
       </list>
     </option>
   </component>
@@ -161,12 +36,12 @@
     &quot;assignee&quot;: &quot;MichelleFirst&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings">{
-  &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;https://github.com/RaulAG-Dev/Sistema_de_Gestion_para_Cocina_Economica.git&quot;,
-    &quot;accountId&quot;: &quot;dda92793-fc6a-42a0-8a1d-dbab545500ff&quot;
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/RaulAG-Dev/Sistema_de_Gestion_para_Cocina_Economica.git",
+    "accountId": "e3def4d0-946c-46f1-b299-90377f0e913d"
   }
-}</component>
+}]]></component>
   <component name="MavenImportPreferences">
     <option name="generalSettings">
       <MavenGeneralSettings>
@@ -238,8 +113,8 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-jdk-9823dce3aa75-bf35d07a577b-intellij.indexing.shared.core-IU-252.27397.103" />
-        <option value="bundled-js-predefined-d6986cc7102b-3aa1da707db6-JavaScript-IU-252.27397.103" />
+        <option value="bundled-jdk-9823dce3aa75-bf35d07a577b-intellij.indexing.shared.core-IU-252.23892.409" />
+        <option value="bundled-js-predefined-d6986cc7102b-e03c56caf84a-JavaScript-IU-252.23892.409" />
       </set>
     </attachedChunks>
   </component>
@@ -259,6 +134,7 @@
       <workItem from="1763702863895" duration="306000" />
       <workItem from="1763753596995" duration="18677000" />
       <workItem from="1764001638890" duration="529000" />
+      <workItem from="1764044754864" duration="2952000" />
     </task>
     <task id="LOCAL-00001" summary="Nueva rama, nuevo: ServicioVentas con su convertidor y metodos creados para Gestión de ventas e Historial de ventas">
       <option name="closed" value="true" />

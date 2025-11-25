@@ -57,7 +57,7 @@ public class ControladorLogin {
      * Constructor del controlador de Login.
      * <p>Se encarga de inicializar las dependencias necesarias, como el servicio de usuarios.</p>
      */
-    public ControladorLogin(){
+    public ControladorLogin() {
         this.servicioUsuarios = new ServicioUsuarios();
     }
 
@@ -74,13 +74,23 @@ public class ControladorLogin {
         String usuario = usuarioField.getText().trim();
         String password = passField.getText().trim();
 
-        try{
+        try {
             Usuario usuario1 = servicioUsuarios.autenticar(usuario, password);
-            cambiarEscena();
-        }catch (Exception e){
+            usuario1.setNombre(usuario);
+
+            if (usuario1.getRol().equals("Administrador")) {
+                cambiarEscena();
+            } else {
+                cambiarEscenaEmpleado();
+            }
+
+        } catch (Exception e) {
             mensajeError.setText(e.getMessage());
         }
-    }
+
+}
+
+
 
     /**
      * Realiza la transición de la ventana de login a la vista principal del sistema.
@@ -105,4 +115,22 @@ public class ControladorLogin {
             e.printStackTrace();
         }
     }
+
+    private void cambiarEscenaEmpleado() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/sistema/PrincipalViewEmpleado.fxml"));
+            Parent root = loader.load();
+            Stage stage = (Stage) loginButton.getScene().getWindow();
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.setMaximized(true);
+            stage.setTitle("Cocina EK");
+            stage.centerOnScreen();
+            stage.show();
+        } catch (IOException e) {
+            System.err.println("Error al cargar la vista principal después del login.");
+            e.printStackTrace();
+        }
+    }
+
 }
