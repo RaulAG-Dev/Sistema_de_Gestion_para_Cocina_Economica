@@ -1,3 +1,4 @@
+![Gemini_Generated_Image_l3ic07l3ic07l3ic.png](documentaci%C3%B3n%20del%20desarrollo/recursos/imagenes/Gemini_Generated_Image_l3ic07l3ic07l3ic.png)
 # Proyecto Sistema de gestión de cocina económica
 El proyecto de desarrollo de un Sistema de gestiónde ocina económica en lenguaje Java tiene como objetivo crear una aplicación de software versátil y eficiente que permita a una cocina económica gestionar sus operaciones de manera efectiva. Este sistema brindaráuna solución completa para las activiut.des diarias de la cocina, mejorando la eficiencia, la precisión y la toma de decisiones comerciales.
 

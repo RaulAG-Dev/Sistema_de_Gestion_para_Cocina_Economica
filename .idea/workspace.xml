@@ -5,7 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="49c8785d-bcea-49e4-b987-9c89bc7874a7" name="Changes" comment="Nueva rama, nuevo: ServicioVentas con su convertidor y metodos creados para Gestión de ventas e Historial de ventas">
-      <change beforePath="$PROJECT_DIR$/documentación del desarrollo/artefactos/diagrama de casos de uso.md" beforeDir="false" afterPath="$PROJECT_DIR$/documentación del desarrollo/artefactos/diagrama de casos de uso.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -132,7 +132,7 @@
       <workItem from="1763702863895" duration="306000" />
       <workItem from="1763753596995" duration="18677000" />
       <workItem from="1764001638890" duration="529000" />
-      <workItem from="1764044754864" duration="3391000" />
+      <workItem from="1764044754864" duration="4521000" />
     </task>
     <task id="LOCAL-00001" summary="Nueva rama, nuevo: ServicioVentas con su convertidor y metodos creados para Gestión de ventas e Historial de ventas">
       <option name="closed" value="true" />
