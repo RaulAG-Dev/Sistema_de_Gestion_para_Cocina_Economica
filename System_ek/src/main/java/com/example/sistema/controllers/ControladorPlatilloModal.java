@@ -1,3 +1,14 @@
+/**
+ * package com.example.sistema.controllers;
+ *
+ * Controlador para la ventana modal (diálogo) de gestión de platillos (añadir/editar).
+ * Permite al usuario ingresar los detalles de un platillo, su precio, tipo de menú
+ * y componer la receta seleccionando ingredientes del inventario.
+ *
+ * @author Emiliano Ávila
+ * @version 1.0
+ * @since 2025-11-24
+ */
 package com.example.sistema.controllers;
 
 import com.example.sistema.models.Ingrediente;
@@ -23,6 +34,7 @@ import java.util.ResourceBundle;
 
 public class ControladorPlatilloModal implements Initializable {
 
+    // --- Componentes FXML ---
     @FXML private Label tituloLabel;
     @FXML private TextField nombreField;
     @FXML private TextField descripcionField;
@@ -37,6 +49,7 @@ public class ControladorPlatilloModal implements Initializable {
     @FXML private TableColumn<ItemReceta, Float> colIngredienteCantidad;
     @FXML private TableColumn<ItemReceta, String> colIngredienteUnidad;
 
+    // --- Variables de Estado y Dependencias ---
     private Platillo platilloActual;
     private ServicioMenu servicioMenu;
     private ControladorPrincipal controladorPrincipal;
@@ -44,33 +57,53 @@ public class ControladorPlatilloModal implements Initializable {
     private final ObservableList<ItemReceta> recetaObservableList = FXCollections.observableArrayList();
     private final ServicioInventario servicioInventario = ServicioInventario.getInstance();
 
+    /**
+     * Inicializa el controlador después de que todos los elementos FXML han sido procesados.
+     * Configura los ComboBoxes, las columnas de la tabla y los listeners necesarios.
+     *
+     * @param url La ubicación utilizada para resolver rutas relativas para el objeto raíz, o null si no se conoce.
+     * @param resourceBundle Los recursos utilizados para localizar el objeto raíz, o null si no se conoce.
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        // Inicialización de ComboBoxes
         tipoMenuComboBox.setItems(FXCollections.observableArrayList("Desayunos", "Almuerzos", "Cenas"));
         List<Ingrediente> ingredientesDisponibles = servicioInventario.obtenerInventario();
         ingredienteComboBox.setItems(FXCollections.observableArrayList(ingredientesDisponibles));
 
+        // Configuración de las Columnas de la Tabla
         colIngredienteNombre.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getIngrediente().getNombre()));
         colIngredienteCantidad.setCellValueFactory(new PropertyValueFactory<>("cantidadRequerida"));
         colIngredienteUnidad.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getIngrediente().getUnidades()));
         tablaIngredientes.setItems(recetaObservableList);
 
+        // Conversor para mostrar el nombre del Ingrediente en el ComboBox
         ingredienteComboBox.setConverter(new StringConverter<Ingrediente>() {
             @Override public String toString(Ingrediente object) { return object != null ? object.getNombre() : ""; }
             @Override public Ingrediente fromString(String string) { return null; }
         });
 
+        // Listener para actualizar la etiqueta de unidad al seleccionar un ingrediente
         ingredienteComboBox.getSelectionModel().selectedItemProperty().addListener((obs, oldIng, newIng) -> {
             unidadLabel.setText(newIng != null ? newIng.getUnidades() : "Unid.");
         });
     }
 
+    /**
+     * Método para inicializar el modal con los datos necesarios y configurar el modo (Añadir o Editar).
+     * Este método se llama externamente al cargar el FXML.
+     *
+     * @param platillo El objeto Platillo a editar, o null si se está creando un platillo nuevo.
+     * @param servicio El ServicioMenu utilizado para interactuar con la lógica de negocio.
+     * @param principal El ControladorPrincipal para poder invocar la actualización de la vista principal.
+     */
     public void inicializar(Platillo platillo, ServicioMenu servicio, ControladorPrincipal principal) {
         this.platilloActual = platillo;
         this.servicioMenu = servicio;
         this.controladorPrincipal = principal;
 
         if (platillo != null) {
+            // Modo Edición
             tituloLabel.setText("Editar Platillo: " + platillo.getNombre());
             nombreField.setText(platillo.getNombre());
             descripcionField.setText(platillo.getDescripcion());
@@ -82,11 +115,19 @@ public class ControladorPlatilloModal implements Initializable {
             }
 
         } else {
+            // Modo Nuevo Platillo
             tituloLabel.setText("Añadir Nuevo Platillo");
             tipoMenuComboBox.getSelectionModel().selectFirst();
         }
     }
 
+    /**
+     * Maneja la acción de agregar un ingrediente a la receta del platillo.
+     * Valida que se haya seleccionado un ingrediente y una cantidad válida.
+     * Si el ingrediente ya existe en la receta, se reemplaza con la nueva cantidad.
+     *
+     * @param actionEvent El evento de la acción (por ejemplo, clic en el botón).
+     */
     @FXML
     public void agregarIngrediente(ActionEvent actionEvent) {
         Ingrediente ingredienteSeleccionado = ingredienteComboBox.getSelectionModel().getSelectedItem();
@@ -104,10 +145,12 @@ public class ControladorPlatilloModal implements Initializable {
                 return;
             }
 
+            // Crea el nuevo item y lo añade/reemplaza en la lista observable
             ItemReceta newItem = new ItemReceta(ingredienteSeleccionado, cantidad);
             recetaObservableList.removeIf(item -> item.getIngrediente().getId() == ingredienteSeleccionado.getId());
             recetaObservableList.add(newItem);
 
+            // Limpia los campos de entrada
             cantidadField.clear();
             ingredienteComboBox.getSelectionModel().clearSelection();
 
@@ -116,6 +159,11 @@ public class ControladorPlatilloModal implements Initializable {
         }
     }
 
+    /**
+     * Intenta guardar o actualizar el platillo en el sistema.
+     * Realiza validaciones básicas de campos y notifica al usuario en caso de error.
+     * Si tiene éxito, llama al servicio para guardar y cierra el modal.
+     */
     @FXML
     private void guardar() {
         try {
@@ -124,6 +172,7 @@ public class ControladorPlatilloModal implements Initializable {
             float precio = Float.parseFloat(precioField.getText());
             String tipoMenu = tipoMenuComboBox.getValue();
 
+            // Validación de campos obligatorios
             if (nombre.isEmpty() || tipoMenu == null || recetaObservableList.isEmpty()) {
                 String mensaje = "Faltan campos obligatorios: ";
                 if (nombre.isEmpty()) mensaje += "Nombre, ";
@@ -137,8 +186,10 @@ public class ControladorPlatilloModal implements Initializable {
             boolean esNuevo = (platilloActual == null);
 
             if (esNuevo) {
+                // Creación de nuevo platillo
                 platilloActual = new Platillo(0, nombre, descripcion, precio, true, recetaFinal, tipoMenu);
             } else {
+                // Actualización de platillo existente
                 platilloActual.setNombre(nombre);
                 platilloActual.setDescripcion(descripcion);
                 platilloActual.setPrecio(precio);
@@ -148,6 +199,7 @@ public class ControladorPlatilloModal implements Initializable {
 
             servicioMenu.guardarPlatillo(platilloActual);
 
+            // Actualiza la vista principal y cierra el modal
             controladorPrincipal.refrescarVista();
             cancelar();
 
@@ -158,6 +210,9 @@ public class ControladorPlatilloModal implements Initializable {
         }
     }
 
+    /**
+     * Cierra la ventana modal actual.
+     */
     @FXML
     private void cancelar() {
         Stage stage = (Stage) nombreField.getScene().getWindow();
