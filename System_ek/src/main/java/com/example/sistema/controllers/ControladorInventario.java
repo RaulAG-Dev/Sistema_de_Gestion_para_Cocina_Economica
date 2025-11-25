@@ -16,30 +16,57 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.List;
 
+/**
+ * **Controlador de la vista para la gestión del inventario de ingredientes (CRUD).**
+ * <p>
+ * Permite a los usuarios visualizar, añadir, modificar y eliminar ingredientes.
+ * También muestra alertas sobre ingredientes con stock bajo, utilizando
+ * {@link ServicioInventario}.
+ *
+ * @author Raul Aguayo y Michelle Chuc
+ * @version 3.0
+ * @since 2025-11-21
+ */
 public class ControladorInventario implements Initializable {
 
-
+    // --- Componentes FXML de la Vista ---
     @FXML private Button regresarButton;
+    /** Tabla principal que muestra la lista de todos los ingredientes. */
     @FXML private TableView<Ingrediente> inventarioTable;
     @FXML private TableColumn<Ingrediente, String> nombreColumn;
     @FXML private TableColumn<Ingrediente, Float> stockActualColumn;
     @FXML private TableColumn<Ingrediente, Float> stockMinimoColumn;
     @FXML private TableColumn<Ingrediente, String> unidadColumn;
+    /** Área de texto para mostrar notificaciones, alertas y errores de validación. */
     @FXML private TextArea notificacionesArea;
+
+    // Campos del formulario
     @FXML private TextField nombreField;
     @FXML private TextField stockField;
     @FXML private TextField minimoField;
     @FXML private TextField unidadField;
 
+    // --- Servicios ---
+    /** Instancia del servicio de inventario para interactuar con los datos. */
     private final ServicioInventario servicioInventario = ServicioInventario.getInstance();
 
+    /**
+     * Inicializa el controlador, configura las fábricas de celdas y carga los datos
+     * de inventario y las alertas al inicio.
+     *
+     * @param url La ubicación utilizada para resolver rutas relativas.
+     * @param resourceBundle Los recursos utilizados para localizar el objeto raíz.
+     * @Override
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        // Configuración de Cell Value Factories
         nombreColumn.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getNombre()));
         stockActualColumn.setCellValueFactory(data -> new SimpleObjectProperty<>(data.getValue().getStockActual()));
         stockMinimoColumn.setCellValueFactory(data -> new SimpleObjectProperty<>(data.getValue().getStockMinimo()));
         unidadColumn.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getUnidades()));
         cargarDatosYAlertas();
+        // Listener para cargar los datos del ingrediente seleccionado en el formulario
         inventarioTable.getSelectionModel().selectedItemProperty().addListener((obs, oldSel, newSel) -> {
             if (newSel != null) {
                 nombreField.setText(newSel.getNombre());
@@ -50,11 +77,19 @@ public class ControladorInventario implements Initializable {
         });
     }
 
+    /**
+     * Carga todos los ingredientes en la tabla y actualiza el área de notificaciones
+     * con las alertas de stock.
+     */
     private void cargarDatosYAlertas() {
         inventarioTable.getItems().setAll(servicioInventario.obtenerInventario());
         mostrarAlertas();
     }
 
+    /**
+     * Consulta el servicio de inventario para obtener la lista de ingredientes en alerta
+     * y muestra un mensaje detallado en el área de notificaciones.
+     */
     private void mostrarAlertas() {
         List<Ingrediente> alertas = servicioInventario.obtenerAlertasStock();
 
@@ -75,6 +110,9 @@ public class ControladorInventario implements Initializable {
         notificacionesArea.setText(mensaje.toString());
     }
 
+    /**
+     * Limpia todos los campos de texto del formulario de edición/creación.
+     */
     private void limpiarCampos() {
         nombreField.clear();
         stockField.clear();
@@ -82,7 +120,11 @@ public class ControladorInventario implements Initializable {
         unidadField.clear();
     }
 
-
+    /**
+     * Maneja el evento de clic del botón "Regresar". Cierra la ventana actual.
+     *
+     * @param event El evento de acción.
+     */
     @FXML
     void manejarRegreso(ActionEvent event) {
         Node source = (Node) event.getSource();
@@ -90,6 +132,14 @@ public class ControladorInventario implements Initializable {
         stageActual.close();
     }
 
+    /**
+     * Maneja la creación de un nuevo ingrediente.
+     * <p>
+     * Realiza la validación de los datos (no vacíos, números positivos) antes de
+     * llamar a {@link ServicioInventario#agregarIngrediente(Ingrediente)}.
+     *
+     * @param event El evento de acción.
+     */
     @FXML
     void agregarIngrediente(ActionEvent event) {
         String nombre = nombreField.getText().trim();
@@ -118,6 +168,14 @@ public class ControladorInventario implements Initializable {
     }
 
 
+    /**
+     * Maneja la actualización de un ingrediente seleccionado.
+     * <p>
+     * Asigna los nuevos valores desde el formulario al objeto seleccionado y
+     * llama a {@link ServicioInventario#actualizarIngrediente(Ingrediente)}.
+     *
+     * @param event El evento de acción.
+     */
     @FXML
     void guardarIngrediente(ActionEvent event) {
         Ingrediente seleccionado = inventarioTable.getSelectionModel().getSelectedItem();
@@ -127,6 +185,7 @@ public class ControladorInventario implements Initializable {
         }
 
         try {
+            // Asignar nuevos valores, validando la conversión a float
             seleccionado.setNombre(nombreField.getText().trim());
             seleccionado.setStockActual(Float.parseFloat(stockField.getText().trim()));
             seleccionado.setStockMinimo(Float.parseFloat(minimoField.getText().trim()));
@@ -146,6 +205,13 @@ public class ControladorInventario implements Initializable {
         }
     }
 
+    /**
+     * Maneja la eliminación de un ingrediente seleccionado.
+     * <p>
+     * Llama a {@link ServicioInventario#eliminarIngrediente(int)} y actualiza la vista.
+     *
+     * @param event El evento de acción.
+     */
     @FXML
     void eliminarIngrediente(ActionEvent event) {
         Ingrediente seleccionado = inventarioTable.getSelectionModel().getSelectedItem();

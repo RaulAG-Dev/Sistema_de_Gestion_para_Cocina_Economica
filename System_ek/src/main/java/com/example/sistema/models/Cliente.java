@@ -1,18 +1,29 @@
 package com.example.sistema.models;
 
 /**
- * Esta clase representa a un cliente del sistema.
- * incluyendo su número telefónico y preferencias de consumo.
- * Hereda atributos de la clase ModelManagement.
+ * Representa un **cliente** en el sistema, extendiendo la funcionalidad base
+ * de {@code ModelManagement}.
+ * <p>
+ * Esta clase incluye detalles específicos como el número telefónico y las
+ * preferencias de consumo, y hereda propiedades base (como ID y nombre)
+ * de la clase {@link ModelManagement}.
+ *
  * @author Michelle Chuc
  * @version 2.0
+ * @since 2025-10-28
  */
 public class Cliente extends ModelManagement {
+    /**
+     * El número telefónico del cliente.
+     */
     private String telefono;
+    /**
+     * Las preferencias de consumo del cliente (ej. restricciones dietéticas, artículos favoritos).
+     */
     private String preferencias;
 
     /**
-     * Constructor vacío.
+     * Constructor **vacío** por defecto.
      */
     public Cliente(){}
 
@@ -30,7 +41,14 @@ public class Cliente extends ModelManagement {
         this.telefono = telefono;
         this.preferencias = preferencias;
     }
-
+    /**
+     * Compara este objeto cliente con el objeto especificado para verificar igualdad.
+     * Dos clientes se consideran iguales si sus **IDs son los mismos**.
+     *
+     * @param o El objeto con el que se va a comparar.
+     * @return {@code true} si el objeto dado es un Cliente y su ID coincide con el ID de este cliente; {@code false} en caso contrario.
+     * @Override
+     */
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -40,34 +58,61 @@ public class Cliente extends ModelManagement {
         return id == cliente.id;
     }
 
+    /**
+     * Devuelve un **valor de código hash** para el cliente.
+     * El código hash se basa únicamente en el ID del cliente.
+     *
+     * @return Un valor de código hash para este objeto.
+     * @Override
+     */
     @Override
     public int hashCode() {
         return Integer.hashCode(id);
     }
 
-    /** @return Teléfono del cliente*/
+    /**
+     * Obtiene el número telefónico del cliente.
+     *
+     * @return El número telefónico del cliente.
+     */
     public String getTelefono() {
         return telefono;
     }
 
-    /**@param telefono Nuevo número de telefono*/
+    /**
+     * Establece un nuevo número telefónico para el cliente.
+     *
+     * @param telefono El nuevo número de teléfono a establecer.
+     */
     public void setTelefono(String telefono) {
         this.telefono = telefono;
     }
 
-    /** @return Preferencias del cliente*/
+    /**
+     * Obtiene las preferencias de consumo del cliente.
+     *
+     * @return Las preferencias del cliente.
+     */
     public String getPreferencias() {
         return preferencias;
     }
 
-    /** @param preferencias Nuevas preferencias del cliente*/
+    /**
+     * Establece nuevas preferencias de consumo para el cliente.
+     *
+     * @param preferencias Las nuevas preferencias del cliente a establecer.
+     */
     public void setPreferencias(String preferencias) {
         this.preferencias = preferencias;
     }
 
     /**
-     * @return Representación textual del cliente
-     * */
+     * Proporciona una **representación textual** del cliente.
+     * El formato incluye el nombre, teléfono y preferencias.
+     *
+     * @return Una cadena de texto que representa el objeto cliente.
+     * @Override
+     */
     @Override
     public String toString(){
         return nombre + " (" + telefono + ") - Preferencias: " + preferencias;

@@ -4,14 +4,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Representa un plato o ítem del menú en un sistema de restaurante,
+ * Representa un **platillo** o ítem del menú en un sistema de restaurante,
  * incluyendo detalles como precio, disponibilidad e ingredientes necesarios.
  *
  * <p>Esta clase hereda propiedades de gestión de modelos a través de {@code ModelManagement}.</p>
  *
- * @author Raul Aguayo
- * @version 2.0
- * @since 2025-11-28
+ * @author Raul Aguayo y Michelle Chuc
+ * @version 3.0
+ * @since 2025-11-23
+ * @see ModelManagement
  */
 public class Platillo extends ModelManagement {
     /**
@@ -27,7 +28,7 @@ public class Platillo extends ModelManagement {
      */
     private boolean disponible;
     /**
-     * Lista de objetos Ingrediente que componen este platillo.
+     * Lista de objetos {@link ItemReceta} que definen la composición y cantidad de ingredientes requeridos.
      */
     private List<Ingrediente> ingredientes;
     /**
@@ -51,6 +52,7 @@ public class Platillo extends ModelManagement {
 
     /**
      * Constructor por defecto (sin argumentos) de la clase Platillo.
+     * * Inicializa la lista de receta y los contadores de ventas a cero.
      */
     public Platillo(){
         this.receta = new ArrayList<>();
@@ -80,6 +82,12 @@ public class Platillo extends ModelManagement {
         this.ingresosGenerados = 0f;
     }
 
+    /**
+     * Constructor de copia. Crea un nuevo objeto Platillo copiando los atributos de otro.
+     * Los contadores de ventas se inicializan a cero.
+     *
+     * @param original El objeto Platillo del cual copiar los datos.
+     */
     public Platillo(Platillo original) {
         this.id = original.id;
         this.nombre = original.nombre;
@@ -95,13 +103,24 @@ public class Platillo extends ModelManagement {
 
     //getters y setters
 
-
+    /**
+     * Obtiene la lista de ítems de la receta que componen el platillo.
+     *
+     * @return La lista de objetos {@link ItemReceta}.
+     */
     public List<ItemReceta> getReceta() {
         return receta;
     }
+
+    /**
+     * Establece la lista de ítems de la receta para el platillo.
+     *
+     * @param receta La nueva lista de {@link ItemReceta}.
+     */
     public void setReceta(List<ItemReceta> receta) {
         this.receta = receta;
     }
+
     /**
      * Obtiene el tipo de menu al que pertenece platillo.
      * @return el tipo de menú del platillo.
@@ -157,6 +176,42 @@ public class Platillo extends ModelManagement {
     }
 
     /**
+     * Obtiene la cantidad total de veces que se ha vendido este platillo.
+     *
+     * @return La cantidad total vendida.
+     */
+    public int getCantidadVendida() {
+        return cantidadVendida;
+    }
+
+    /**
+     * Establece la cantidad total vendida de este platillo.
+     *
+     * @param cantidadVendida La nueva cantidad vendida.
+     */
+    public void setCantidadVendida(int cantidadVendida) {
+        this.cantidadVendida = cantidadVendida;
+    }
+
+    /**
+     * Obtiene los ingresos totales generados por este platillo.
+     *
+     * @return Los ingresos generados.
+     */
+    public float getIngresosGenerados() {
+        return ingresosGenerados;
+    }
+
+    /**
+     * Establece los ingresos totales generados por este platillo.
+     *
+     * @param ingresosGenerados Los nuevos ingresos generados.
+     */
+    public void setIngresosGenerados(float ingresosGenerados) {
+        this.ingresosGenerados = ingresosGenerados;
+    }
+
+    /**
      * Verifica si el platillo está disponible para la venta.
      * @return {@code true} si está disponible, {@code false} en caso contrario.
      */
@@ -173,7 +228,9 @@ public class Platillo extends ModelManagement {
     }
 
     /**
-     * Obtiene la lista de ingredientes que componen el platillo.
+     * Obtiene la lista de objetos Ingrediente asociados al platillo.
+     * (Nota: Considerar usar {@link #getReceta()} en su lugar para la gestión de ingredientes).
+     *
      * @return La lista de objetos Ingrediente.
      */
     public List<Ingrediente> getIngredientes() {
@@ -188,30 +245,14 @@ public class Platillo extends ModelManagement {
         this.ingredientes = ingredientes;
     }
 
-    public int getCantidadVendida() {
-        return cantidadVendida;
-    }
-    public void setCantidadVendida(int cantidadVendida) {
-        this.cantidadVendida = cantidadVendida;
-    }
-
-    public float getIngresosGenerados() {
-        return ingresosGenerados;
-    }
-    public void setIngresosGenerados(float ingresosGenerados) {
-        this.ingresosGenerados = ingresosGenerados;
-    }
-
-
     /**
      * Retorna una representación en cadena del objeto Platillo.
-     * @return Una cadena que incluye el ID, nombre, descripción, precio e ingredientes.
+     *
+     * @return Una cadena que incluye información clave del platillo (ID, nombre, descripción, precio).
+     * @Override
      */
     @Override
     public String toString(){
         return id + nombre + descripcion + precio + ingredientes;
     }
-
-
-
 }
