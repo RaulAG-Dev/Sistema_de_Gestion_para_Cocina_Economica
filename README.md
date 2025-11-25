@@ -6,7 +6,9 @@ El proyecto de desarrollo de un Sistema de gestiónde ocina económica en lengua
 ## Objetivo principal del proyecto
 El objetivo principal del proyecto es aplicar los conocimientos adquiridos por el equipo en clase sobre el desarrollo de software bajo el paradigma de la Programación Orientada a Objetos. Asimismo, se busca implementar tecnologías y herramientas afines al desarrollo de software, fomentar el trabajo colaborativo, fortalecer la capacidad de resolución de problemas y garantizar la correcta gestión de un proyecto de software.
 
-
+## [Historias de usuario](documentaci%C3%B3n%20del%20desarrollo/artefactos/historias%20de%20usuario.md)
+## [Requerimentos del sistema](documentaci%C3%B3n%20del%20desarrollo/requerimentos.md)
+## [Priorización de requerimentos](documentaci%C3%B3n%20del%20desarrollo/priorizaci%C3%B3n.md)
 
 ## **Desarrolladores:**
 - Raul Emiliano Aguayo Avila
